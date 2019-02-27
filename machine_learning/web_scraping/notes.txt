@@ -1,0 +1,9 @@
+virtualenv: workon py1
+
+open a jupyter notebook:
+$	jupyter notebook
+
+getting into sql database:
+mysql -h localhost -u root -p
+use nfl_db
+show tables;

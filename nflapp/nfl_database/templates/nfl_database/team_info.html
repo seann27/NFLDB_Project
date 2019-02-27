@@ -1,0 +1,28 @@
+{% extends 'nfl_database/index.html' %}
+{% block content %}
+<div id="team_container">
+    <div id="roster_menu">
+        <ul id="player_list">
+            {% for player in roster %}
+            <li value="{{player.image}}">{{player.name}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <img id="playerImg" src="{{baseUrl}}{{team.logo_img}}" alt="No Player Selected">
+    </div>
+</div>
+<script type="text/javascript">
+    var lis = document.getElementById("player_list").getElementsByTagName('li');
+
+    for (var i=0; i<lis.length; i++) {
+        lis[i].addEventListener('click', showInfo, false);
+    }
+
+    function showInfo() {
+        var value = $(this).attr('value');
+        $("#playerImg").attr("src", value);
+    }
+</script>
+{% endblock %}
+

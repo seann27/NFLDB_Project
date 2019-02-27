@@ -1,0 +1,34 @@
+--------------------------------------------------------------------------------
+FORMAT:
+NAME,POSITION,TEAM,OPP,FANTASY PROS RANK,ESPN PROJ POINTS, DRAFT KINGS SALARY
+--------------------------------------------------------------------------------
+Denver Broncos,D,Denver Broncos,San Francisco 49ers,5.2,5.7,3600
+Los Angeles Chargers,D,Los Angeles Chargers,Cincinnati Bengals,1.6,7.6,3500
+Buffalo Bills,D,Buffalo Bills,New York Jets,2.4,8.9,3200
+Pittsburgh Steelers,D,Pittsburgh Steelers,Oakland Raiders,4.1,6.3,3000
+Detroit Lions,D,Detroit Lions,Arizona Cardinals,13.4,7.7,2900
+New England Patriots,D,New England Patriots,Miami Dolphins,11.2,5.7,2800
+New Orleans Saints,D,New Orleans Saints,Tampa Bay Buccaneers,14.1,7.9,2700
+Dallas Cowboys,D,Dallas Cowboys,Philadelphia Eagles,7.9,6.8,2600
+Houston Texans,D,Houston Texans,Indianapolis Colts,11.9,6.2,2600
+Seattle Seahawks,D,Seattle Seahawks,Minnesota Vikings,12.2,5.9,2600
+New York Giants,D,New York Giants,Washington Redskins,15.0,6.9,2500
+Carolina Panthers,D,Carolina Panthers,Cleveland Browns,18.5,6.5,2500
+Los Angeles Rams,D,Los Angeles Rams,Chicago Bears,10.4,6.9,2500
+Minnesota Vikings,D,Minnesota Vikings,Seattle Seahawks,22.4,5.9,2400
+New York Jets,D,New York Jets,Buffalo Bills,13.0,6.3,2400
+Indianapolis Colts,D,Indianapolis Colts,Houston Texans,25.2,5.7,2400
+Philadelphia Eagles,D,Philadelphia Eagles,Dallas Cowboys,21.4,5.7,2300
+Kansas City Chiefs,D,Kansas City Chiefs,Baltimore Ravens,15.7,8.4,2300
+Arizona Cardinals,D,Arizona Cardinals,Detroit Lions,14.4,7.3,2300
+Washington Redskins,D,Washington Redskins,New York Giants,11.9,7.5,2300
+Cleveland Browns,D,Cleveland Browns,Carolina Panthers,24.7,5.8,2200
+Atlanta Falcons,D,Atlanta Falcons,Green Bay Packers,28.6,4.2,2200
+San Francisco 49ers,D,San Francisco 49ers,Denver Broncos,27.2,5.2,2200
+Chicago Bears,D,Chicago Bears,Los Angeles Rams,17.3,6.3,2200
+Baltimore Ravens,D,Baltimore Ravens,Kansas City Chiefs,23.9,3.3,2200
+Miami Dolphins,D,Miami Dolphins,New England Patriots,27.3,4.4,2100
+Green Bay Packers,D,Green Bay Packers,Atlanta Falcons,21.3,4.5,2100
+Cincinnati Bengals,D,Cincinnati Bengals,Los Angeles Chargers,30.2,2.7,2000
+Tampa Bay Buccaneers,D,Tampa Bay Buccaneers,New Orleans Saints,32.0,0.2,2000
+Oakland Raiders,D,Oakland Raiders,Pittsburgh Steelers,30.9,1.0,2000

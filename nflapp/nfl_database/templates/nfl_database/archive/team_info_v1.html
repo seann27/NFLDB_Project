@@ -1,0 +1,40 @@
+{% extends 'nfl_database/index.html' %}
+{% block content %}
+<div class="container" id="team_container" style="height:1000px;margin-top:10px;background-size:cover;">
+    <div id="roster_menu" class="container text-center" style="float:left;max-height:800px;overflow:scroll;width:200px;font-size:12px;margin:100px 0 100px 25px;">
+        <ul class="list-group" id="player_list">
+            {% for player in roster %}
+            <li class="list-group-item" value="{{player.image}}">{{player.name}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="container text-center" style="width:40%;background-color:black;float:right;margin:200px 300px 0 0">
+            <img id="playerImg" src="{{baseUrl}}{{team.logo_img}}" alt="No Player Selected">
+    </div>
+</div>
+<script>
+    var body = document.getElementById('body');
+    body.style.backgroundImage = "url('{{baseUrl}}img/backgrounds/{{team.name}}_wallpaper.jpg')";
+    body.style.backgroundPosition = "center";
+    var heading = document.getElementById('header_info');
+    heading.style.border = "3px {{team.color2}} solid";
+    heading.style.color = "{{team.color2}}"
+    heading.style.backgroundColor = "{{team.color1}}"
+</script>
+<script type="text/javascript">
+    var lis = document.getElementById("player_list").getElementsByTagName('li');
+
+    for (var i=0; i<lis.length; i++) {
+        lis[i].addEventListener('click', showInfo, false);
+    }
+
+    function showInfo() {
+        var value = $(this).attr('value');
+        $("#playerImg").attr("src", value);
+    }
+</script>
+        <!-- <div class="container text-center">
+            <img style="margin-top:10px;" value="{{team.id}}" src="{{baseUrl}}{{team.logo_img}}">
+        </div> -->
+{% endblock %}
+

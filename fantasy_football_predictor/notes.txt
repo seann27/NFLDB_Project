@@ -1,0 +1,22 @@
+Populate all actual player stats
+Populate all player projections
+
+Make sure all team, season, and week fields are filled in appropriately in all tables for players
+
+Create module to normalize data (team names from different websites)
+
+create module to calculate espn fantasy points based on stats and dk points based on stats
+
+clean up scripts to utilize modules and to automatically add season/week to appropriate tables
+
+use fantasy point projections as dataframe for dk for next week
+
+calculate "corrected" projections based on trends, graphs, stats
+linear regression model?
+
+create_table optimal_lineups (id int primary key auto_increment,season int,week int,
+QB1 varchar(100),
+RB1 varchar(100), RB2 varchar(100),
+WR1 varchar(100), WR2 varchar(100), WR3 varchar(100)
+
+select p.*,e.proj_points from player_model p, espn_player_projections e where p.id=e.id and p.week=14 and p.dk_salary <= 3800 and p.position='WR' order by p.fp_rank asc;

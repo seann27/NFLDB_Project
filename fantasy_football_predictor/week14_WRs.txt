@@ -1,0 +1,134 @@
+--------------------------------------------------------------------------------
+FORMAT:
+NAME,POSITION,TEAM,OPP,FANTASY PROS RANK,ESPN PROJ POINTS, DRAFT KINGS SALARY
+--------------------------------------------------------------------------------
+Antonio Brown,WR,Pittsburgh Steelers,Oakland Raiders,1.6,19.7,9000
+Michael Thomas,WR,New Orleans Saints,Tampa Bay Buccaneers,1.9,18.6,8600
+Davante Adams,WR,Green Bay Packers,Atlanta Falcons,3.2,19.4,8400
+Odell Beckham,WR,New York Giants,Washington Redskins,7.9,19.3,8300
+JuJu Smith-Schuster,WR,Pittsburgh Steelers,Oakland Raiders,8.9,17.4,8200
+Adam Thielen,WR,Minnesota Vikings,Seattle Seahawks,8.3,18.8,8100
+Tyreek Hill,WR,Kansas City Chiefs,Baltimore Ravens,7.3,18.2,8000
+Julio Jones,WR,Atlanta Falcons,Green Bay Packers,5.7,20.1,7900
+DeAndre Hopkins,WR,Houston Texans,Indianapolis Colts,3.9,18.2,7800
+Mike Evans,WR,Tampa Bay Buccaneers,New Orleans Saints,10.4,16.3,7500
+Keenan Allen,WR,Los Angeles Chargers,Cincinnati Bengals,5.0,20.0,7400
+Stefon Diggs,WR,Minnesota Vikings,Seattle Seahawks,14.9,17.1,7300
+Julian Edelman,WR,New England Patriots,Miami Dolphins,17.6,14.7,7100
+Brandin Cooks,WR,Los Angeles Rams,Chicago Bears,11.9,16.2,6800
+Robert Woods,WR,Los Angeles Rams,Chicago Bears,12.9,16.4,6700
+Amari Cooper,WR,Dallas Cowboys,Philadelphia Eagles,13.3,14.2,6600
+Kenny Golladay,WR,Detroit Lions,Arizona Cardinals,18.8,13.7,6400
+T.Y. Hilton,WR,Indianapolis Colts,Houston Texans,12.1,16.6,6300
+Tyler Boyd,WR,Cincinnati Bengals,Los Angeles Chargers,25.4,13.3,6100
+Josh Gordon,WR,New England Patriots,Miami Dolphins,16.8,11.7,6000
+Jarvis Landry,WR,Cleveland Browns,Carolina Panthers,23.8,12.0,5800
+Allen Robinson,WR,Chicago Bears,Los Angeles Rams,24.1,12.7,5600
+Tyler Lockett,WR,Seattle Seahawks,Minnesota Vikings,21.1,11.3,5600
+Alshon Jeffery,WR,Philadelphia Eagles,Dallas Cowboys,32.3,10.8,5500
+Calvin Ridley,WR,Atlanta Falcons,Green Bay Packers,29.0,11.4,5200
+Sammy Watkins,WR,Kansas City Chiefs,Baltimore Ravens,60.0,12.4,5000
+Adam Humphries,WR,Tampa Bay Buccaneers,New Orleans Saints,24.4,13.0,4900
+Chris Godwin,WR,Tampa Bay Buccaneers,New Orleans Saints,18.8,14.2,4900
+Larry Fitzgerald,WR,Arizona Cardinals,Detroit Lions,26.8,11.6,4900
+Doug Baldwin,WR,Seattle Seahawks,Minnesota Vikings,32.6,12.3,4800
+Golden Tate,WR,Philadelphia Eagles,Dallas Cowboys,31.3,11.7,4800
+Devin Funchess,WR,Carolina Panthers,Cleveland Browns,51.7,11.9,4700
+Marquise Goodwin,WR,San Francisco 49ers,Denver Broncos,58.6,10.1,4700
+Tyrell Williams,WR,Los Angeles Chargers,Cincinnati Bengals,46.3,10.8,4600
+Josh Reynolds,WR,Los Angeles Rams,Chicago Bears,36.3,10.3,4600
+Josh Doctson,WR,Washington Redskins,New York Giants,57.2,9.4,4500
+Tre'Quan Smith,WR,New Orleans Saints,Tampa Bay Buccaneers,34.0,10.2,4500
+Courtland Sutton,WR,Denver Broncos,San Francisco 49ers,23.1,12.3,4500
+Sterling Shepard,WR,New York Giants,Washington Redskins,36.4,12.7,4400
+Dante Pettis,WR,San Francisco 49ers,Denver Broncos,38.6,9.4,4400
+Keke Coutee,WR,Houston Texans,Indianapolis Colts,70.2,9.9,4400
+Marquez Valdes-Scantling,WR,Green Bay Packers,Atlanta Falcons,50.5,9.0,4400
+DeVante Parker,WR,Miami Dolphins,New England Patriots,46.6,9.5,4300
+Anthony Miller,WR,Chicago Bears,Los Angeles Rams,41.0,7.4,4300
+Michael Crabtree,WR,Baltimore Ravens,Kansas City Chiefs,60.5,7.8,4300
+Randall Cobb,WR,Green Bay Packers,Atlanta Falcons,60.7,9.5,4300
+Mohamed Sanu,WR,Atlanta Falcons,Green Bay Packers,43.3,10.7,4300
+John Brown,WR,Baltimore Ravens,Kansas City Chiefs,57.4,8.0,4200
+Jordy Nelson,WR,Oakland Raiders,Pittsburgh Steelers,54.5,9.6,4200
+Zay Jones,WR,Buffalo Bills,New York Jets,37.8,9.3,4200
+David Moore,WR,Seattle Seahawks,Minnesota Vikings,52.1,7.5,4100
+Demaryius Thomas,WR,Houston Texans,Indianapolis Colts,38.1,9.5,4100
+Kenny Stills,WR,Miami Dolphins,New England Patriots,49.1,9.0,4100
+Jamison Crowder,WR,Washington Redskins,New York Giants,66.0,10.1,4000
+Curtis Samuel,WR,Carolina Panthers,Cleveland Browns,35.8,10.8,4000
+Danny Amendola,WR,Miami Dolphins,New England Patriots,79.0,10.0,4000
+Mike Williams,WR,Los Angeles Chargers,Cincinnati Bengals,40.2,9.5,3900
+Taylor Gabriel,WR,Chicago Bears,Los Angeles Rams,38.6,10.8,3900
+Antonio Callaway,WR,Cleveland Browns,Carolina Panthers,47.6,8.6,3900
+Bruce Ellington,WR,Detroit Lions,Arizona Cardinals,59.1,10.1,3800
+John Ross,WR,Cincinnati Bengals,Los Angeles Chargers,59.1,8.9,3800
+Chris Conley,WR,Kansas City Chiefs,Baltimore Ravens,52.0,10.5,3800
+Marcell Ateman,WR,Oakland Raiders,Pittsburgh Steelers,70.3,7.7,3700
+Cole Beasley,WR,Dallas Cowboys,Philadelphia Eagles,74.0,7.3,3700
+Quincy Enunwa,WR,New York Jets,Buffalo Bills,64.6,8.9,3700
+Willie Snead,WR,Baltimore Ravens,Kansas City Chiefs,71.0,7.5,3700
+Dontrelle Inman,WR,Indianapolis Colts,Houston Texans,68.2,8.7,3700
+Michael Gallup,WR,Dallas Cowboys,Philadelphia Eagles,44.8,9.0,3700
+Pierre Garcon,WR,San Francisco 49ers,Denver Broncos,107.8,9.0,3700
+Jermaine Kearse,WR,New York Jets,Buffalo Bills,75.7,8.3,3600
+Robby Anderson,WR,New York Jets,Buffalo Bills,61.1,7.7,3600
+Rashard Higgins,WR,Cleveland Browns,Carolina Panthers,79.1,7.1,3600
+Ryan Switzer,WR,Pittsburgh Steelers,Oakland Raiders,90.2,7.2,3600
+Nelson Agholor,WR,Philadelphia Eagles,Dallas Cowboys,67.7,4.1,3600
+Keith Kirkwood,WR,New Orleans Saints,Tampa Bay Buccaneers,71.1,4.9,3500
+Cody Core,WR,Cincinnati Bengals,Los Angeles Chargers,104.3,4.3,3500
+Seth Roberts,WR,Oakland Raiders,Pittsburgh Steelers,76.5,8.2,3500
+Kendrick Bourne,WR,San Francisco 49ers,Denver Broncos,78.5,6.5,3400
+Chris Hogan,WR,New England Patriots,Miami Dolphins,78.6,3.9,3400
+Maurice Harris,WR,Washington Redskins,New York Giants,92.7,5.3,3400
+Isaiah McKenzie,WR,Buffalo Bills,New York Jets,90.7,6.5,3400
+Robert Foster,WR,Buffalo Bills,New York Jets,68.7,7.1,3300
+Aldrick Robinson,WR,Minnesota Vikings,Seattle Seahawks,85.9,3.7,3200
+Ryan Grant,WR,Indianapolis Colts,Houston Texans,79.4,6.5,3200
+Russell Shepard,WR,New York Giants,Washington Redskins,93.6,3.5,3200
+Equanimeous St.,WR,Green Bay Packers,Atlanta Falcons,89.1,2.5,3100
+Trent Taylor,WR,San Francisco 49ers,Denver Broncos,110.6,1.0,3100
+Laquon Treadwell,WR,Minnesota Vikings,Seattle Seahawks,99.1,2.5,3100
+Richie James,WR,San Francisco 49ers,Denver Broncos,121.6,1.7,3000
+River Cracraft,WR,Denver Broncos,San Francisco 49ers,114.3,2.7,3000
+Bennie Fowler,WR,New York Giants,Washington Redskins,89.6,7.8,3000
+Zach Pascal,WR,Indianapolis Colts,Houston Texans,112.9,3.5,3000
+Alex Erickson,WR,Cincinnati Bengals,Los Angeles Chargers,127.0,1.7,3000
+Allen Hurns,WR,Dallas Cowboys,Philadelphia Eagles,104.9,2.1,3000
+Andre Roberts,WR,New York Jets,Buffalo Bills,138.2,2.4,3000
+Trent Sherfield,WR,Arizona Cardinals,Detroit Lions,92.6,6.2,3000
+Andy Jones,WR,Detroit Lions,Arizona Cardinals,130.6,3.3,3000
+Travis Benjamin,WR,Los Angeles Chargers,Cincinnati Bengals,85.3,3.5,3000
+James Washington,WR,Pittsburgh Steelers,Oakland Raiders,102.8,2.0,3000
+Tim Patrick,WR,Denver Broncos,San Francisco 49ers,82.2,8.8,3000
+Auden Tate,WR,Cincinnati Bengals,Los Angeles Chargers,126.6,5.5,3000
+Breshad Perriman,WR,Cleveland Browns,Carolina Panthers,101.4,4.9,3000
+Austin Carr,WR,New Orleans Saints,Tampa Bay Buccaneers,96.5,2.4,3000
+DaeSean Hamilton,WR,Denver Broncos,San Francisco 49ers,60.7,9.1,3000
+Damion Ratley,WR,Cleveland Browns,Carolina Panthers,121.0,2.4,3000
+Darrius Heyward-Bey,WR,Pittsburgh Steelers,Oakland Raiders,138.3,1.4,3000
+Jordan Matthews,WR,Philadelphia Eagles,Dallas Cowboys,105.1,3.2,3000
+Jaron Brown,WR,Seattle Seahawks,Minnesota Vikings,94.5,3.0,3000
+Jarius Wright,WR,Carolina Panthers,Cleveland Browns,94.9,4.2,3000
+Jake Kumerow,WR,Green Bay Packers,Atlanta Falcons,119.5,1.3,3000
+J.J. Nelson,WR,Arizona Cardinals,Detroit Lions,110.4,3.4,3000
+Demarcus Robinson,WR,Kansas City Chiefs,Baltimore Ravens,101.2,3.9,3000
+Dwayne Harris,WR,Oakland Raiders,Pittsburgh Steelers,125.8,1.5,3000
+Corey Coleman,WR,New York Giants,Washington Redskins,95.9,4.5,3000
+Justin Hardy,WR,Atlanta Falcons,Green Bay Packers,130.4,1.4,3000
+Justin Watson,WR,Tampa Bay Buccaneers,New Orleans Saints,120.2,1.3,3000
+Brice Butler,WR,Miami Dolphins,New England Patriots,102.6,2.7,3000
+Noah Brown,WR,Dallas Cowboys,Philadelphia Eagles,126.6,2.1,3000
+Chad Beebe,WR,Minnesota Vikings,Seattle Seahawks,138.0,4.5,3000
+Chad Williams,WR,Arizona Cardinals,Detroit Lions,106.7,6.6,3000
+Michael Floyd,WR,Washington Redskins,New York Giants,118.1,1.9,3000
+Charone Peake,WR,New York Jets,Buffalo Bills,151.7,1.6,3000
+Marvin Hall,WR,Atlanta Falcons,Green Bay Packers,121.9,1.5,3000
+Chester Rogers,WR,Indianapolis Colts,Houston Texans,86.1,7.7,3000
+Chris Moore,WR,Baltimore Ravens,Kansas City Chiefs,123.5,2.6,3000
+Keon Hatcher,WR,Oakland Raiders,Pittsburgh Steelers,140.0,2.8,3000
+Leonte Carroo,WR,Miami Dolphins,New England Patriots,122.1,2.8,3000
+Malik Turner,WR,Seattle Seahawks,Minnesota Vikings,129.0,1.5,3000
+Marcus Kemp,WR,Kansas City Chiefs,Baltimore Ravens,133.5,1.3,3000
+Deonte Thompson,WR,Buffalo Bills,New York Jets,114.3,4.6,3000

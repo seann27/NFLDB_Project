@@ -1,0 +1,73 @@
+--------------------------------------------------------------------------------
+FORMAT:
+NAME,POSITION,TEAM,OPP,FANTASY PROS RANK,ESPN PROJ POINTS, DRAFT KINGS SALARY
+--------------------------------------------------------------------------------
+Travis Kelce,TE,Kansas City Chiefs,Baltimore Ravens,1.0,19.4,6700
+Zach Ertz,TE,Philadelphia Eagles,Dallas Cowboys,2.3,16.2,6400
+Eric Ebron,TE,Indianapolis Colts,Houston Texans,3.8,16.1,5700
+George Kittle,TE,San Francisco 49ers,Denver Broncos,4.3,14.4,5500
+Jared Cook,TE,Oakland Raiders,Pittsburgh Steelers,7.1,12.0,5200
+Rob Gronkowski,TE,New England Patriots,Miami Dolphins,5.5,11.7,4800
+Jordan Reed,TE,Washington Redskins,New York Giants,10.4,10.6,4600
+Jimmy Graham,TE,Green Bay Packers,Atlanta Falcons,13.6,10.3,4400
+Austin Hooper,TE,Atlanta Falcons,Green Bay Packers,10.8,11.6,4300
+David Njoku,TE,Cleveland Browns,Carolina Panthers,8.3,8.3,3900
+Vance McDonald,TE,Pittsburgh Steelers,Oakland Raiders,10.9,8.1,3800
+Evan Engram,TE,New York Giants,Washington Redskins,18.3,10.3,3700
+C.J. Uzomah,TE,Cincinnati Bengals,Los Angeles Chargers,17.0,8.3,3500
+Kyle Rudolph,TE,Minnesota Vikings,Seattle Seahawks,15.4,8.5,3500
+Cameron Brate,TE,Tampa Bay Buccaneers,New Orleans Saints,10.2,9.8,3500
+Trey Burton,TE,Chicago Bears,Los Angeles Rams,13.4,7.6,3400
+Jesse James,TE,Pittsburgh Steelers,Oakland Raiders,29.2,5.4,3300
+Jordan Thomas,TE,Houston Texans,Indianapolis Colts,24.5,3.3,3000
+Chris Herndon,TE,New York Jets,Buffalo Bills,17.9,7.3,3000
+Vernon Davis,TE,Washington Redskins,New York Giants,31.3,5.0,2900
+Antonio Gates,TE,Los Angeles Chargers,Cincinnati Bengals,23.8,5.7,2800
+Mark Andrews,TE,Baltimore Ravens,Kansas City Chiefs,24.0,3.8,2800
+Ian Thomas,TE,Carolina Panthers,Cleveland Browns,22.0,8.1,2700
+Ricky Seals-Jones,TE,Arizona Cardinals,Detroit Lions,26.2,5.6,2700
+Rhett Ellison,TE,New York Giants,Washington Redskins,33.4,2.7,2700
+Gerald Everett,TE,Los Angeles Rams,Chicago Bears,22.0,6.0,2700
+Matt LaCosse,TE,Denver Broncos,San Francisco 49ers,20.4,7.1,2700
+Nick Vannett,TE,Seattle Seahawks,Minnesota Vikings,28.2,4.6,2600
+Levine Toilolo,TE,Detroit Lions,Arizona Cardinals,33.7,2.4,2600
+Tyler Higbee,TE,Los Angeles Rams,Chicago Bears,29.3,6.3,2600
+Nick O'Leary,TE,Miami Dolphins,New England Patriots,51.3,2.9,2500
+Nick Boyle,TE,Baltimore Ravens,Kansas City Chiefs,50.4,3.0,2500
+Virgil Green,TE,Los Angeles Chargers,Cincinnati Bengals,40.2,4.1,2500
+Luke Willson,TE,Detroit Lions,Arizona Cardinals,49.0,2.8,2500
+Logan Thomas,TE,Buffalo Bills,New York Jets,59.9,3.3,2500
+Matt Lengel,TE,Cincinnati Bengals,Los Angeles Chargers,65.5,1.1,2500
+Seth DeValve,TE,Cleveland Browns,Carolina Panthers,63.4,1.3,2500
+Robert Tonyan,TE,Green Bay Packers,Atlanta Falcons,72.0,1.3,2500
+Rico Gathers,TE,Dallas Cowboys,Philadelphia Eagles,64.9,1.7,2500
+Mo Alie-Cox,TE,Indianapolis Colts,Houston Texans,64.0,2.9,2500
+Ryan Griffin,TE,Houston Texans,Indianapolis Colts,45.0,3.5,2500
+Mike Gesicki,TE,Miami Dolphins,New England Patriots,39.4,4.0,2500
+Michael Roberts,TE,Detroit Lions,Arizona Cardinals,48.5,7.4,2500
+Logan Paulsen,TE,Atlanta Falcons,Green Bay Packers,67.6,2.1,2500
+Lee Smith,TE,Oakland Raiders,Pittsburgh Steelers,66.2,2.4,2500
+Demetrius Harris,TE,Kansas City Chiefs,Baltimore Ravens,41.5,4.1,2500
+Darren Fells,TE,Cleveland Browns,Carolina Panthers,64.0,1.3,2500
+Dan Arnold,TE,New Orleans Saints,Tampa Bay Buccaneers,25.4,3.9,2500
+Dalton Schultz,TE,Dallas Cowboys,Philadelphia Eagles,51.9,2.7,2500
+Dallas Goedert,TE,Philadelphia Eagles,Dallas Cowboys,35.0,3.7,2500
+Chris Manhertz,TE,Carolina Panthers,Cleveland Browns,70.3,1.3,2500
+Charles Clay,TE,Buffalo Bills,New York Jets,35.6,5.3,2500
+Brian Parker,TE,Denver Broncos,San Francisco 49ers,61.7,2.4,2500
+Blake Jarwin,TE,Dallas Cowboys,Philadelphia Eagles,45.8,3.2,2500
+Antony Auclair,TE,Tampa Bay Buccaneers,New Orleans Saints,60.8,2.1,2500
+Alan Cross,TE,Tampa Bay Buccaneers,New Orleans Saints,77.3,1.4,2500
+Durham Smythe,TE,Miami Dolphins,New England Patriots,57.0,1.7,2500
+Ed Dickson,TE,Seattle Seahawks,Minnesota Vikings,41.4,2.8,2500
+Eric Saubert,TE,Atlanta Falcons,Green Bay Packers,65.3,2.7,2500
+Lance Kendricks,TE,Green Bay Packers,Atlanta Falcons,48.4,2.5,2500
+Josh Hill,TE,New Orleans Saints,Tampa Bay Buccaneers,51.1,2.5,2500
+Jordan Leggett,TE,New York Jets,Buffalo Bills,57.4,2.7,2500
+Jordan Akins,TE,Houston Texans,Indianapolis Colts,46.6,2.7,2500
+Jermaine Gresham,TE,Arizona Cardinals,Detroit Lions,55.2,2.8,2500
+Jason Croom,TE,Buffalo Bills,New York Jets,53.5,2.8,2500
+Hayden Hurst,TE,Baltimore Ravens,Kansas City Chiefs,39.1,3.2,2500
+Erik Swoope,TE,Indianapolis Colts,Houston Texans,36.8,5.1,2500
+Eric Tomlinson,TE,New York Jets,Buffalo Bills,71.6,1.6,2500
+Adam Shaheen,TE,Chicago Bears,Los Angeles Rams,45.8,3.1,2500

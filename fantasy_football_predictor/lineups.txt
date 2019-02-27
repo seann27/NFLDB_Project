@@ -1,0 +1,464 @@
+Matt Ryan,QB,19.5,5600
+Ezekiel Elliott,RB,23.7,8600
+Alvin Kamara,RB,20.8,8100
+Tevin Coleman,RB,12.3,4400
+Brandin Cooks,WR,16.0,6800
+DeSean Jackson,WR,10.9,4800
+Quincy Enunwa,WR,9.1,3700
+George Kittle,TE,14.7,5500
+Chiefs,D,8.3,2300
+49800
+135.3
+
+Jared Goff,QB,18.8,5800
+Ezekiel Elliott,RB,23.7,8600
+David Johnson,RB,19.4,6500
+Jeff Wilson,RB,15.1,3800
+Odell Beckham,WR,19.3,8300
+Bruce Ellington,WR,10.2,3800
+David Moore,WR,7.4,4100
+Travis Kelce,TE,18.8,6700
+Chiefs,D,8.3,2300
+49900
+141.00000000000003
+
+Philip Rivers,QB,21.2,6500
+Nick Chubb,RB,20.1,6700
+Jaylen Samuels,RB,16.5,3700
+Lamar Miller,RB,14.6,5100
+Julio Jones,WR,20.1,7900
+Amari Cooper,WR,14.2,6600
+Golden Tate,WR,11.7,4800
+George Kittle,TE,14.7,5500
+Redskins,D,7.5,2300
+49100
+140.6
+
+Mitchell Trubisky,QB,19.6,5600
+Ezekiel Elliott,RB,23.7,8600
+Kerryon Johnson,RB,16.5,5500
+Duke Johnson,RB,9.4,3700
+Keenan Allen,WR,19.6,7400
+Allen Robinson,WR,12.6,5600
+Sterling Shepard,WR,9.4,4400
+Eric Ebron,TE,14.0,5700
+Bills,D,9.0,3200
+49700
+133.8
+
+Mitchell Trubisky,QB,19.6,5600
+Nick Chubb,RB,20.1,6700
+Austin Ekeler,RB,18.8,6200
+Lamar Miller,RB,14.6,5100
+Julio Jones,WR,20.1,7900
+Adam Thielen,WR,19.1,8100
+Tyrell Williams,WR,11.0,4600
+Ian Thomas,TE,8.1,2700
+Saints,D,7.9,2700
+49600
+139.29999999999998
+
+Philip Rivers,QB,21.2,6500
+Jeff Wilson,RB,15.1,3800
+Adrian Peterson,RB,14.3,4800
+Tevin Coleman,RB,12.3,4400
+Julio Jones,WR,20.1,7900
+Adam Thielen,WR,19.1,8100
+Marquez Valdes-Scantling,WR,9.1,4400
+Travis Kelce,TE,18.8,6700
+Saints,D,7.9,2700
+49300
+137.9
+
+Aaron Rodgers,QB,20.9,6000
+Saquon Barkley,RB,22.1,8900
+Jeff Wilson,RB,15.1,3800
+Dion Lewis,RB,13.0,4400
+Keenan Allen,WR,19.6,7400
+Brandin Cooks,WR,16.0,6800
+Larry Fitzgerald,WR,11.4,4900
+George Kittle,TE,14.7,5500
+Chiefs,D,8.3,2300
+50000
+141.1
+
+Mark Sanchez,QB,13.5,4000
+David Johnson,RB,19.4,6500
+Jaylen Samuels,RB,16.5,3700
+Adrian Peterson,RB,14.3,4800
+Davante Adams,WR,19.1,8400
+T.Y. Hilton,WR,15.9,6300
+Emmanuel Sanders,WR,15.4,6200
+Travis Kelce,TE,18.8,6700
+Titans,D,9.8,2900
+49500
+142.70000000000005
+
+Philip Rivers,QB,21.2,6500
+Christian McCaffrey,RB,24.3,9300
+Jaylen Samuels,RB,16.5,3700
+LeSean McCoy,RB,14.2,5000
+Tyler Boyd,WR,13.1,6100
+Devin Funchess,WR,12.2,4700
+Sammy Watkins,WR,12.2,5000
+Travis Kelce,TE,18.8,6700
+Chiefs,D,8.3,2300
+49300
+140.8
+
+Drew Brees,QB,21.1,6600
+Austin Ekeler,RB,18.8,6200
+Jaylen Samuels,RB,16.5,3700
+Gus Edwards,RB,10.9,4500
+Julio Jones,WR,20.1,7900
+Tyreek Hill,WR,18.4,8000
+Danny Amendola,WR,9.8,4000
+Travis Kelce,TE,18.8,6700
+Chiefs,D,8.3,2300
+49900
+142.70000000000002
+
+Jameis Winston,QB,21.1,6200
+Nick Chubb,RB,20.1,6700
+Jaylen Samuels,RB,16.5,3700
+Elijah McGuire,RB,8.5,3400
+Odell Beckham,WR,19.3,8300
+Mike Evans,WR,16.4,7500
+Anthony Miller,WR,8.4,4300
+Travis Kelce,TE,18.8,6700
+Chiefs,D,8.3,2300
+49100
+137.40000000000003
+
+Philip Rivers,QB,21.2,6500
+Saquon Barkley,RB,22.1,8900
+Nick Chubb,RB,20.1,6700
+Jaylen Samuels,RB,16.5,3700
+Tyreek Hill,WR,18.4,8000
+Stefon Diggs,WR,16.7,7300
+George Kittle,TE,14.7,5500
+Bills,D,9.0,3200
+49800
+138.70000000000002
+
+Drew Brees,QB,21.1,6600
+Christian McCaffrey,RB,24.3,9300
+Todd Gurley,RB,21.2,8800
+Jaylen Samuels,RB,16.5,3700
+Golden Tate,WR,11.7,4800
+Courtland Sutton,WR,11.0,4500
+Robby Anderson,WR,7.9,3600
+George Kittle,TE,14.7,5500
+Titans,D,9.8,2900
+49700
+138.20000000000002
+
+Philip Rivers,QB,21.2,6500
+Christian McCaffrey,RB,24.3,9300
+Jaylen Samuels,RB,16.5,3700
+Adrian Peterson,RB,14.3,4800
+Keenan Allen,WR,19.6,7400
+Doug Baldwin,WR,12.4,4800
+Danny Amendola,WR,9.8,4000
+Travis Kelce,TE,18.8,6700
+Chiefs,D,8.3,2300
+49500
+145.20000000000002
+
+Cam Newton,QB,22.4,6300
+Nick Chubb,RB,20.1,6700
+Austin Ekeler,RB,18.8,6200
+Marlon Mack,RB,12.2,4600
+DeAndre Hopkins,WR,18.1,7800
+T.Y. Hilton,WR,15.9,6300
+Pierre Garcon,WR,9.0,3700
+George Kittle,TE,14.7,5500
+Chiefs,D,8.3,2300
+49400
+139.5
+
+Cam Newton,QB,22.4,6300
+Todd Gurley,RB,21.2,8800
+David Johnson,RB,19.4,6500
+Austin Ekeler,RB,18.8,6200
+DeAndre Hopkins,WR,18.1,7800
+Courtland Sutton,WR,11.0,4500
+Taylor Gabriel,WR,9.6,3900
+Dan Arnold,TE,3.9,2500
+Chiefs,D,8.3,2300
+48800
+132.70000000000002
+
+Aaron Rodgers,QB,20.9,6000
+Christian McCaffrey,RB,24.3,9300
+Ezekiel Elliott,RB,23.7,8600
+Jaylen Samuels,RB,16.5,3700
+Doug Baldwin,WR,12.4,4800
+Sammy Watkins,WR,12.2,5000
+Quincy Enunwa,WR,9.1,3700
+George Kittle,TE,14.7,5500
+Titans,D,9.8,2900
+49500
+143.60000000000002
+
+Cam Newton,QB,22.4,6300
+Nick Chubb,RB,20.1,6700
+Jeff Wilson,RB,15.1,3800
+Dion Lewis,RB,13.0,4400
+Keenan Allen,WR,19.6,7400
+Tyreek Hill,WR,18.4,8000
+Marquise Goodwin,WR,9.8,4700
+George Kittle,TE,14.7,5500
+Titans,D,9.8,2900
+49700
+142.9
+
+Cam Newton,QB,22.4,6300
+Ezekiel Elliott,RB,23.7,8600
+Austin Ekeler,RB,18.8,6200
+Jeff Wilson,RB,15.1,3800
+Odell Beckham,WR,19.3,8300
+Curtis Samuel,WR,10.5,4000
+DaeSean Hamilton,WR,6.7,3000
+Travis Kelce,TE,18.8,6700
+Titans,D,9.8,2900
+49800
+145.1
+
+Lamar Jackson,QB,17.5,5700
+Ezekiel Elliott,RB,23.7,8600
+David Johnson,RB,19.4,6500
+Austin Ekeler,RB,18.8,6200
+Adam Thielen,WR,19.1,8100
+Sammy Watkins,WR,12.2,5000
+Zach Ertz,TE,16.3,6400
+Titans,D,9.8,2900
+49400
+136.8
+
+Mitchell Trubisky,QB,19.6,5600
+Austin Ekeler,RB,18.8,6200
+Dalvin Cook,RB,13.8,5800
+Dion Lewis,RB,13.0,4400
+Keenan Allen,WR,19.6,7400
+Davante Adams,WR,19.1,8400
+Jamison Crowder,WR,9.5,4000
+George Kittle,TE,14.7,5500
+Redskins,D,7.5,2300
+49600
+135.6
+
+Cam Newton,QB,22.4,6300
+Ezekiel Elliott,RB,23.7,8600
+Adrian Peterson,RB,14.3,4800
+LeSean McCoy,RB,14.2,5000
+Robert Woods,WR,16.0,6700
+Kenny Golladay,WR,13.8,6400
+Zay Jones,WR,8.8,4200
+George Kittle,TE,14.7,5500
+Cardinals,D,7.3,2300
+49800
+135.2
+
+Jameis Winston,QB,21.1,6200
+Alvin Kamara,RB,20.8,8100
+David Johnson,RB,19.4,6500
+Jaylen Samuels,RB,16.5,3700
+Tyreek Hill,WR,18.4,8000
+Tyrell Williams,WR,11.0,4600
+Martavis Bryant,WR,5.9,3000
+Travis Kelce,TE,18.8,6700
+Titans,D,9.8,2900
+49700
+141.70000000000005
+
+Aaron Rodgers,QB,20.9,6000
+Christian McCaffrey,RB,24.3,9300
+Ezekiel Elliott,RB,23.7,8600
+Adrian Peterson,RB,14.3,4800
+Emmanuel Sanders,WR,15.4,6200
+Curtis Samuel,WR,10.5,4000
+Bruce Ellington,WR,10.2,3800
+Austin Hooper,TE,11.7,4300
+Titans,D,9.8,2900
+49900
+140.8
+
+Mitchell Trubisky,QB,19.6,5600
+Alvin Kamara,RB,20.8,8100
+Kerryon Johnson,RB,16.5,5500
+Lamar Miller,RB,14.6,5100
+Keenan Allen,WR,19.6,7400
+Doug Baldwin,WR,12.4,4800
+Willie Snead,WR,7.3,3700
+Travis Kelce,TE,18.8,6700
+Titans,D,9.8,2900
+49800
+139.4
+
+Jameis Winston,QB,21.1,6200
+Ezekiel Elliott,RB,23.7,8600
+Jaylen Samuels,RB,16.5,3700
+Chris Carson,RB,13.0,4900
+Keenan Allen,WR,19.6,7400
+Emmanuel Sanders,WR,15.4,6200
+Tre'Quan Smith,WR,10.5,4500
+George Kittle,TE,14.7,5500
+Titans,D,9.8,2900
+49900
+144.3
+
+Cam Newton,QB,22.4,6300
+Todd Gurley,RB,21.2,8800
+David Johnson,RB,19.4,6500
+Austin Ekeler,RB,18.8,6200
+Devin Funchess,WR,12.2,4700
+Randall Cobb,WR,9.7,4300
+Dontrelle Inman,WR,8.9,3700
+Travis Kelce,TE,18.8,6700
+Saints,D,7.9,2700
+49900
+139.3
+
+Philip Rivers,QB,21.2,6500
+Saquon Barkley,RB,22.1,8900
+Jaylen Samuels,RB,16.5,3700
+Jeff Wilson,RB,15.1,3800
+Julio Jones,WR,20.1,7900
+T.Y. Hilton,WR,15.9,6300
+Dontrelle Inman,WR,8.9,3700
+George Kittle,TE,14.7,5500
+Titans,D,9.8,2900
+49200
+144.3
+
+Case Keenum,QB,16.2,5200
+Alvin Kamara,RB,20.8,8100
+Austin Ekeler,RB,18.8,6200
+Kerryon Johnson,RB,16.5,5500
+Keenan Allen,WR,19.6,7400
+Emmanuel Sanders,WR,15.4,6200
+Taylor Gabriel,WR,9.6,3900
+Rob Gronkowski,TE,11.5,4800
+Chiefs,D,8.3,2300
+49600
+136.70000000000002
+
+Drew Brees,QB,21.1,6600
+Nick Chubb,RB,20.1,6700
+Leonard Fournette,RB,16.0,6800
+Jalen Richard,RB,11.6,4100
+Julio Jones,WR,20.1,7900
+DeSean Jackson,WR,10.9,4800
+Jamison Crowder,WR,9.5,4000
+Travis Kelce,TE,18.8,6700
+Chiefs,D,8.3,2300
+49900
+136.40000000000003
+
+Dak Prescott,QB,18.2,5600
+Nick Chubb,RB,20.1,6700
+Austin Ekeler,RB,18.8,6200
+Lamar Miller,RB,14.6,5100
+Emmanuel Sanders,WR,15.4,6200
+Amari Cooper,WR,14.2,6600
+Taylor Gabriel,WR,9.6,3900
+Zach Ertz,TE,16.3,6400
+Titans,D,9.8,2900
+49600
+137.0
+
+Cam Newton,QB,22.4,6300
+Christian McCaffrey,RB,24.3,9300
+Jeff Wilson,RB,15.1,3800
+Isaiah Crowell,RB,9.8,3600
+Julio Jones,WR,20.1,7900
+Chris Godwin,WR,9.7,4900
+Taylor Gabriel,WR,9.6,3900
+Travis Kelce,TE,18.8,6700
+Saints,D,7.9,2700
+49100
+137.70000000000002
+
+Jameis Winston,QB,21.1,6200
+Alvin Kamara,RB,20.8,8100
+David Johnson,RB,19.4,6500
+Jeff Wilson,RB,15.1,3800
+Tyreek Hill,WR,18.4,8000
+T.Y. Hilton,WR,15.9,6300
+Travis Kelce,TE,18.8,6700
+Titans,D,9.8,2900
+48500
+139.30000000000004
+
+Drew Brees,QB,21.1,6600
+Austin Ekeler,RB,18.8,6200
+Jaylen Samuels,RB,16.5,3700
+Spencer Ware,RB,13.7,5200
+Stefon Diggs,WR,16.7,7300
+Emmanuel Sanders,WR,15.4,6200
+Alshon Jeffery,WR,10.9,5500
+Travis Kelce,TE,18.8,6700
+Chiefs,D,8.3,2300
+49700
+140.20000000000005
+
+Matt Ryan,QB,19.5,5600
+Saquon Barkley,RB,22.1,8900
+Nick Chubb,RB,20.1,6700
+Jeff Wilson,RB,15.1,3800
+JuJu Smith-Schuster,WR,17.7,8200
+Bruce Ellington,WR,10.2,3800
+Jamison Crowder,WR,9.5,4000
+Travis Kelce,TE,18.8,6700
+Chiefs,D,8.3,2300
+50000
+141.3
+
+Cam Newton,QB,22.4,6300
+Ezekiel Elliott,RB,23.7,8600
+Nick Chubb,RB,20.1,6700
+Jalen Richard,RB,11.6,4100
+Allen Robinson,WR,12.6,5600
+Sammy Watkins,WR,12.2,5000
+Randall Cobb,WR,9.7,4300
+Zach Ertz,TE,16.3,6400
+Titans,D,9.8,2900
+49900
+138.4
+
+Cam Newton,QB,22.4,6300
+Saquon Barkley,RB,22.1,8900
+Jaylen Samuels,RB,16.5,3700
+Jeff Wilson,RB,15.1,3800
+Julio Jones,WR,20.1,7900
+Doug Baldwin,WR,12.4,4800
+Josh Reynolds,WR,9.5,4600
+Travis Kelce,TE,18.8,6700
+Cardinals,D,7.3,2300
+49000
+144.20000000000002
+
+Cam Newton,QB, proj. points: 22.3, draft kings salary: $6300
+Christian McCaffrey,RB, proj. points: 24.1, draft kings salary: $9300
+Nick Chubb,RB, proj. points: 20.0, draft kings salary: $6700
+Kenyan Drake,RB, proj. points: 12.4, draft kings salary: $4500
+Larry Fitzgerald,WR, proj. points: 11.6, draft kings salary: $4900
+Randall Cobb,WR, proj. points: 9.5, draft kings salary: $4300
+Demaryius Thomas,WR, proj. points: 9.5, draft kings salary: $4100
+Travis Kelce,TE, proj. points: 18.7, draft kings salary: $6700
+Saints,D, proj. points: 7.9, draft kings salary: $2700
+49500
+136.0
+
+Aaron Rodgers,QB, proj. points: 20.9, draft kings salary: $6000
+Christian McCaffrey,RB, proj. points: 24.1, draft kings salary: $9300
+Kerryon Johnson,RB, proj. points: 16.8, draft kings salary: $5500
+Jaylen Samuels,RB, proj. points: 16.7, draft kings salary: $3700
+Keenan Allen,WR, proj. points: 20.0, draft kings salary: $7400
+Adam Humphries,WR, proj. points: 13.0, draft kings salary: $4900
+Bruce Ellington,WR, proj. points: 10.0, draft kings salary: $3800
+Rob Gronkowski,TE, proj. points: 11.7, draft kings salary: $4800
+Saints,D, proj. points: 7.9, draft kings salary: $2700
+Total Cost: 48100
+Total Projected Points: 141.1

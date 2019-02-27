@@ -1,0 +1,35 @@
+--------------------------------------------------------------------------------
+FORMAT:
+NAME,POSITION,TEAM,OPP,FANTASY PROS RANK,ESPN PROJ POINTS, DRAFT KINGS SALARY
+--------------------------------------------------------------------------------
+Patrick Mahomes,QB,Kansas City Chiefs,Baltimore Ravens,2.0,22.7,7000
+Ben Roethlisberger,QB,Pittsburgh Steelers,Oakland Raiders,2.8,20.5,6800
+Drew Brees,QB,New Orleans Saints,Tampa Bay Buccaneers,1.8,20.7,6600
+Philip Rivers,QB,Los Angeles Chargers,Cincinnati Bengals,4.9,20.9,6500
+Cam Newton,QB,Carolina Panthers,Cleveland Browns,6.1,22.5,6300
+Jameis Winston,QB,Tampa Bay Buccaneers,New Orleans Saints,6.1,21.3,6200
+Russell Wilson,QB,Seattle Seahawks,Minnesota Vikings,14.0,17.7,6100
+Aaron Rodgers,QB,Green Bay Packers,Atlanta Falcons,5.8,20.9,6000
+Andrew Luck,QB,Indianapolis Colts,Houston Texans,9.1,18.4,5900
+Deshaun Watson,QB,Houston Texans,Indianapolis Colts,7.3,18.8,5900
+Tom Brady,QB,New England Patriots,Miami Dolphins,13.9,16.8,5800
+Jared Goff,QB,Los Angeles Rams,Chicago Bears,10.9,18.9,5800
+Baker Mayfield,QB,Cleveland Browns,Carolina Panthers,17.1,17.4,5800
+Lamar Jackson,QB,Baltimore Ravens,Kansas City Chiefs,12.1,17.0,5700
+Matt Ryan,QB,Atlanta Falcons,Green Bay Packers,12.1,19.6,5600
+Dak Prescott,QB,Dallas Cowboys,Philadelphia Eagles,15.3,18.4,5600
+Mitchell Trubisky,QB,Chicago Bears,Los Angeles Rams,13.1,19.5,5600
+Kirk Cousins,QB,Minnesota Vikings,Seattle Seahawks,18.1,17.6,5600
+Josh Allen,QB,Buffalo Bills,New York Jets,18.8,16.2,5500
+Carson Wentz,QB,Philadelphia Eagles,Dallas Cowboys,19.5,15.6,5400
+Case Keenum,QB,Denver Broncos,San Francisco 49ers,23.7,15.8,5200
+Matthew Stafford,QB,Detroit Lions,Arizona Cardinals,23.5,15.2,5200
+Eli Manning,QB,New York Giants,Washington Redskins,25.8,14.2,5100
+Derek Carr,QB,Oakland Raiders,Pittsburgh Steelers,25.1,14.9,5000
+Ryan Tannehill,QB,Miami Dolphins,New England Patriots,22.0,15.8,4800
+Josh Rosen,QB,Arizona Cardinals,Detroit Lions,28.6,12.9,4700
+Nick Mullens,QB,San Francisco 49ers,Denver Broncos,26.8,15.1,4600
+Jeff Driskel,QB,Cincinnati Bengals,Los Angeles Chargers,28.9,14.6,4400
+Sam Darnold,QB,New York Jets,Buffalo Bills,31.9,11.3,4400
+Mark Sanchez,QB,Washington Redskins,New York Giants,30.4,13.2,4000
+Taysom Hill,QB,New Orleans Saints,Tampa Bay Buccaneers,33.1,3.1,4000

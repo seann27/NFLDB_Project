@@ -1,0 +1,451 @@
+----------------------------------------------
+ORDERED BY PROJECTED POINTS
+----------------------------------------------
+FORMAT:
+QB
+RB1
+RB2
+WR1
+WR2
+WR3
+TE
+FLEX
+DST
+COMBINED FANTASY PROS RANK
+COMBINED ESPN PROJ POINTS
+COMBINED SALARY
+----------------------------------------------
+Jared Goff
+Nick Chubb
+Phillip Lindsay
+Julio Jones
+Keenan Allen
+Tim Patrick
+Travis Kelce
+Jeff Wilson
+Washington Redskins
+
+RANK: 152.6
+PROJ POINTS: 146.0
+$49900
+
+Aaron Rodgers
+Ezekiel Elliott
+Jaylen Samuels
+Odell Beckham
+Chris Godwin
+Quincy Enunwa
+Travis Kelce
+Spencer Ware
+Kansas City Chiefs
+
+RANK: 140.1
+PROJ POINTS: 144.8
+$49400
+
+Matt Ryan
+Austin Ekeler
+Jaylen Samuels
+Odell Beckham
+Stefon Diggs
+Courtland Sutton
+Travis Kelce
+Jalen Richard
+Kansas City Chiefs
+
+RANK: 136.6
+PROJ POINTS: 142.5
+$48700
+
+Aaron Rodgers
+Saquon Barkley
+Jaylen Samuels
+Keenan Allen
+Larry Fitzgerald
+Josh Reynolds
+Travis Kelce
+Tevin Coleman
+Buffalo Bills
+
+RANK: 115.2
+PROJ POINTS: 142.3
+$49800
+
+Cam Newton
+Austin Ekeler
+Jaylen Samuels
+JuJu Smith-Schuster
+Stefon Diggs
+Jamison Crowder
+Travis Kelce
+Adrian Peterson
+New York Giants
+
+RANK: 158.4
+PROJ POINTS: 142.1
+$49700
+
+Cam Newton
+Ezekiel Elliott
+Nick Chubb
+Julio Jones
+Josh Reynolds
+Bruce Ellington
+Jared Cook
+Jeff Wilson
+Kansas City Chiefs
+
+RANK: 160.6
+PROJ POINTS: 142.1
+$49200
+
+Cam Newton
+Jaylen Samuels
+Jeff Wilson
+Odell Beckham
+Adam Thielen
+DaeSean Hamilton
+Travis Kelce
+Adrian Peterson
+New Orleans Saints
+
+RANK: 145.5
+PROJ POINTS: 141.9
+$47400
+
+Philip Rivers
+Ezekiel Elliott
+Jaylen Samuels
+Keenan Allen
+Sammy Watkins
+Josh Doctson
+Travis Kelce
+Jalen Richard
+Buffalo Bills
+
+RANK: 175.3
+PROJ POINTS: 141.7
+$49700
+
+Jameis Winston
+Ezekiel Elliott
+Jeff Wilson
+Julio Jones
+Larry Fitzgerald
+Curtis Samuel
+Eric Ebron
+Mark Ingram
+Buffalo Bills
+
+RANK: 118.9
+PROJ POINTS: 141.5
+$50000
+
+Aaron Rodgers
+Nick Chubb
+Austin Ekeler
+Julio Jones
+Sterling Shepard
+DaeSean Hamilton
+Zach Ertz
+Tarik Cohen
+Kansas City Chiefs
+
+RANK: 173.2
+PROJ POINTS: 141.1
+$49300
+
+Patrick Mahomes
+Alvin Kamara
+David Johnson
+Keenan Allen
+Taylor Gabriel
+Michael Gallup
+Eric Ebron
+Lamar Miller
+Kansas City Chiefs
+
+RANK: 137.1
+PROJ POINTS: 140.6
+$49700
+
+Mitchell Trubisky
+Ezekiel Elliott
+Jaylen Samuels
+Keenan Allen
+Larry Fitzgerald
+Dante Pettis
+Travis Kelce
+Joe Mixon
+Washington Redskins
+
+RANK: 119.7
+PROJ POINTS: 140.3
+$50000
+
+Patrick Mahomes
+Austin Ekeler
+Aaron Jones
+Keenan Allen
+Taylor Gabriel
+Jamison Crowder
+Travis Kelce
+LeSean McCoy
+New York Jets
+
+RANK: 174.5
+PROJ POINTS: 140.0
+$49800
+
+Jameis Winston
+Ezekiel Elliott
+Jeff Wilson
+Tyreek Hill
+T.Y. Hilton
+Robert Woods
+Michael Roberts
+Chris Carson
+Kansas City Chiefs
+
+RANK: 150.6
+PROJ POINTS: 139.7
+$49300
+
+Ben Roethlisberger
+Todd Gurley
+Jaylen Samuels
+Keenan Allen
+Doug Baldwin
+Golden Tate
+Eric Ebron
+Doug Martin
+Buffalo Bills
+
+RANK: 119.2
+PROJ POINTS: 139.2
+$49500
+
+Patrick Mahomes
+Alvin Kamara
+Aaron Jones
+Keenan Allen
+Demaryius Thomas
+Robby Anderson
+Eric Ebron
+Jaylen Samuels
+New Orleans Saints
+
+RANK: 141.2
+PROJ POINTS: 138.8
+$49500
+
+Jameis Winston
+Ezekiel Elliott
+David Johnson
+Chris Godwin
+Larry Fitzgerald
+Tyrell Williams
+Eric Ebron
+Adrian Peterson
+Buffalo Bills
+
+RANK: 138.5
+PROJ POINTS: 138.8
+$49400
+
+Patrick Mahomes
+Jaylen Samuels
+James White
+DeAndre Hopkins
+Tyreek Hill
+Tim Patrick
+Travis Kelce
+Chris Carson
+Washington Redskins
+
+RANK: 157.6
+PROJ POINTS: 138.7
+$50000
+
+Cam Newton
+Ezekiel Elliott
+Nick Chubb
+Brandin Cooks
+Danny Amendola
+Keke Coutee
+Evan Engram
+Aaron Jones
+Kansas City Chiefs
+
+RANK: 217.0
+PROJ POINTS: 138.6
+$50000
+
+Patrick Mahomes
+Jaylen Samuels
+James White
+Julio Jones
+Stefon Diggs
+Chester Rogers
+Travis Kelce
+LeGarrette Blount
+Buffalo Bills
+
+RANK: 167.4
+PROJ POINTS: 138.5
+$49300
+
+Jameis Winston
+Saquon Barkley
+Jeff Wilson
+Keenan Allen
+Davante Adams
+Dontrelle Inman
+Rob Gronkowski
+Jalen Richard
+Kansas City Chiefs
+
+RANK: 166.1
+PROJ POINTS: 137.9
+$49600
+
+Cam Newton
+Ezekiel Elliott
+Tevin Coleman
+Keenan Allen
+Robert Woods
+Brandin Cooks
+Evan Engram
+Isaiah Crowell
+Chicago Bears
+
+RANK: 138.4
+PROJ POINTS: 137.9
+$49700
+
+Andrew Luck
+Christian McCaffrey
+Nick Chubb
+Julio Jones
+Mike Williams
+Kenny Stills
+Eric Ebron
+LeGarrette Blount
+Kansas City Chiefs
+
+RANK: 164.0
+PROJ POINTS: 137.0
+$49700
+
+Jameis Winston
+Alvin Kamara
+David Johnson
+Julio Jones
+Michael Thomas
+Curtis Samuel
+Michael Roberts
+Isaiah Crowell
+Kansas City Chiefs
+
+RANK: 163.4
+PROJ POINTS: 136.5
+$49700
+
+Aaron Rodgers
+Kerryon Johnson
+Jeff Wilson
+Keenan Allen
+DeAndre Hopkins
+Devin Funchess
+Evan Engram
+Spencer Ware
+Kansas City Chiefs
+
+RANK: 207.8
+PROJ POINTS: 135.8
+$46400
+
+Andrew Luck
+Nick Chubb
+David Johnson
+Antonio Brown
+DeAndre Hopkins
+Bruce Ellington
+Michael Roberts
+Spencer Ware
+Kansas City Chiefs
+
+RANK: 173.9
+PROJ POINTS: 135.4
+$49700
+
+Ryan Tannehill
+Todd Gurley
+Austin Ekeler
+Odell Beckham
+Chris Godwin
+Bennie Fowler
+Austin Hooper
+Aaron Jones
+Washington Redskins
+
+RANK: 188.5
+PROJ POINTS: 134.7
+$49800
+
+Philip Rivers
+David Johnson
+Kerryon Johnson
+Michael Thomas
+DeAndre Hopkins
+Doug Baldwin
+Michael Roberts
+Lamar Miller
+Washington Redskins
+
+RANK: 194.8
+PROJ POINTS: 134.6
+$49600
+
+Patrick Mahomes
+Ezekiel Elliott
+David Johnson
+JuJu Smith-Schuster
+Doug Baldwin
+DaeSean Hamilton
+Gerald Everett
+Kerryon Johnson
+Los Angeles Chargers
+
+RANK: 208.2
+PROJ POINTS: 134.5
+$49800
+
+Aaron Rodgers
+Christian McCaffrey
+Aaron Jones
+Keenan Allen
+Tyler Lockett
+Jamison Crowder
+Evan Engram
+Peyton Barber
+Buffalo Bills
+
+RANK: 161.6
+PROJ POINTS: 134.0
+$50000
+
+Carson Wentz
+Ezekiel Elliott
+Alvin Kamara
+Robert Woods
+Chris Godwin
+Doug Baldwin
+Jordan Akins
+Nick Chubb
+Arizona Cardinals
+
+RANK: 158.9
+PROJ POINTS: 132.6
+$50000
+
