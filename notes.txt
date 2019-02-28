@@ -16,7 +16,7 @@
 		- home team
 		- away team
 		- odds
-	- have a player table which has general info
+	- have a player and team tables which have general info
 		- playerid
 		- espnid
 		- name
