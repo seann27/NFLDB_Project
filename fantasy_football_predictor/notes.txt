@@ -1,22 +1,88 @@
-Populate all actual player stats
-Populate all player projections
+##### Script inventory includes: #####
+- scraper for fantasypros.com
+- scraper for espn projections
+- scraper for espn weekly stats
+- scraper for basic pro-football reference data
+- SQL database with tables for each dataset being scraped
+	- separate tables for defensive stats
+- GA algorithm which uses espn point projections vs draft kings salaries for optimization
+- weekly stat data for players uses a year-week-name-position-team as the id.
 
-Make sure all team, season, and week fields are filled in appropriately in all tables for players
+##### Build a better functioning database: #####
+- for starters, scrape all game data from pro-footballreference
+	- have a game table which has gameids
+		- season
+		- week
+		- home team
+		- away team
+		- odds
+	- have a player table which has general info
+		- playerid
+		- espnid
+		- name
+		- age
+		- years in league
+		- status
+			- active/inactive/injured
+	- instead of weekly rankings, have offense/defense tables
+		- uniqueid
+		- playerid
+		- gameid
+		- player's team
+		- opp team
+		- snapcount
+		- stats
+		- fantasy points
+	- set up offense/defense projections similar to table above
+	- might be prudent to have an injury table
+		- playerid
+		- gameid
+		- status
+		* this table will be hard to rely on for older datasets, might need to supplement with snapcounts
+	- play by play tables
+		- gameid
+		- offensive team
+		- defensive team
+		- offensive points
+		- defensive points
+		- offensive timeouts
+		- defensive timeouts
+		- quarter
+		- time left (in quarter)
+		- down
+		- yards to go
+		- fieldzone
+			- 5 Possible values: 1 = Own 0 - 20 Yard Line, 2 = Own 21 - 40, 3 = Midfield, 4 = Opponent's 21 - 40, 5 = Red Zone
+		- type
+			- run,pass,FG,punt
+		- yardage
+		- outcome
+			- sack,penalty,interception,fumble,safety,block,off_td,def_td
+- need a pipeline for scraping and archiving historical data
+	- should use scraping modules
+	- should be robust enough to have modules added to it and rerun
+		- new data types
+- need a pipeline for scraping new data (which can be run every week)
 
-Create module to normalize data (team names from different websites)
 
-create module to calculate espn fantasy points based on stats and dk points based on stats
+##### Analyze dataset above: #####
+- player matchmaking stats table
+	* experimental table which will hold calculated values from dataset above
+	* will use these values to assess the accuracy of espn projections
+	- implement some machine learning prinicples to aid in this table
+- Use these analytic tables to filter the data for the GA algorithm
+- Success will be draftkings lineups which consistently score >150 points per game
+	- with any luck, might be able to bump this to >160
+		- if not, could alternatively use different site for player predictions
 
-clean up scripts to utilize modules and to automatically add season/week to appropriate tables
+##### Design a simple web-interface: #####
+- use django framework
+- incorporate javascript components
 
-use fantasy point projections as dataframe for dk for next week
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+/\/\/\/\/\/\/\/\/\ Technical Details /\/\/\/\/\/\/\/\/\
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
 
-calculate "corrected" projections based on trends, graphs, stats
-linear regression model?
-
-create_table optimal_lineups (id int primary key auto_increment,season int,week int,
-QB1 varchar(100),
-RB1 varchar(100), RB2 varchar(100),
-WR1 varchar(100), WR2 varchar(100), WR3 varchar(100)
-
-select p.*,e.proj_points from player_model p, espn_player_projections e where p.id=e.id and p.week=14 and p.dk_salary <= 3800 and p.position='WR' order by p.fp_rank asc;
+- should think about keeping SQL statements in separate files and executing them within a
+script or set of scripts (pipeline)
+	- use a helper function, have it take in *args,*kwargs
