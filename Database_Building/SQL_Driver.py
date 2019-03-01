@@ -23,7 +23,6 @@ def executeScript(file):
 
     # Execute every command from the input file
     for command in sqlCommands:
-
         # This will skip and report errors
         # For example, if the tables do not yet exist, this will skip over
         # the DROP TABLE commands
@@ -33,12 +32,14 @@ def executeScript(file):
             print "Command skipped: ", msg
     mydb.commit()
 
-def executeSelect(file,command,args):
+def executeSelect(file,params=None,command=0):
     # all SQL commands (split on ';')
     # executes a specific command in the file
     sqlCommands = get_file_contents(file).split(';')[command]
-    params=None
-    if args:
-        params=args
-    iterator = mycursor.execute(command,params=params,multi=True)
-    return iterator
+    try:
+        mycursor.execute(command,params=params,multi=True)
+        results = mycursor.fetchall()
+    except OperationalError, msg:
+        print "Command skipped: ", msg
+        results = (msg,)
+    return results
