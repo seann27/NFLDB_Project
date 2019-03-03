@@ -59,7 +59,7 @@ def get_data(id,commented=0):
     stats.pop(0)
     return players,stats
 
-weeks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+weeks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
 # weeks = [5]
 season = 2018
 misc_players = []
