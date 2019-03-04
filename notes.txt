@@ -94,3 +94,6 @@
 - should think about keeping SQL statements in separate files and executing them within a
 script or set of scripts (pipeline)
 	- use a helper function, have it take in *args,*kwargs
+
+- need to have opponent column in offense/defense database
+- move pass_tds to be in line with other pass metrics in db
