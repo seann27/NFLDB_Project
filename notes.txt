@@ -14,8 +14,16 @@
 		- season
 		- week
 		- home team
+		- home record
+		- home points
 		- away team
+		- away record
+		- away points
 		- odds
+			- edit script so that only scrapes 1 season at a time
+			- add team records
+			- edit debugging statements to only print errors
+			- update ATS metrics
 	- have a player and team tables which have general info
 		- playerid
 		- espnid
