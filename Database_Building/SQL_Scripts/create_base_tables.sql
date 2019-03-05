@@ -70,17 +70,3 @@ CREATE TABLE `nfl_defense`
 	`def_points` float,
 	`dk_points` float
 );
-
--- ALTER TABLE `nfl_players` ADD FOREIGN KEY (`team_id`) REFERENCES `nfl_teams` (`id`);
---
--- ALTER TABLE `nfl_offense` ADD FOREIGN KEY (`game_id`) REFERENCES `nfl_games` (`id`);
---
--- ALTER TABLE `nfl_offense` ADD FOREIGN KEY (`player_id`) REFERENCES `nfl_players` (`id`);
---
--- ALTER TABLE `nfl_defense` ADD FOREIGN KEY (`game_id`) REFERENCES `nfl_games` (`id`);
---
--- ALTER TABLE `nfl_defense` ADD FOREIGN KEY (`team_id`) REFERENCES `nfl_teams` (`id`);
---
--- ALTER TABLE `nfl_games` ADD FOREIGN KEY (`team_home`) REFERENCES `nfl_teams` (`id`);
---
--- ALTER TABLE `nfl_games` ADD FOREIGN KEY (`team_away`) REFERENCES `nfl_teams` (`id`);

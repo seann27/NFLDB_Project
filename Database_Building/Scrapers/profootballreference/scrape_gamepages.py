@@ -116,7 +116,7 @@ def scrape_game_info(page_soup):
     	logging.error(error)
     return gameteams
 
-# scrapes all offensive stats for game and inserts into database
+# scrapes all offensive stats for game and insert into database
 def scrape_offensive_stats(gameteams):
     players,stats = get_data("all_player_offense",1)
     for player,stat in zip(players,stats):
@@ -180,6 +180,7 @@ def scrape_offensive_stats(gameteams):
     		misc_player.link = link
     		misc_player.reason = "no name"
     		misc_players.append(misc_player)
+            logging.error("Could not get data for player on "+link)
     		continue
     	name = name.split()
     	name = name[0]+" "+name[1]

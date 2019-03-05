@@ -15,7 +15,6 @@ mydb = mysql.connector.connect(
   passwd="",
   database="nfl_db"
 )
-
 mycursor = mydb.cursor()
 
 def get_file_contents(file):
@@ -28,43 +27,39 @@ def get_file_contents(file):
 
 # makes changes within the database
 def executeScript(file):
-	# all SQL commands (split on ';')
-	sqlCommands = get_file_contents(file).split(';')
+	sqlCommand = get_file_contents(file)
 
-	# Execute every command from the input file
-	for command in sqlCommands:
-		command = command.strip()
-		logging.debug(command)
-		# This will skip and report errors
-		# For example, if the tables do not yet exist, this will skip over
-		# the DROP TABLE commands
-		try:
-			mycursor.execute(command)
-			logging.debug("Executed successfully.")
-		except mysql.connector.Error as msg:
-			print("Command skipped: ",command, msg)
-			logging.error(msg)
+	# executes sql command
+	try:
+		mycursor.execute(sqlCommand)
+	except mysql.connector.Error as msg:
+		print("Command skipped: ",sqlCommand, msg)
+		logging.error(msg)
+
 	mydb.commit()
 
-def executeSelect(file,params=None,command=0):
-	# all SQL commands (split on ';')
+# needs testing
+def executeSelect(file,params=None):
+
 	# executes a specific command in the file
-	sqlCommands = get_file_contents(file)
-	logging.debug(sqlCommands)
+	sqlCommand = get_file_contents(file)
 	try:
-		mycursor.execute(command,params=params,multi=True)
+		mycursor.execute(sqlCommand,params=params,multi=True)
 		results = mycursor.fetchall()
-		logging.debug("Executed Successfully")
 	except mysql.connector.Error as msg:
 		print("Command skipped: ",command, msg)
 		logging.error(msg)
 	return results
 
-if __name__ == "__main__":
-	command = sys.argv[1]
-	if command == 'create':
-		executeScript('SQL_Scripts/create_base_tables.sql')
-	elif command == 'drop':
-		executeScript('SQL_Scripts/drop_base_tables.sql')
-	else:
-		print("no command of that type found.")
+# needs testing
+def executeUpdate(file,params=None):
+    	# executes a specific command in the file
+    	sqlCommand = get_file_contents(file)
+    	try:
+    		mycursor.execute(sqlCommand,params=params,multi=True)
+    		results = mycursor.fetchall()
+    	except mysql.connector.Error as msg:
+    		print("Command skipped: ",command, msg)
+    		logging.error(msg)
+
+        mydb.commit()
