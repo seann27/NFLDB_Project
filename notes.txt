@@ -97,3 +97,7 @@ script or set of scripts (pipeline)
 
 - need to have opponent column in offense/defense database
 - move pass_tds to be in line with other pass metrics in db
+- decided not to do an insert/update on offensive playerdb, going to go for a one time insertion.
+	- cleaner code
+	- can have autoincremented PK
+	- need to change table structure to autoincremented PK for this table
