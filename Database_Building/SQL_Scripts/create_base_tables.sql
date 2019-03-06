@@ -23,9 +23,18 @@ CREATE TABLE `nfl_players`
 CREATE TABLE `nfl_teams`
 (
 	`id` varchar(255),
-	`city` varchar(255),
+	`year` int,
 	`name` varchar(255),
-	`abbrev` varchar(3)
+	`conference` varchar(255),
+	`division` varchar(255),
+	`record` varchar(255),
+	`div_rank` varchar(255),
+	`coach_head` varchar(255),
+	`coach_off` varchar(255),
+	`coach_def` varchar(255),
+	`manager` varchar(255),
+	`offensive_scheme` varchar(255),
+	`defensive_scheme` varchar(255)
 );
 
 CREATE TABLE `nfl_offense`
