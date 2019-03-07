@@ -101,3 +101,5 @@ script or set of scripts (pipeline)
 	- cleaner code
 	- can have autoincremented PK
 	- need to change table structure to autoincremented PK for this table
+
+	- need to add st louis rams, san diego chargers to profootball reference abbrev
