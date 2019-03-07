@@ -102,4 +102,10 @@ script or set of scripts (pipeline)
 	- can have autoincremented PK
 	- need to change table structure to autoincremented PK for this table
 
-	- need to add st louis rams, san diego chargers to profootball reference abbrev
+- need to add st louis rams, san diego chargers to profootball reference abbrev
+- change the way everything is scraped:
+	- first scrape snapcounts -> create dictionaries of both offensive and defensive players
+	- then scrape play-by-plays, inserting into db and updating the player objects
+	- update final player objects at end of scraping play-by-play
+	- assess summary tables for accuracy
+	- this might be faster than scraping multiple tables on page
