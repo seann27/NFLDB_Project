@@ -24,7 +24,7 @@ def get_data(id,commented=0):
     return data
 
 def analyze_play(play):
-    type = 'null'
+    type = ''
     location = 'null'
     result = 'null' # yardage or 'INCOMPLETE' for incomplete pass
     points_scored = 0
@@ -63,8 +63,8 @@ def analyze_play(play):
             result = 'INCOMPLETE'
         elif re.search(r'for no gain',play):
             result = str(0)
-        elif re.search(r'for (\d+) yards',play):
-            result = re.match(".*for (\d+) yards",play)
+        elif re.search(r'for [-]?(\d+) yards',play):
+            result = re.match(".*for [-]?(\d+) yards",play)
             result = str(result.groups()[0])
     else:
         type = 'RUN'
@@ -73,8 +73,8 @@ def analyze_play(play):
             location = str(location.groups()[0])
         if re.search(r'for no gain',play):
             result = str(0)
-        elif re.search(r'for (\d+) yards',play):
-            result = re.match(".*for (\d+) yards",play)
+        elif re.search(r'for [-]?(\d+) yards',play):
+            result = re.match(".*for [-]?(\d+) yards",play)
             result = str(result.groups()[0])
     return type,result,location,points_scored
 

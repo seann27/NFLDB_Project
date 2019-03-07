@@ -52,6 +52,26 @@ class Player:
     def __init__(self,gameid,playerid):
         self.game_id = gameid
         self.player_id = playerid
+        self.player_teamid = 'null'
+        self.opponent = 'null'
+        self.pass_att = 0
+        self.pass_comp = 0
+        self.pass_yards = 0
+        self.pass_tds = 0
+        self.pass_int = 0
+        self.rush_att = 0
+        self.rush_yards = 0
+        self.rush_tds = 0
+        self.rec_tgts = 0
+        self.rec = 0
+        self.rec_yards = 0
+        self.rec_tds = 0
+        self.rtn_tds = 0
+        self.extra_pt = 0
+        self.fmb_lost = 0
+        self.snapcount = 0
+        self.pct_snaps = 0
+        self.dk_points = 0
 
     def get_points(self):
         points = 0
@@ -119,58 +139,58 @@ def scrape_game_info(page_soup):
 misc_players = []
 def scrape_offensive_stats(gameteams):
 	player_list = {}
-	players,stats = get_data("all_player_offense",1)
-	for player,stat in zip(players,stats):
-		playerid = player.a['href']
-		p_obj = Player(gameid,playerid)
-		p_obj.player_teamid = gameteams[Team_Dictionary().football_ref[stat[0].text]]
-		p_obj.opponent = gameteams[p_obj.player_teamid]
-		p_obj.pass_comp = float(stat[1].text)
-		p_obj.pass_att = float(stat[2].text)
-		p_obj.pass_yards = float(stat[3].text)
-		p_obj.pass_tds = float(stat[4].text)
-		p_obj.pass_int = float(stat[5].text)
-		p_obj.rush_att = float(stat[10].text)
-		p_obj.rush_yards = float(stat[11].text)
-		p_obj.rush_tds = float(stat[12].text)
-		p_obj.rec_tgts = float(stat[14].text)
-		p_obj.rec = float(stat[15].text)
-		p_obj.rec_yards = float(stat[16].text)
-		p_obj.rec_tds = float(stat[17].text)
-		p_obj.fmb_lost = float(stat[20].text)
-		p_obj.rtn_tds = 0
-		p_obj.extra_pt = 0
-		player_list[playerid] = p_obj
-
-	# get misc stats (special teams tds, 2pt conversions)
-	players,stats = get_data("all_scoring")
-	for stat in stats:
-		if re.search(r'return',stat[2].text) and re.search(r'interception',stat[2].text) is None and re.search(r'fumble',stat[2].text) is None:
-			print(stat[2].a['href'])
-			playerid = stat[2].a['href']
-			if playerid in player_list:
-				player_list[playerid].rtn_tds += 1
-			else:
-				misc_player = Player(gameid,playerid)
-				misc_player.link = link
-				misc_player.reason = "no offensive stats"
-				misc_players.append(misc_player)
-		if re.search(r'kick',stat[2].text) or re.search(r'failed',stat[2].text):
-			continue
-		else:
-			switch = 0
-			xp = 0
-			for item in stat[2]:
-				if item == ' (':
-					switch = 1
-				if switch == 1 and re.search(r'href',str(item)):
-					xp += 1
-			xp *= -1
-			players = stat[2].findAll('a')
-			while xp < 0:
-				playerid = players[xp].a['href']
-				player_list[playerid].extra_pt += 2
-				xp += 1
+	# players,stats = get_data("all_player_offense",1)
+	# for player,stat in zip(players,stats):
+	# 	playerid = player.a['href']
+	# 	p_obj = Player(gameid,playerid)
+	# 	p_obj.player_teamid = gameteams[Team_Dictionary().football_ref[stat[0].text]]
+	# 	p_obj.opponent = gameteams[p_obj.player_teamid]
+	# 	p_obj.pass_comp = float(stat[1].text)
+	# 	p_obj.pass_att = float(stat[2].text)
+	# 	p_obj.pass_yards = float(stat[3].text)
+	# 	p_obj.pass_tds = float(stat[4].text)
+	# 	p_obj.pass_int = float(stat[5].text)
+	# 	p_obj.rush_att = float(stat[10].text)
+	# 	p_obj.rush_yards = float(stat[11].text)
+	# 	p_obj.rush_tds = float(stat[12].text)
+	# 	p_obj.rec_tgts = float(stat[14].text)
+	# 	p_obj.rec = float(stat[15].text)
+	# 	p_obj.rec_yards = float(stat[16].text)
+	# 	p_obj.rec_tds = float(stat[17].text)
+	# 	p_obj.fmb_lost = float(stat[20].text)
+	# 	p_obj.rtn_tds = 0
+	# 	p_obj.extra_pt = 0
+	# 	player_list[playerid] = p_obj
+    #
+	# # get misc stats (special teams tds, 2pt conversions)
+	# players,stats = get_data("all_scoring")
+	# for stat in stats:
+	# 	if re.search(r'return',stat[2].text) and re.search(r'interception',stat[2].text) is None and re.search(r'fumble',stat[2].text) is None:
+	# 		print(stat[2].a['href'])
+	# 		playerid = stat[2].a['href']
+	# 		if playerid in player_list:
+	# 			player_list[playerid].rtn_tds += 1
+	# 		else:
+	# 			misc_player = Player(gameid,playerid)
+	# 			misc_player.link = link
+	# 			misc_player.reason = "no offensive stats"
+	# 			misc_players.append(misc_player)
+	# 	if re.search(r'kick',stat[2].text) or re.search(r'failed',stat[2].text):
+	# 		continue
+	# 	else:
+	# 		switch = 0
+	# 		xp = 0
+	# 		for item in stat[2]:
+	# 			if item == ' (':
+	# 				switch = 1
+	# 			if switch == 1 and re.search(r'href',str(item)):
+	# 				xp += 1
+	# 		xp *= -1
+	# 		players = stat[2].findAll('a')
+	# 		while xp < 0:
+	# 			playerid = players[xp].a['href']
+	# 			player_list[playerid].extra_pt += 2
+	# 			xp += 1
 
 	# get position, snapcounts to player objects
 	players,stats = get_data("all_home_snap_counts",1)
@@ -179,18 +199,21 @@ def scrape_offensive_stats(gameteams):
 	stats.extend(vis_stats)
 	for player,stat in zip(players,stats):
 		playerid = player.a['href']
-		if playerid == '':
-			misc_player = Player(gameid,"unknown")
-			misc_player.link = link
-			misc_player.reason = "no name"
-			misc_players.append(misc_player)
-			logging.error("Could not get data for player on "+link)
-			continue
-		if playerid in player_list:
-			player_list[playerid].position = stat[0].text
-			player_list[playerid].snapcount = stat[1].text
-			player_list[playerid].pct_snaps = float(stat[2].text.strip('%'))
-			player_list[playerid].dk_points = player_list[playerid].get_points()
+        player_list[playerid] = Player(gameid,playerid)
+		# if playerid == '':
+		# 	misc_player = Player(gameid,"unknown")
+		# 	misc_player.link = link
+		# 	misc_player.reason = "no name"
+		# 	misc_players.append(misc_player)
+		# 	logging.error("Could not get data for player on "+link)
+		# 	continue
+		# if playerid in player_list:
+		player_list[playerid].position = stat[0].text
+		player_list[playerid].snapcount_off = stat[1].text
+		player_list[playerid].pct_snaps_off = float(stat[2].text.strip('%'))
+        player_list[playerid].snapcount_def = stat[3].text
+        player_list[playerid].pct_snaps_def = float(stat[4].text.strip('%'))
+		# player_list[playerid].dk_points = player_list[playerid].get_points()
 	for key,val in player_list.items():
 		if hasattr(val,'snapcount'):
 			# logging.debug("key: "+key+"\tplayerid: "+val.player_id)
@@ -215,11 +238,11 @@ def scrape_offensive_stats(gameteams):
 			# 	logging.error(msg)
 			# if val.snapcount > 25:
 			# 	print(val.id+", "+val.position+": "+str(val.dk_points))
-		else:
-			misc_player = Player(gameid,playerid)
-			misc_player.link = link
-			misc_player.reason = "no snapcount"
-			misc_players.append(misc_player)
+		# else:
+		# 	misc_player = Player(gameid,playerid)
+		# 	misc_player.link = link
+		# 	misc_player.reason = "no snapcount"
+		# 	misc_players.append(misc_player)
 
 # seasons = [2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018]
 # weeks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
