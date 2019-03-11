@@ -215,7 +215,7 @@ def scrape_offensive_stats(gameteams):
         player_list[playerid].pct_snaps_def = float(stat[4].text.strip('%'))
 		# player_list[playerid].dk_points = player_list[playerid].get_points()
 	for key,val in player_list.items():
-		if hasattr(val,'snapcount'):
+		if val.snapcount_off > 0:
 			# logging.debug("key: "+key+"\tplayerid: "+val.player_id)
 			# build SQL insert statement
 			sql = "INSERT INTO nfl_offense ("

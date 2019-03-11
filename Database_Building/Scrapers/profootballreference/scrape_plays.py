@@ -79,7 +79,7 @@ def analyze_play(play):
     return type,result,location,points_scored
 
 link = "https://www.pro-football-reference.com/boxscores/201310270den.htm"
-link = "https://www.pro-football-reference.com/boxscores/201310270min.htm"
+# link = "https://www.pro-football-reference.com/boxscores/201310270min.htm"
 page_soup = get_soup(link)
 pbp_data = get_data("all_pbp",1)
 all_quarters = pbp_data.findAll("th",{"data-stat":"quarter"})
