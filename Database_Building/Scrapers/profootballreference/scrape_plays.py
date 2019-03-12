@@ -24,12 +24,23 @@ def get_data(id,commented=0):
     return data
 
 def analyze_play(play):
-    type = ''
+    type = ''   # timeout, challenge, penalty, kickoff, punt, fg, xp,
     location = 'null'
-    result = 'null' # yardage or 'INCOMPLETE' for incomplete pass
-    points_scored = 0
+    qb = 'null'
+    flex = 'null'
+    def_plyr1 = 'null'
+    def_plyr2 = 'null'
 
-    # timeout
+    result = 'null' # pass->(complete, incomplete),run->(gain, no gain),timeout/penalty->(no play),challenge->(upheld,reversed)
+    # defensive stoppage -> (sack,tackle,defended,intercepted,fumble recovered)
+    yards = 0
+    points_scored = 0
+    rawplay = str(play)
+    play = play.text
+
+    if re.search(r'Touchdown',play):
+        points_scored = 6
+
     if re.search(r'Timeout',play):
         type = 'TIMEOUT'
     elif re.search(r'challenge',play):
@@ -107,19 +118,21 @@ all_epa = pbp_data.findAll("td",{"data-stat":"exp_pts_after"})
 for idx,val in enumerate(all_playdetails):
 # idx = 38
 # for x in range(1):
-    type,result,location,points_scored = analyze_play(all_playdetails[idx].text)
+    type,result,location,points_scored = analyze_play(all_playdetails[idx])
     # if playtype == 'RUN/PASS':
     #     continue
     if re.search(r'\D',all_quarters[idx].text):
         all_quarters.pop(idx)
-    print(all_quarters[idx].text+" | "+
-          all_timeremain[idx].text+" | "+
-          all_downs[idx].text+" | "+
-          all_ydstogo[idx].text+" | "+
-          all_locations[idx].text+" | "+
-          all_playdetails[idx].text+" | "+
-          type+","+result+","+location+","+str(points_scored)+" | "+
-          all_scores_away[idx].text+" | "+
-          all_scores_home[idx].text+" | "+
-          all_epb[idx].text+" | "+
-          all_epa[idx].text)
+    # print(all_quarters[idx].text+" | "+
+    #       all_timeremain[idx].text+" | "+
+    #       all_downs[idx].text+" | "+
+    #       all_ydstogo[idx].text+" | "+
+    #       all_locations[idx].text+" | "+
+    #       all_playdetails[idx].text+" | "+
+    #       type+","+result+","+location+","+str(points_scored)+" | "+
+    #       all_scores_away[idx].text+" | "+
+    #       all_scores_home[idx].text+" | "+
+    #       all_epb[idx].text+" | "+
+    #       all_epa[idx].text)
+    playstat = (all_playdetails[idx].text+" | "+
+          type+","+result+","+location+","+str(points_scored))
