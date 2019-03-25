@@ -42,23 +42,6 @@ class Play:
         self.def_comp = []
         self.result = ''
 
-    def process_match(self,key,search):
-        if key == 'PLAYER':
-            self.play_components.append(search.group(0))
-        elif key == 'PASS':
-            self.play_components.append(search.group(1))
-            self.play_components.append(search.group(2))
-            self.play_components.append(search.group(3))
-        elif key == 'RUN':
-            self.play_components.append(search.group(0))
-            self.play_components.append(search.group(1))
-        elif key == 'YARDS':
-            self.play_components.append(search.group(1))
-        elif key == 'XP' or key == 'FG':
-            self.play_components.append(search.group(1))
-        else:
-            self.play_components.append(key)
-
     def search_word(self,word):
         match = ''
         for key in regex:
@@ -68,6 +51,29 @@ class Play:
                 self.process_match(key,search)
                 match = key
         return match
+
+    def process_match(self,key,search):
+        if key == 'PLAYER':
+            self.play_components.append(search.group(0))
+        elif key == 'PASS':
+            self.play_components.append(search.group(1))
+            self.play_components.append(search.group(2))
+            self.play_components.append(search.group(3))
+            self.worksheet = worksheets['PASS']
+        elif key == 'RUN':
+            self.play_components.append(search.group(0))
+            self.play_components.append(search.group(1))
+            self.worksheet = worksheets['RUSH']
+        elif key == 'YARDS':
+            self.play_components.append(search.group(1))
+        elif key == 'XP' or key == 'FG' or key == 'PUNT' or key == 'KICKOFF':
+            if key == 'XP' or key == 'FG':
+                self.play_components.append(search.group(1))
+            self.worksheet = worksheets['ST']
+        elif key == 'PENALTY':
+            self.worksheet = worksheets['PENALTY']
+        else:
+            self.play_components.append(key)
 
     def analyze_play(self):
         play = self.play.text

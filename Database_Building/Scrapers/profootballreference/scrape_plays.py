@@ -68,7 +68,7 @@ for idx,val in enumerate(all_playdetails):
     playnum = idx+1
     if re.search(r'\D',all_quarters[idx].text):
         all_quarters.pop(idx)
-    play_details = Play(all_playdetails[idx],workbook,worksheets)
+    play_details = Play(all_playdetails[idx],workbook,worksheets,playnum)
     print(all_quarters[idx].text+"-"+all_timeremain[idx].text+" ["+str(playnum)+"]")
     play_details.analyze_play()
     worksheets['PLAYS'].write(playnum,0,playnum)
