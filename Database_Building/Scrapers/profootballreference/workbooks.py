@@ -10,7 +10,8 @@ def generate_workbook(file):
         "RUSH": workbook.add_worksheet("RUSH"),
         "DEF": workbook.add_worksheet("DEF"),
         "ST": workbook.add_worksheet("ST"),
-        "PENALTY": workbook.add_worksheet("PENALTY")
+        "PENALTY": workbook.add_worksheet("PENALTY"),
+        "MISC": workbook.add_worksheet("MISC")
     }
 
     # write play headers
@@ -30,18 +31,19 @@ def generate_workbook(file):
     # write pass headers
     worksheets['PASS'].write(0,0, 'PLAY ID',bold)
     worksheets['PASS'].write(0,1, 'QB',bold)
-    worksheets['PASS'].write(0,2, 'WR',bold)
-    worksheets['PASS'].write(0,3, 'YARDS',bold)
-    worksheets['PASS'].write(0,4, 'DEPTH',bold)
-    worksheets['PASS'].write(0,5, 'LOCATION',bold)
-    worksheets['PASS'].write(0,6, 'RESULT',bold)
+    worksheets['PASS'].write(0,2, 'ATTEMPT',bold)
+    worksheets['PASS'].write(0,3, 'DEPTH',bold)
+    worksheets['PASS'].write(0,4, 'DIRECTION',bold)
+    worksheets['PASS'].write(0,5, 'WR',bold)
+    worksheets['PASS'].write(0,6, 'YARDS',bold)
+    worksheets['PASS'].write(0,7, 'RESULT',bold)
 
     # write rush headers
     worksheets['RUSH'].write(0,0, 'PLAY ID',bold)
     worksheets['RUSH'].write(0,1, 'RB',bold)
-    worksheets['RUSH'].write(0,2, 'YARDS',bold)
-    worksheets['RUSH'].write(0,3, 'LOCATION',bold)
-    worksheets['RUSH'].write(0,4, 'BOX_LOCATION',bold)
+    worksheets['RUSH'].write(0,2, 'DIRECTION',bold)
+    worksheets['RUSH'].write(0,3, 'BOX_LOCATION',bold)
+    worksheets['RUSH'].write(0,4, 'YARDS',bold)
     worksheets['RUSH'].write(0,5, 'RESULT',bold)
 
     # write play headers
@@ -50,10 +52,8 @@ def generate_workbook(file):
     worksheets['DEF'].write(0,2, 'STOPPAGE',bold)
     worksheets['DEF'].write(0,3, 'DEF1',bold)
     worksheets['DEF'].write(0,4, 'DEF2',bold)
-    worksheets['DEF'].write(0,5, 'YARDS',bold)
-    worksheets['DEF'].write(0,6, 'RTN YARDS',bold)
-    worksheets['DEF'].write(0,7, 'OFF POINTS',bold)
-    worksheets['DEF'].write(0,8, 'DEF POINTS',bold)
+    worksheets['DEF'].write(0,5, 'RTN YARDS',bold)
+    worksheets['DEF'].write(0,6, 'RESULT',bold)
 
     # write special teams headers
     worksheets['ST'].write(0,0, 'PLAY ID',bold)
@@ -66,8 +66,12 @@ def generate_workbook(file):
 
     # write penalty headers
     worksheets['PENALTY'].write(0,0, 'PLAY ID',bold)
-    worksheets['PENALTY'].write(0,1, 'TEAM',bold)
+    worksheets['PENALTY'].write(0,1, 'PLAYER',bold)
     worksheets['PENALTY'].write(0,2, 'RESULT',bold)
     worksheets['PENALTY'].write(0,3, 'YARDS',bold)
+
+    # write misc headers
+    worksheets['MISC'].write(0,0, 'PLAY ID',bold)
+    worksheets['MISC'].write(0,1, 'DETAILS',bold)
 
     return workbook,worksheets

@@ -60,6 +60,15 @@ all_scores_home = pbp_data.findAll("td",{"data-stat":"pbp_score_hm"})
 all_epb = pbp_data.findAll("td",{"data-stat":"exp_pts_before"})
 all_epa = pbp_data.findAll("td",{"data-stat":"exp_pts_after"})
 
+rownum = {
+    "PASS":1,
+    "RUSH":1,
+    "DEF":1,
+    "ST":1,
+    "PENALTY":1,
+    "MISC":1
+}
+
 ### process scraped data ###
 #--------------------------#
 for idx,val in enumerate(all_playdetails):
@@ -68,9 +77,10 @@ for idx,val in enumerate(all_playdetails):
     playnum = idx+1
     if re.search(r'\D',all_quarters[idx].text):
         all_quarters.pop(idx)
-    play_details = Play(all_playdetails[idx],workbook,worksheets,playnum)
+    play_details = Play(all_playdetails[idx],workbook,worksheets,playnum,rownum)
     print(all_quarters[idx].text+"-"+all_timeremain[idx].text+" ["+str(playnum)+"]")
     play_details.analyze_play()
+    rownum = play_details.rownum
     worksheets['PLAYS'].write(playnum,0,playnum)
     worksheets['PLAYS'].write(playnum,1,gameid)
     worksheets['PLAYS'].write(playnum,2,all_quarters[idx].text)
@@ -83,3 +93,5 @@ for idx,val in enumerate(all_playdetails):
     worksheets['PLAYS'].write(playnum,9,all_scores_away[idx].text)
     worksheets['PLAYS'].write(playnum,10,all_epb[idx].text)
     worksheets['PLAYS'].write(playnum,11,all_epa[idx].text)
+
+workbook.close()
