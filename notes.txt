@@ -110,9 +110,6 @@ script or set of scripts (pipeline)
 	- assess summary tables for accuracy
 	- this might be faster than scraping multiple tables on page
 
-<<<<<<< HEAD
-https://dbdiagram.io/d
-=======
 ############ play by play syntax ###########
 - YARDS    = x
 - KICKOFF  = <player> kicks off [x] yards, [RETURN]/touchback
@@ -150,4 +147,3 @@ analyze play components based on flags:
 	insert into dst table with result flag (tackle,defended,int,fum,gain,loss,penalty)
 	insert into penalty table if penalty enforced()
 	insert into special teams table if special teams play
->>>>>>> 5af237c4f3c2e68190a72bc4939feb7508f493a9
