@@ -109,3 +109,5 @@ script or set of scripts (pipeline)
 	- update final player objects at end of scraping play-by-play
 	- assess summary tables for accuracy
 	- this might be faster than scraping multiple tables on page
+
+https://dbdiagram.io/d
