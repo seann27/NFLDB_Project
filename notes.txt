@@ -110,4 +110,44 @@ script or set of scripts (pipeline)
 	- assess summary tables for accuracy
 	- this might be faster than scraping multiple tables on page
 
+<<<<<<< HEAD
 https://dbdiagram.io/d
+=======
+############ play by play syntax ###########
+- YARDS    = x
+- KICKOFF  = <player> kicks off [x] yards, [RETURN]/touchback
+- RUN 	   = <player> up the middle, right/left guard/end/tackle for x yards [TACKLE/SACK/FUMBLE]
+- TACKLE   = (tackle by <player> and <player>)
+- SACK     = <player> sacked by <player> for [x] yards
+- FUMBLE   = <player> fumbles, (forced by <player>),recovered by <player> [RETURN][TACKLE]
+- PASS     = <player> pass complete/incomplete short/deep left/right/middle to/intended for <player> for [x] yards [TACKLE/PASS DEF]
+- PASS DEF = (defended by <player>)
+- INT      = [PASS] is intercepted by <player> at location and [RETURN]
+- RETURN   = returned by <player> for [x] yards
+- MISC     = Timeout #[x] by <team>
+- XP KICK  = <player> kicks extra point good/no good
+- PUNT     = <player> punts [x] yards, (blank)/out of bounds/[RETURN][RUN DEF]/fair catch by <player>
+- CHAL     = <team abbrev> challenged ... and play was upheld/overturned
+- KNEEL    = <player> kneels for [x] yards
+- PENALTY  = Penalty on <player> ... [x] yards (blank)/no play/Declined
+
+^^ construct pattern matches to certain play phrases
+
+pseudocode:
+
+play.split(' ')	# split play into words
+action = ''
+play_components = []
+for word in play:
+	action .= word
+	if action matches regex expression for play phrase patterns (above):
+		push play_components(action)	# add action to play list
+		process flags					# actions have flags (no gain,turnover,touchdown,penalty,no play)
+		action = ''	# reset phrase string
+
+analyze play components based on flags:
+	insert into rush/pass tables with result flag (gain,no gain,turnover,penalty[off/def]/yards)
+	insert into dst table with result flag (tackle,defended,int,fum,gain,loss,penalty)
+	insert into penalty table if penalty enforced()
+	insert into special teams table if special teams play
+>>>>>>> 5af237c4f3c2e68190a72bc4939feb7508f493a9

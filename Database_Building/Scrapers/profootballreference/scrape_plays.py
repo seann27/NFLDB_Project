@@ -1,16 +1,27 @@
 import re
 import sys
 import bs4
+import xlsxwriter
 from bs4 import BeautifulSoup as soup
 from bs4 import Comment
 from urllib.request import urlopen as uReq
+from workbooks import generate_workbook
+from analyze_play import Play
 
 # returns page soup object
-def get_soup(link):
+def get_soup_create_file(link):
     uClient = uReq(link)
     page_html = uClient.read()
     uClient.close()
     page_soup = soup(page_html, "lxml")
+    f = open('page_soup.html','w')
+    encodedsoup = (page_soup.encode('utf-8').strip())
+    f.write(str(encodedsoup))
+    f.close()
+    return page_soup
+
+def get_soup(link):
+    page_soup = soup(open(link), "lxml")
     return page_soup
 
 # utility method for parsing game page tables
@@ -23,73 +34,18 @@ def get_data(id,commented=0):
         data = soup(comment,"lxml")
     return data
 
-def analyze_play(play):
-    type = ''   # timeout, challenge, penalty, kickoff, punt, fg, xp,
-    location = 'null'
-    qb = 'null'
-    flex = 'null'
-    def_plyr1 = 'null'
-    def_plyr2 = 'null'
+#------------------------------------#
+#------------ BEGIN MAIN ------------#
+#------------------------------------#
 
-    result = 'null' # pass->(complete, incomplete),run->(gain, no gain),timeout/penalty->(no play),challenge->(upheld,reversed)
-    # defensive stoppage -> (sack,tackle,defended,intercepted,fumble recovered)
-    yards = 0
-    points_scored = 0
-    rawplay = str(play)
-    play = play.text
+### set global variables ###
+#--------------------------#
+workbook,worksheets = generate_workbook('demo2.xlsx')
+gameid = '/boxscores/201310270den.htm'
 
-    if re.search(r'Touchdown',play):
-        points_scored = 6
-
-    if re.search(r'Timeout',play):
-        type = 'TIMEOUT'
-    elif re.search(r'challenge',play):
-        type = 'CHALLENGE'
-    elif re.search(r'Penalty',play):
-        type = 'PENALTY'
-    elif re.search(r'kicks (off|onside)',play):
-        type = 'KICKOFF'
-    elif re.search(r'punts',play):
-        type = 'PUNT'
-        result = re.match(".*(\d+) yards",play)
-        result = result.groups()[0]
-    elif re.search(r'field goal',play):
-        type = 'FG'
-        if re.search(r'no good',play):
-            result = 'NO GOOD'
-        else:
-            result = re.match(".*(\d+) yard",play)
-            result = result.groups()[0]
-            points_scored += 3
-    elif re.search(r'kicks extra point',play):
-        type = 'XP'
-        if re.search(r'no good',play):
-            result = 'NO GOOD'
-        else:
-            result = 'GOOD'
-            points_scored += 1
-    elif re.search(r'pass',play):
-        type = 'PASS'
-        if re.search(r'incomplete',play):
-            result = 'INCOMPLETE'
-        elif re.search(r'for no gain',play):
-            result = str(0)
-        elif re.search(r'for [-]?(\d+) yards',play):
-            result = re.match(".*for [-]?(\d+) yards",play)
-            result = str(result.groups()[0])
-    else:
-        type = 'RUN'
-        if re.search(r'(left|right|middle)',play):
-            location = re.match(".*((left|right)\s(end|tackle|guard)|(middle))",play)
-            location = str(location.groups()[0])
-        if re.search(r'for no gain',play):
-            result = str(0)
-        elif re.search(r'for [-]?(\d+) yards',play):
-            result = re.match(".*for [-]?(\d+) yards",play)
-            result = str(result.groups()[0])
-    return type,result,location,points_scored
-
-link = "https://www.pro-football-reference.com/boxscores/201310270den.htm"
+### scrape data ###
+#-----------------#
+link = "page_soup.html"
 # link = "https://www.pro-football-reference.com/boxscores/201310270min.htm"
 page_soup = get_soup(link)
 pbp_data = get_data("all_pbp",1)
@@ -104,35 +60,38 @@ all_scores_home = pbp_data.findAll("td",{"data-stat":"pbp_score_hm"})
 all_epb = pbp_data.findAll("td",{"data-stat":"exp_pts_before"})
 all_epa = pbp_data.findAll("td",{"data-stat":"exp_pts_after"})
 
-# print(len(all_quarters))
-# print(len(all_timeremain))
-# print(len(all_downs))
-# print(len(all_ydstogo))
-# print(len(all_locations))
-# print(len(all_playdetails))
-# print(len(all_scores_away))
-# print(len(all_scores_home))
-# print(len(all_epb))
-# print(len(all_epa))
+rownum = {
+    "PASS":1,
+    "RUSH":1,
+    "DEF":1,
+    "ST":1,
+    "PENALTY":1,
+    "MISC":1
+}
 
+### process scraped data ###
+#--------------------------#
 for idx,val in enumerate(all_playdetails):
-# idx = 38
+# idx = 19
 # for x in range(1):
-    type,result,location,points_scored = analyze_play(all_playdetails[idx])
-    # if playtype == 'RUN/PASS':
-    #     continue
+    playnum = idx+1
     if re.search(r'\D',all_quarters[idx].text):
         all_quarters.pop(idx)
-    # print(all_quarters[idx].text+" | "+
-    #       all_timeremain[idx].text+" | "+
-    #       all_downs[idx].text+" | "+
-    #       all_ydstogo[idx].text+" | "+
-    #       all_locations[idx].text+" | "+
-    #       all_playdetails[idx].text+" | "+
-    #       type+","+result+","+location+","+str(points_scored)+" | "+
-    #       all_scores_away[idx].text+" | "+
-    #       all_scores_home[idx].text+" | "+
-    #       all_epb[idx].text+" | "+
-    #       all_epa[idx].text)
-    playstat = (all_playdetails[idx].text+" | "+
-          type+","+result+","+location+","+str(points_scored))
+    play_details = Play(all_playdetails[idx],workbook,worksheets,playnum,rownum)
+    print(all_quarters[idx].text+"-"+all_timeremain[idx].text+" ["+str(playnum)+"]")
+    play_details.analyze_play()
+    rownum = play_details.rownum
+    worksheets['PLAYS'].write(playnum,0,playnum)
+    worksheets['PLAYS'].write(playnum,1,gameid)
+    worksheets['PLAYS'].write(playnum,2,all_quarters[idx].text)
+    worksheets['PLAYS'].write(playnum,3,all_timeremain[idx].text)
+    worksheets['PLAYS'].write(playnum,4,all_downs[idx].text)
+    worksheets['PLAYS'].write(playnum,5,all_ydstogo[idx].text)
+    worksheets['PLAYS'].write(playnum,6,all_locations[idx].text)
+    worksheets['PLAYS'].write(playnum,7,all_playdetails[idx].text)
+    worksheets['PLAYS'].write(playnum,8,all_scores_home[idx].text)
+    worksheets['PLAYS'].write(playnum,9,all_scores_away[idx].text)
+    worksheets['PLAYS'].write(playnum,10,all_epb[idx].text)
+    worksheets['PLAYS'].write(playnum,11,all_epa[idx].text)
+
+workbook.close()
