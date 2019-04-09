@@ -1,0 +1,33 @@
+Concepts of an ML project:
+There are 8 main steps:
+1) Frame the problem
+2) Get the data
+3) Explore the data to gain insights (patterns)
+4) Prepare the data
+    a) clean it up to expose it to ML patterns
+5) Explore many different models and pick the best ones
+6) Fine-tune the models and combine them into a solution
+7) Present the solution
+8) launch with a test set
+Check Appendix B of the textbook
+
+Chapter 2 Review:
+- get the data
+- frame the label you are trying to get from the data
+- create training/test sets
+    - requires some preprocessing to filter out bias
+- look for correlations of the label attribute
+    - can run data.corr() or plot scatter matrix of attributes
+    - scatter matrix graphs a list of attributes against each other
+- add custom attributes by combining existing ones
+PIPELINE:
+- clean up data by handling N/A values in dataset
+- handle categorical or text data with encoders
+- need to create custom transformer classes
+    - need to have fit(), transform(), and fit_transform() methods
+    - fit_transform() can be imported with TransformerMixin
+    - this is where you add combined attributes
+- scale the data so it is distributed evenly
+RESULT: Imputer (cleaner) -> transformer (adds attributes) -> scaler
+- write a DataFrameAcceptor class to process Pandas Dataframes
+- Join two piplines (numerical and categorical) with FeatureUnion
