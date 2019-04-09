@@ -9,11 +9,19 @@ from workbooks import generate_workbook
 from analyze_play import Play
 
 # returns page soup object
-def get_soup(link):
+def get_soup_create_file(link):
     uClient = uReq(link)
     page_html = uClient.read()
     uClient.close()
     page_soup = soup(page_html, "lxml")
+    f = open('page_soup.html','w')
+    encodedsoup = (page_soup.encode('utf-8').strip())
+    f.write(str(encodedsoup))
+    f.close()
+    return page_soup
+
+def get_soup(link):
+    page_soup = soup(open(link), "lxml")
     return page_soup
 
 # utility method for parsing game page tables
@@ -32,12 +40,13 @@ def get_data(id,commented=0):
 
 ### set global variables ###
 #--------------------------#
-workbook,worksheets = generate_workbook('dataset.xlsx')
+workbook,worksheets = generate_workbook('demo2.xlsx')
 gameid = '/boxscores/201310270den.htm'
 
 ### scrape data ###
 #-----------------#
-link = "https://www.pro-football-reference.com/boxscores/201310270den.htm"
+link = "page_soup.html"
+# link = "https://www.pro-football-reference.com/boxscores/201310270min.htm"
 page_soup = get_soup(link)
 pbp_data = get_data("all_pbp",1)
 all_quarters = pbp_data.findAll("th",{"data-stat":"quarter"})

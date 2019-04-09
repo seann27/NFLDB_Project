@@ -1,3 +1,6 @@
+# activate environment
+$ workon py1
+
 ##### Script inventory includes: #####
 - scraper for fantasypros.com
 - scraper for espn projections
