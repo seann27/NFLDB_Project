@@ -30,4 +30,4 @@ PIPELINE:
 - scale the data so it is distributed evenly
 RESULT: Imputer (cleaner) -> transformer (adds attributes) -> scaler
 - write a DataFrameAcceptor class to process Pandas Dataframes
-- Join two piplines (numerical and categorical) with FeatureUnion
+- Join two pipelines (numerical and categorical) with FeatureUnion
