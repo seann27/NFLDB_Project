@@ -273,5 +273,15 @@ class DataFrameColumns:
 		        'RG_ATT',
 		        'RG_YDS',
 		        'RG_TD',
-		    ]
+		    ],
+			'DST':[
+				'GAMEID',
+				'TEAM',
+				'SACKS',
+				'INT',
+				'FR',
+				'TDS',
+				'TWOPT',
+				'BLOCK'
+			]
 		}
