@@ -30,9 +30,13 @@ PIPELINE:
 - scale the data so it is distributed evenly
 RESULT: Imputer (cleaner) -> transformer (adds attributes) -> scaler
 - write a DataFrameAcceptor class to process Pandas Dataframes
+<<<<<<< HEAD
 - Join two piplines (numerical and categorical) with FeatureUnion
 - Result is a prepared dataset
 MODEL SELECTION:
 - test out different models
 - pick a model
 - perform cross-validation on it
+=======
+- Join two pipelines (numerical and categorical) with FeatureUnion
+>>>>>>> cd2de68b38a1cd1f23051968d9fa46f09a126ae1
