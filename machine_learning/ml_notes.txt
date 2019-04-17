@@ -31,3 +31,8 @@ PIPELINE:
 RESULT: Imputer (cleaner) -> transformer (adds attributes) -> scaler
 - write a DataFrameAcceptor class to process Pandas Dataframes
 - Join two piplines (numerical and categorical) with FeatureUnion
+- Result is a prepared dataset
+MODEL SELECTION:
+- test out different models
+- pick a model
+- perform cross-validation on it
