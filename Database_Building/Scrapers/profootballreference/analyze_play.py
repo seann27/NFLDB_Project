@@ -1,5 +1,7 @@
 import re
-import xlsxwriter
+import numpy as np
+import pandas as pd
+from references_dict import Team_Dictionary,DataFrameColumns
 
 regex = {
     "PLAYER": re.compile("/players/.*\.htm"),
@@ -27,29 +29,46 @@ regex = {
     "FG": re.compile("field goal (good|no good)")
 }
 
-class Metric:
-    def __init__(self,metric,value):
-        self.metric = metric
-        self.value = value
+class Play_Analysis:
+    def __init__(self,play_list,player_dict):
+        self.play_list = play_list
+        self.player_dict = {}
+        for key in player_dict:
+            self.player_dict[key] = Player(player_dict[key])
+        # for play in play list, update player dictionary
+
+    def get_all_offense(self):
+        # return summary passing/rushing/receiving stats
+        print()
+
+    def get_detailed_rushing(self):
+        # return detailed rushing stats
+        print()
+
+    def get_detailed_receiving(self):
+        # return detailed receiving stats
+        print()
+
+    def get_passing_stats(self):
+        # return detailed receiving stats
+        print()
+
+class Player:
+    def __init__(self,team):
+        self.team = team
 
 class Play:
-    def __init__(self,play,workbook,worksheets,playnum,rownum):
+    def __init__(self,play,player_dict):
         self.play = play
-        self.workbook = workbook
-        self.worksheets = worksheets
-        self.worksheet = 'MISC'
-        self.playnum = playnum
-        self.rownum = rownum
+        self.play_type = ''
         self.play_components = []
-        self.players = []
-        self.result = ''
+        self.player_dict = player_dict
 
     def process_word(self,word):
         match = ''
         for key in regex:
             search = regex[key].search(word)
             if search:
-                # print(word+"-"+key)
                 self.process_match(key,search)
                 match = key
         return match
@@ -58,43 +77,41 @@ class Play:
         if key == 'PLAYER':
             self.play_components.append(search.group(0))
         elif key == 'PASS':
+            self.play_type = 'PASS'
             self.play_components.append(search.group(1))
             self.play_components.append(search.group(2))
             self.play_components.append(search.group(3))
-            self.worksheet = 'PASS'
+            # self.worksheet = 'PASS'
         elif key == 'RUN' or key == 'KNEEL' or key == 'SACK':
+            self.play_type = 'RUSH'
             if key == 'RUN':
                 self.play_components.append(search.group(1))
                 self.play_components.append(search.group(2))
             if key == 'KNEEL' or key == 'SACK':
                 self.play_components.append(key)
                 self.play_components.append('')
-            self.worksheet = 'RUSH'
+            # self.worksheet = 'RUSH'
         elif key == 'YARDS':
             self.play_components.append(search.group(1))
         elif key == 'XP' or key == 'FG' or key == 'PUNT' or key == 'KICKOFF':
             if key == 'XP' or key == 'FG':
                 self.play_components.append(search.group(1))
-            self.worksheet = 'ST'
+            # self.worksheet = 'ST'
         else:
             self.play_components.append(key)
 
-    def write_metric(self,col,value):
-        row = self.rownum[self.worksheet]
-        self.worksheets[self.worksheet].write(row,col,value)
-
-    def write_components(self):
+    def analyze_components(self):
         print(*self.play_components, sep=',')
-        print("worksheet: "+self.worksheet)
-        self.write_metric(0,self.playnum)
+        # print("worksheet: "+self.worksheet)
+        # self.write_metric(0,self.playnum)
         idx = 1
         for loop,comp in enumerate(self.play_components,0):
             if comp == 'TACKLE' or comp == 'INT' or comp == 'FUMBLE' or comp == 'PASS_DEF' or comp == 'SACK':
-                self.rownum[self.worksheet] += 1
-                type = self.worksheet
-                self.worksheet = 'DEF'
-                self.write_metric(0,self.playnum)
-                self.write_metric(1,type)
+                # self.rownum[self.worksheet] += 1
+                # type = self.worksheet
+                # self.worksheet = 'DEF'
+                # self.write_metric(0,self.playnum)
+                # self.write_metric(1,type)
                 idx = 2
                 if comp == 'SACK':
                     row = self.rownum['RUSH']-1
@@ -141,9 +158,7 @@ class Play:
             metric = self.process_word(wordbank)
             if metric:
                 wordbank = ''
-        if self.worksheet != 'MISC':
-            self.write_components()
-        else:
-            self.write_misc()
-        print()
-        self.rownum[self.worksheet] += 1
+        if self.play_type == 'PASS' or self.play_type == 'RUSH':
+            self.player_dict = self.analyze_components()
+
+        return self.player_dict
