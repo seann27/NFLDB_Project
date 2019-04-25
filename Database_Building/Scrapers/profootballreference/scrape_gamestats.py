@@ -191,6 +191,7 @@ if __name__ == "__main__":
     season = 2013
     week = 8
     link = "page_soup.html"
+    print("link: "+link+"\ngameid: "+gameid)
     page_soup = get_soup(link)
     gameinfo,gameinfo_df = scrape_game_info(page_soup)
     snapcounts_df,player_team_dict = scrape_snapcounts(gameinfo.home_name,gameinfo.away_name,page_soup)
