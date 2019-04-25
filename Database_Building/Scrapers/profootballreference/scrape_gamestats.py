@@ -7,12 +7,12 @@ from bs4 import BeautifulSoup as soup
 from bs4 import Comment
 from urllib.request import urlopen as uReq
 from references_dict import Team_Dictionary,DataFrameColumns
-
-from analyze_play import Play
+import analyze_play
 
 # utiliy methods
 def get_soup(link):
     page_soup = soup(open(link), "lxml")
+    print("Page soup created for "+link)
     return page_soup
 
 # utility method for parsing game page tables
@@ -186,31 +186,33 @@ def scrape_defensive_stats(home_name,away_name,player_team_dict,page_soup):
     df = insert_sql('DST',metrics)
     return df
 
-file = "sqlcommands.txt"
-command_file = open(file,"w")
-gameid = '/boxscores/201310270den.htm'
-season = 2013
-week = 8
-link = "page_soup.html"
-page_soup = get_soup(link)
-gameinfo,gameinfo_df = scrape_game_info(page_soup)
-snapcounts_df,player_team_dict = scrape_snapcounts(gameinfo.home_name,gameinfo.away_name,page_soup)
-all_offense_df = scrape_offensive_stats('all_player_offense','ALL_OFF',page_soup)
-detailed_receiving_df = scrape_offensive_stats('all_targets_directions','REC',page_soup)
-detailed_rushing_df = scrape_offensive_stats('all_rush_directions','RUSH',page_soup)
-summary_defense_df = scrape_defensive_stats(gameinfo.home_name,gameinfo.away_name,player_team_dict,page_soup)
-print('GAMEINFO')
-print(gameinfo_df)
-print()
-print('ALL OFFENSE')
-print(all_offense_df)
-print()
-print('RECEIVING')
-print(detailed_receiving_df)
-print()
-print('RUSHING')
-print(detailed_rushing_df)
-print()
-print('DEFENSE')
-print(summary_defense_df)
-print()
+if __name__ == "__main__":
+    gameid = '/boxscores/201310270den.htm'
+    season = 2013
+    week = 8
+    link = "page_soup.html"
+    page_soup = get_soup(link)
+    gameinfo,gameinfo_df = scrape_game_info(page_soup)
+    snapcounts_df,player_team_dict = scrape_snapcounts(gameinfo.home_name,gameinfo.away_name,page_soup)
+    all_offense_df = scrape_offensive_stats('all_player_offense','ALL_OFF',page_soup)
+    detailed_receiving_df = scrape_offensive_stats('all_targets_directions','REC',page_soup)
+    detailed_rushing_df = scrape_offensive_stats('all_rush_directions','RUSH',page_soup)
+    summary_defense_df = scrape_defensive_stats(gameinfo.home_name,gameinfo.away_name,player_team_dict,page_soup)
+    print('GAMEINFO')
+    print(gameinfo_df)
+    print()
+    print('PlAYER_TEAM DICT')
+    print(player_team_dict)
+    print()
+    print('ALL OFFENSE')
+    print(all_offense_df)
+    print()
+    print('RECEIVING')
+    print(detailed_receiving_df)
+    print()
+    print('RUSHING')
+    print(detailed_rushing_df)
+    print()
+    print('DEFENSE')
+    print(summary_defense_df)
+    print()
