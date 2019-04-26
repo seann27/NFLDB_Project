@@ -7,12 +7,12 @@ from bs4 import BeautifulSoup as soup
 from bs4 import Comment
 from urllib.request import urlopen as uReq
 from references_dict import Team_Dictionary,DataFrameColumns
-import analyze_play
+
+from analyze_play import Play
 
 # utiliy methods
 def get_soup(link):
     page_soup = soup(open(link), "lxml")
-    print("Page soup created for "+link)
     return page_soup
 
 # utility method for parsing game page tables
@@ -31,13 +31,15 @@ def get_pbp_data():
     data = page_soup.find("div",{"id":'all_pbp'})
     comment = data.find(string=lambda text:isinstance(text,Comment))
     data = soup(comment,"lxml")
-    pbp_data = data.findAll("td",{"data-stat":"detail"})
-    return pbp_data
+    return data
 
 def insert_sql(table,metrics):
     columns = DataFrameColumns().football_ref[table]
     metrics = np.asarray(metrics)
     df = pd.DataFrame(metrics,columns=columns)
+    # print(table)
+    # print(df)
+    # print()
     return df
 
 # classes
@@ -53,168 +55,10 @@ class GameInfo():
         else:
             return self.home_name
 
-class Player:
-    def __init__(self,gameid,id,team):
-        self.gameid = gameid
-        self.id = id
-        self.team = team
-
-        # all offense table stats
-        self.passatt = 0
-        self.passcomp = 0
-        self.passyds = 0
-        self.passtds = 0
-        self.int = 0
-        self.sacked = 0
-        self.sacked_yds = 0
-        self.rushatt = 0
-        self.rushyds = 0
-        self.rushtds = 0
-        self.recatt = 0
-        self.rec = 0
-        self.recyds = 0
-        self.rectds = 0
-        self.fmb = 0
-
-        # detailed rushing stats
-        self.rushing = {}
-        self.rushing['left'] = {
-            'end': {
-                'att' : 0,
-                'yds' : 0,
-                'tds' : 0
-            },
-            'guard': {
-                'att' : 0,
-                'yds' : 0,
-                'tds' : 0
-            },
-            'tackle': {
-                'att' : 0,
-                'yds' : 0,
-                'tds' : 0
-            }
-        }
-        self.rushing['upthe'] = {
-            'middle': {
-                'att' : 0,
-                'yds' : 0,
-                'tds' : 0
-            }
-        }
-        self.rushing['right'] = {
-            'end': {
-                'att' : 0,
-                'yds' : 0,
-                'tds' : 0
-            },
-            'guard': {
-                'att' : 0,
-                'yds' : 0,
-                'tds' : 0
-            },
-            'tackle': {
-                'att' : 0,
-                'yds' : 0,
-                'tds' : 0
-            }
-        }
-
-        # detailed receiving stats
-        self.receiving = {}
-        self.receiving['short'] = {
-            'left': {
-                'att' : 0,
-                'catches' : 0,
-                'yds' : 0,
-                'tds' : 0
-            },
-            'middle': {
-                'att' : 0,
-                'catches' : 0,
-                'yds' : 0,
-                'tds' : 0
-            },
-            'right': {
-                'att' : 0,
-                'catches' : 0,
-                'yds' : 0,
-                'tds' : 0
-            }
-        }
-        self.receiving['deep'] = {
-            'left': {
-                'att' : 0,
-                'catches' : 0,
-                'yds' : 0,
-                'tds' : 0
-            },
-            'middle': {
-                'att' : 0,
-                'catches' : 0,
-                'yds' : 0,
-                'tds' : 0
-            },
-            'right': {
-                'att' : 0,
-                'catches' : 0,
-                'yds' : 0,
-                'tds' : 0
-            }
-        }
-
-    def summarize_offense(self):
-        self.all_off_metrics = (
-            self.gameid,
-            self.id,
-            self.team,
-            self.passatt,
-            self.passcomp,
-            self.passyds,
-            self.passtds,
-            self.int,
-            self.sacked,
-            self.sacked_yds,
-            self.rushatt,
-            self.rushyds,
-            self.rushtds,
-            self.recatt,
-            self.rec,
-            self.recyds,
-            self.rectds,
-            self.fmb
-        )
-
-    def summarize_rushing(self):
-        locations = ('end','guard','tackle')
-        metrics = ('att','yds','tds')
-        self.detailed_rush_metrics = [
-            self.gameid,
-            self.id,
-            self.team
-        ]
-        for l in locations:
-            for m in metrics:
-                self.detailed_rush_metrics.append(self.rushing['left'][l][m])
-        for m in metrics:
-            self.detailed_rush_metrics.append(self.rushing['upthe']['middle'][m])
-        for l in locations:
-            for m in metrics:
-                self.detailed_rush_metrics.append(self.rushing['right'][l][m])
-
-    def summarize_receiving(self):
-        depths = ('short','deep')
-        directions = ('left','middle','right')
-        metrics = ('att','catches','yds','tds')
-        self.detailed_rec_metrics = [
-            self.gameid,
-            self.id,
-            self.team
-        ]
-        for d in depths:
-            for r in directions:
-                for m in metrics:
-                    self.detailed_rec_metrics.append(self.receiving[d][r][m])
+class Player():
+    def __init__(self,player_id,player_name):
+        self.player_id = player_id
+        self.player_name = player_name
 
 # scraper submethods
 def scrape_game_info(page_soup):
@@ -261,12 +105,8 @@ def scrape_snapcounts(home_team,away_team,page_soup):
             name = player.text
             position = stat[0].text
             team = team
-            player_team_dict[playerid] = Player(gameid,playerid,team)
-            player_team_dict[playerid].position = position
+            player_team_dict[playerid] = team
             snapcount_off = stat[1].text
-            snapcount_def = stat[3].text
-            player_team_dict[playerid].snapcount_off = snapcount_off
-            player_team_dict[playerid].snapcount_def = snapcount_def
             pct_snaps_off = float(stat[2].text.strip('%'))
             if position in relevant_positions:
                 metrics.append([gameid,playerid,name,position,team,snapcount_off,pct_snaps_off])
@@ -310,7 +150,8 @@ def scrape_defensive_stats(home_name,away_name,player_team_dict,page_soup):
         team_stats[team][5] += float(stat[14].text)
 
     # find all instances of where a blocked punt/fg has occurred
-    all_playdetails = get_pbp_data()
+    pbp_data = get_pbp_data()
+    all_playdetails = pbp_data.findAll("td",{"data-stat":"detail"})
     for play in all_playdetails:
         blocked = re.search('blocked',play.text)
         testing = re.search('extra point good',play.text)
@@ -318,7 +159,7 @@ def scrape_defensive_stats(home_name,away_name,player_team_dict,page_soup):
             player_tags = play.findAll('a')
             player_tags.pop(0)
             playerid = player_tags[0]['href']
-            team = player_team_dict[playerid].team
+            team = player_team_dict[playerid]
             if team == home_name:
                 team = away_name
             else:
@@ -345,16 +186,31 @@ def scrape_defensive_stats(home_name,away_name,player_team_dict,page_soup):
     df = insert_sql('DST',metrics)
     return df
 
-if __name__ == "__main__":
-    gameid = '/boxscores/201310270den.htm'
-    season = 2013
-    week = 8
-    link = "page_soup.html"
-    print("link: "+link+"\ngameid: "+gameid)
-    page_soup = get_soup(link)
-    gameinfo,gameinfo_df = scrape_game_info(page_soup)
-    snapcounts_df,player_team_dict = scrape_snapcounts(gameinfo.home_name,gameinfo.away_name,page_soup)
-    all_pbp_analysis = analyze_play.Play_Analysis(get_pbp_data(),player_team_dict)
-    print("\nALL OFFENSE:\n",all_pbp_analysis.get_all_offense(),"\n\n################\n")
-    print("\nRUSHING:\n",all_pbp_analysis.get_detailed_rushing(),"\n\n################\n")
-    print("\nRECEIVING:\n",all_pbp_analysis.get_detailed_receiving(),"\n\n################\n")
+file = "sqlcommands.txt"
+command_file = open(file,"w")
+gameid = '/boxscores/201310270den.htm'
+season = 2013
+week = 8
+link = "page_soup.html"
+page_soup = get_soup(link)
+gameinfo,gameinfo_df = scrape_game_info(page_soup)
+snapcounts_df,player_team_dict = scrape_snapcounts(gameinfo.home_name,gameinfo.away_name,page_soup)
+all_offense_df = scrape_offensive_stats('all_player_offense','ALL_OFF',page_soup)
+detailed_receiving_df = scrape_offensive_stats('all_targets_directions','REC',page_soup)
+detailed_rushing_df = scrape_offensive_stats('all_rush_directions','RUSH',page_soup)
+summary_defense_df = scrape_defensive_stats(gameinfo.home_name,gameinfo.away_name,player_team_dict,page_soup)
+print('GAMEINFO')
+print(gameinfo_df)
+print()
+print('ALL OFFENSE')
+print(all_offense_df)
+print()
+print('RECEIVING')
+print(detailed_receiving_df)
+print()
+print('RUSHING')
+print(detailed_rushing_df)
+print()
+print('DEFENSE')
+print(summary_defense_df)
+print()

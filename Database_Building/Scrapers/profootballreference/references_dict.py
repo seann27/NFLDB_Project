@@ -219,6 +219,26 @@ class DataFrameColumns:
 				'FMB',
 				'FL'
 			],
+			'PBP_ALL_OFF':[
+				'GAMEID',
+				'PLAYER',
+				'TEAM',
+				'PASS_CMP',
+				'PASS_ATT',
+				'PASS_YDS',
+				'PASS_TD',
+				'PASS_INT',
+				'PASS_SK',
+				'PASS_SK_YDS',
+				'RUSH_ATT',
+				'RUSH_YDS',
+				'RUSH_TD',
+				'REC_TGT',
+				'REC_REC',
+				'REC_YDS',
+				'REC_TD',
+				'FL'
+			],
 		    'REC':[
 				'GAMEID',
 				'PLAYER',
