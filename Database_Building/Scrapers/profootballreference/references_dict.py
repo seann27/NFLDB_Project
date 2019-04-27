@@ -20,6 +20,7 @@ class Team_Dictionary:
 			'NE':'New England Patriots',
 			'MIA':'Miami Dolphins',
 			'LAR':'Los Angeles Rams',
+			'STL':'St. Louis Rams',
 			'CHI':'Chicago Bears',
 			'DAL':'Dallas Cowboys',
 			'PHI':'Philadelphia Eagles',
@@ -168,7 +169,9 @@ class Team_Dictionary:
 			'NYJ':'New York Jets',
 			'DET':'Detroit Lions',
 			'LAR':'Los Angeles Rams',
-			'OAK':'Oakland Raiders'
+			'STL':'St. Louis Rams',
+			'OAK':'Oakland Raiders',
+			'SDG':'San Diego Chargers'
 		}
 
 class DataFrameColumns:
