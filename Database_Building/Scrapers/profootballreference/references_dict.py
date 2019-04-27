@@ -308,3 +308,9 @@ class DataFrameColumns:
 				'BLOCK'
 			]
 		}
+
+class WebsiteBugs:
+	def __init__(self):
+		self.football_ref = {
+			'/players/D/DaviDo02.htm':'/players/D/DaviDr00.htm'
+		}
