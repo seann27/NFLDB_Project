@@ -96,6 +96,7 @@ class Player:
 		self.recyds = 0
 		self.rectds = 0
 		self.fmb = 0
+		self.rtn_tds = 0
 
 		# detailed rushing stats
 		self.rushing = {}
@@ -203,7 +204,8 @@ class Player:
 			self.rec,
 			self.recyds,
 			self.rectds,
-			self.fmb
+			self.fmb,
+			self.rtn_tds
 		)
 
 	def summarize_rushing(self):
@@ -293,25 +295,41 @@ def scrape_snapcounts(home_team,away_team,page_soup):
 				metrics.append([gameid,playerid,name,position,team,snapcount_off,pct_snaps_off])
 	home_players,home_stats = get_data(page_soup,"all_home_snap_counts",1)
 	away_players,away_stats = get_data(page_soup,"all_vis_snap_counts",1)
-	parse_players(metrics,home_team,home_players,home_stats)
-	parse_players(metrics,away_team,away_players,away_stats)
+	if not home_players or not away_players:
+		player_team_dict = scrape_alt_player_dict(page_soup)
+		metrics.append([gameid,'N/A','N/A','N/A','N/A',0,0])
+	else:
+		parse_players(metrics,home_team,home_players,home_stats)
+		parse_players(metrics,away_team,away_players,away_stats)
 	df = convert_to_df('SNAPCOUNTS',metrics)
 	return df,player_team_dict
 
-def scrape_offensive_stats(section,table,page_soup):
-	metrics = []
-	players,stats = get_data(page_soup,section,1)
-	for player,stat in zip(players,stats):
-		metric_list = [gameid]
-		metric_list.append(player.text)
-		for metric in stat:
-			value = metric.text
-			if not value:
-				value = 0
-			metric_list.append(value)
-		metrics.append(metric_list)
-	df = convert_to_df(table,metrics)
-	return df
+# def scrape_offensive_stats(section,table,page_soup):
+# 	metrics = []
+# 	players,stats = get_data(page_soup,section,1)
+# 	for player,stat in zip(players,stats):
+# 		metric_list = [gameid]
+# 		metric_list.append(player.text)
+# 		for metric in stat:
+# 			value = metric.text
+# 			if not value:
+# 				value = 0
+# 			metric_list.append(value)
+# 		metrics.append(metric_list)
+# 	df = convert_to_df(table,metrics)
+# 	return df
+
+def scrape_alt_player_dict(page_soup):
+	player_dict = {}
+	def scrape_table(name):
+		players,stats = get_data(page_soup,name)
+		for player,stat in zip(players,stats):
+			player_dict[player.a['href']] = Player(gameid,player.a['href'],Team_Dictionary().football_ref[stat[0].text])
+	scrape_table('all_player_offense')
+	scrape_table('all_player_defense')
+	scrape_table('all_kicking')
+	scrape_table('all_returns')
+	return player_dict
 
 def scrape_defensive_stats(home_name,away_name,player_team_dict,page_soup):
 	# define stats dictionary
@@ -329,6 +347,13 @@ def scrape_defensive_stats(home_name,away_name,player_team_dict,page_soup):
 		team_stats[team][4] += float(evaluate_metric(stat[12].text,'float'))
 		team_stats[team][5] += float(evaluate_metric(stat[3].text,'float'))
 		team_stats[team][5] += float(evaluate_metric(stat[14].text,'float'))
+
+	# add return touchdowns if any
+	players,stats = get_data(page_soup,'all_returns',1)
+	for player,stat in zip(players,stats):
+		player_team_dict[player.a['href']].rtn_tds += stat[4].text
+		player_team_dict[player.a['href']].rtn_tds += stat[9].text
+		team_stats[player_team_dict[player.a['href']].team][5] += player_team_dict[player.a['href']].rtn_tds
 
 	# find all instances of where a blocked punt/fg has occurred
 	all_playdetails = get_pbp_data(page_soup)
@@ -364,7 +389,7 @@ def scrape_defensive_stats(home_name,away_name,player_team_dict,page_soup):
 	defense_metrics = [team_stats[home_name],team_stats[away_name]]
 	metrics = np.asarray(defense_metrics)
 	df = convert_to_df('DST',metrics)
-	return df
+	return df,player_team_dict
 
 def run_pipeline(link):
 	print(link)
@@ -372,11 +397,11 @@ def run_pipeline(link):
 	# try:
 	gameinfo,gameinfo_df = scrape_game_info(page_soup)
 	snapcounts_df,player_team_dict = scrape_snapcounts(gameinfo.home_name,gameinfo.away_name,page_soup)
+	summary_defense_df,player_team_dict = scrape_defensive_stats(gameinfo.home_name,gameinfo.away_name,player_team_dict,page_soup)
 	all_pbp_analysis = Play_Analysis(get_pbp_data(page_soup),player_team_dict)
 	all_offense_df = all_pbp_analysis.get_all_offense()
 	detailed_rushing_df = all_pbp_analysis.get_detailed_rushing()
 	detailed_passing_df = all_pbp_analysis.get_detailed_receiving()
-	summary_defense_df = scrape_defensive_stats(gameinfo.home_name,gameinfo.away_name,player_team_dict,page_soup)
 	page_soup.decompose()
 	# except Exception as e:
 	# 	logging.error(traceback.format_exc())

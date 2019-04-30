@@ -39,7 +39,6 @@ class Play_Analysis:
 		self.player_dict = player_dict
 		# for play in play list, update player dictionary
 		self.analyze_all_plays()
-		self.filter_players()
 
 	def analyze_all_plays(self):
 		for play in self.play_list:
@@ -65,6 +64,7 @@ class Play_Analysis:
 			stat_check += player.int
 			stat_check += player.sacked
 			stat_check += player.sacked_yds
+			stat_check += player.rtn_tds
 			if stat_check > 0:
 				player.summarize_offense()
 				tmp_dict[key] = player
@@ -108,6 +108,7 @@ class Play_Analysis:
 	def get_all_offense(self):
 		metric_list = []
 		columns = DataFrameColumns().football_ref['PBP_ALL_OFF']
+		player_dict = self.filter_players()
 		for key,val in sorted (self.player_dict.items()):
 			metric_list.append(val.all_off_metrics)
 		metric_list = np.asarray(metric_list)

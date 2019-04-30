@@ -220,7 +220,8 @@ class DataFrameColumns:
 				'REC_TD',
 				'REC_LNG',
 				'FMB',
-				'FL'
+				'FL',
+				'RTN_TD'
 			],
 			'PBP_ALL_OFF':[
 				'GAMEID',
@@ -241,6 +242,7 @@ class DataFrameColumns:
 				'REC_YDS',
 				'REC_TD',
 				'FL'
+				'RTN_TD'
 			],
 		    'REC':[
 				'GAMEID',
