@@ -310,7 +310,6 @@ def scrape_snapcounts(home_team,away_team,page_soup):
 	df = convert_to_df('SNAPCOUNTS',metrics)
 	return df,player_team_dict
 
-<<<<<<< HEAD
 def scrape_auxiliary_player_dict(page_soup):
 	player_team_dict = {}
 	off_players,off_stats = get_data(page_soup,'all_player_offense',1)
@@ -333,7 +332,7 @@ def scrape_offensive_stats(section,table,page_soup):
 		metrics.append(metric_list)
 	df = convert_to_df(table,metrics)
 	return df
-=======
+
 # def scrape_offensive_stats(section,table,page_soup):
 # 	metrics = []
 # 	players,stats = get_data(page_soup,section,1)
@@ -360,7 +359,6 @@ def scrape_alt_player_dict(page_soup):
 	scrape_table('all_kicking')
 	scrape_table('all_returns')
 	return player_dict
->>>>>>> 112acfba435cbc535fce052dfe45870feabb35f4
 
 def scrape_defensive_stats(home_name,away_name,player_team_dict,page_soup):
 	# define stats dictionary
@@ -429,12 +427,9 @@ def run_pipeline(link,season):
 	# try:
 	gameinfo,gameinfo_df = scrape_game_info(page_soup)
 	snapcounts_df,player_team_dict = scrape_snapcounts(gameinfo.home_name,gameinfo.away_name,page_soup)
-<<<<<<< HEAD
 	all_pbp_analysis = Play_Analysis(get_pbp_data(page_soup),player_team_dict,season)
-=======
 	summary_defense_df,player_team_dict = scrape_defensive_stats(gameinfo.home_name,gameinfo.away_name,player_team_dict,page_soup)
 	all_pbp_analysis = Play_Analysis(get_pbp_data(page_soup),player_team_dict)
->>>>>>> 112acfba435cbc535fce052dfe45870feabb35f4
 	all_offense_df = all_pbp_analysis.get_all_offense()
 	detailed_rushing_df = all_pbp_analysis.get_detailed_rushing()
 	detailed_passing_df = all_pbp_analysis.get_detailed_receiving()
@@ -445,7 +440,7 @@ def run_pipeline(link,season):
 if __name__ == "__main__":
 	# seasons = [2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018]
 	weeks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
-	seasons = [2014]
+	seasons = [2008,2011,2014,2015]
 	# weeks = [6]
 	for season in seasons:
 		print("SEASON "+str(season))
