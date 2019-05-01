@@ -248,11 +248,14 @@ def scrape_game_info(page_soup):
 	game_information = soup(comment,"lxml")
 	game_information = [tr.findAll("td") for tr in game_information.findAll("tr",{"class":None})]
 	vegasline = game_information[-2][0].text.strip()
-	vegasline = re.split("\s-",vegasline)
-	if vegasline[0] == gameinfo.away_id:
-		vegasline = vegasline[1]*-1
+	if vegasline == 'Pick':
+		vegasline == 0
 	else:
-		vegasline = vegasline[1]
+		vegasline = re.split("\s-",vegasline)
+		if vegasline[0] == gameinfo.away_id:
+			vegasline = vegasline[1]*-1
+		else:
+			vegasline = vegasline[1]
 	overunder = float(game_information[-1][0].text.split(" ")[0].strip())
 	score = page_soup.findAll("div",{"class":"score"})
 	points_home = float(score[0].text.strip())
@@ -278,7 +281,10 @@ def scrape_snapcounts(home_team,away_team,page_soup):
 	player_team_dict = {}
 	def parse_players(metrics,team,players,stats):
 		for player,stat in zip(players,stats):
-			playerid = player.a['href']
+			if not player.a:
+				playerid = 'N/A'
+			else:
+				playerid = player.a['href']
 			name = player.text
 			position = stat[0].text
 			team = team
@@ -297,6 +303,14 @@ def scrape_snapcounts(home_team,away_team,page_soup):
 	parse_players(metrics,away_team,away_players,away_stats)
 	df = convert_to_df('SNAPCOUNTS',metrics)
 	return df,player_team_dict
+
+def scrape_auxiliary_player_dict(page_soup):
+	player_team_dict = {}
+	off_players,off_stats = get_data(page_soup,'all_player_offense',1)
+	def_players,def_stats = get_data(page_soup,'all_player_defense',1)
+	drush_players,drush_stats = get_data(page_soup,'all_rush_directions',1)
+	drec_players,drec_stats = get_data(page_soup,'all_targets_directions',1)
+
 
 def scrape_offensive_stats(section,table,page_soup):
 	metrics = []
@@ -337,14 +351,15 @@ def scrape_defensive_stats(home_name,away_name,player_team_dict,page_soup):
 		testing = re.search('extra point good',play.text)
 		if blocked:
 			player_tags = play.findAll('a')
-			player_tags.pop(0)
-			playerid = player_tags[0]['href']
-			team = player_team_dict[playerid].team
-			if team == home_name:
-				team = away_name
-			else:
-				team == home_name
-			team_stats[team][7] += 1
+			if len(player_tags) > 0:
+				player_tags.pop(0)
+				playerid = player_tags[0]['href']
+				team = player_team_dict[playerid].team
+				if team == home_name:
+					team = away_name
+				else:
+					team == home_name
+				team_stats[team][7] += 1
 
 	# calculate how many 2-point plays happened
 	home_team_score = 0
@@ -366,13 +381,13 @@ def scrape_defensive_stats(home_name,away_name,player_team_dict,page_soup):
 	df = convert_to_df('DST',metrics)
 	return df
 
-def run_pipeline(link):
+def run_pipeline(link,season):
 	print(link)
 	page_soup = get_soup(link)
 	# try:
 	gameinfo,gameinfo_df = scrape_game_info(page_soup)
 	snapcounts_df,player_team_dict = scrape_snapcounts(gameinfo.home_name,gameinfo.away_name,page_soup)
-	all_pbp_analysis = Play_Analysis(get_pbp_data(page_soup),player_team_dict)
+	all_pbp_analysis = Play_Analysis(get_pbp_data(page_soup),player_team_dict,season)
 	all_offense_df = all_pbp_analysis.get_all_offense()
 	detailed_rushing_df = all_pbp_analysis.get_detailed_rushing()
 	detailed_passing_df = all_pbp_analysis.get_detailed_receiving()
@@ -383,9 +398,9 @@ def run_pipeline(link):
 
 if __name__ == "__main__":
 	# seasons = [2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018]
-	# weeks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
-	seasons = [2013]
-	weeks = [8]
+	weeks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
+	seasons = [2014]
+	# weeks = [6]
 	for season in seasons:
 		print("SEASON "+str(season))
 		for week in weeks:
@@ -396,5 +411,5 @@ if __name__ == "__main__":
 			for game in games:
 				gameid = str(game.a['href'])
 				link = "https://www.pro-football-reference.com"+gameid
-				run_pipeline(link)
+				run_pipeline(link,season)
 		gc.collect()

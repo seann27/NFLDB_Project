@@ -312,5 +312,12 @@ class DataFrameColumns:
 class WebsiteBugs:
 	def __init__(self):
 		self.football_ref = {
-			'/players/D/DaviDo02.htm':'/players/D/DaviDr00.htm'
+			2013: {
+				'/players/D/DaviDo02.htm':'/players/D/DaviDr00.htm'
+			},
+			2014: {
+				'/players/W/WillDa04.htm':'/players/W/WillDa05.htm',
+				'/players/R/RobiAd01.htm':'/players/R/RobiAl00.htm',
+				'/players/W/WillCh06.htm':'/players/W/WillCh25.htm'
+			}
 		}

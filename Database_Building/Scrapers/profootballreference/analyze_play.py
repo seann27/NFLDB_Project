@@ -34,7 +34,8 @@ regex = {
 }
 
 class Play_Analysis:
-	def __init__(self,play_list,player_dict):
+	def __init__(self,play_list,player_dict,season):
+		self.season = season
 		self.play_list = play_list
 		self.player_dict = player_dict
 		# for play in play list, update player dictionary
@@ -43,7 +44,7 @@ class Play_Analysis:
 
 	def analyze_all_plays(self):
 		for play in self.play_list:
-			pa = Play(play,self.player_dict)
+			pa = Play(play,self.player_dict,self.season)
 			self.player_dict = pa.player_dict
 
 	def filter_players(self):
@@ -135,9 +136,11 @@ class Play_Analysis:
 		return df
 
 class Play:
-	def __init__(self,play,player_dict):
+	def __init__(self,play,player_dict,season):
+		self.season = season
 		self.play = play
 		self.play_type = ''
+		self.is_challenge = 0
 		self.interception = 0
 		self.fumble = 0
 		self.fumble_player_idx = 0
@@ -158,6 +161,8 @@ class Play:
 	def process_match(self,key,search):
 		if key == 'PLAYER':
 			self.play_components.append(search.group(0))
+		elif key == 'CHALL':
+			self.is_challenge = 1
 		elif key == 'PASS':
 			self.play_type = 'PASS'
 			self.play_components.append(search.group(1))
@@ -193,6 +198,8 @@ class Play:
 		# print(*self.play_components, sep=',')
 		comps = self.play_components
 		player1 = comps[0]
+		if player1 in WebsiteBugs().football_ref[self.season].keys():
+			player1 = WebsiteBugs().football_ref[self.season][player1]
 		player1 = self.player_dict[player1]
 		idx = 1
 		if self.fumble_player_idx > 0:
@@ -202,8 +209,8 @@ class Play:
 
 		if self.play_type == 'PASS':
 			player2 = comps[4]
-			if player2 in WebsiteBugs().football_ref.keys():
-				player2 = WebsiteBugs().football_ref[player2]
+			if player2 in WebsiteBugs().football_ref[self.season].keys():
+				player2 = WebsiteBugs().football_ref[self.season][player2]
 			player2 = self.player_dict[player2]
 			player1.passatt += 1
 			player2.recatt += 1
@@ -276,7 +283,7 @@ class Play:
 			metric = self.process_word(wordbank)
 			if metric:
 				wordbank = ''
-		if self.play_type == 'PASS' or self.play_type == 'RUSH' or self.play_type == 'SACK':
+		if (self.play_type == 'PASS' or self.play_type == 'RUSH' or self.play_type == 'SACK') and self.is_challenge == 0:
 			self.analyze_components()
 
 		return self.player_dict
