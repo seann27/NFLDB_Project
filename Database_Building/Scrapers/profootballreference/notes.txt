@@ -1,0 +1,16 @@
+Problems:
+- Fix bugs for seasons 2012-2018
+- 2011 web pages are broken/are missing most of the tables
+    - can't scrape player info from snapcounts OR any other tables
+        - need to find a way to generate player teams on the fly using play-by-play and drives
+        - scrape drives tables into 2 different lists
+        - for every play, turn a switch to the team on offense based on if the time is in their drive table
+        - update the teams the players are on for their metrics
+            - will need to figure out how to indicate fumble recoveries
+                - possibly pass in drive lists and times to indicate change of possession?
+    - missing kick/punt return tds
+        - will need to grab these stats on the fly as well from play-by-play
+    - missing defensive stats
+        - can grab these stats from existing player_dict for all offense
+- Move defensive stats scraping to analyze play?
+- set up architecture so that everything is scraped only from pbp if one of the tables is missing

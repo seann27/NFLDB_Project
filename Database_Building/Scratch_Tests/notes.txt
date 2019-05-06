@@ -1,0 +1,23 @@
+Need to add season/week/defteam data back into dataframe
+Types of metadata to possibly include in regression analysis?
+    - player points per game
+    - player yards per rush (each direction)
+    - player yards per catch (each direction)
+    - player yards per pass (each direction)
+    * last 3 games *
+    - team rushing percentage
+    - team passing percentage
+    - team yards per rush allowed (each direction)
+    - team yards per pass/catch allowed (each direction)
+    - history of RB/WR/QB performance scores
+        - take average points per game, compare %+/- performance against specific team
+        - to get metrics such as:
+            - running backs tend to do better/worse than they normally do against other opponents
+    - projected scores (take over/under, spread to calculate)
+What are the labels supposed to be?
+    - fantasy points?
+    - flex yards per player?
+        - total?
+        - per direction?
+    - team flex yards?
+        - per direction?
