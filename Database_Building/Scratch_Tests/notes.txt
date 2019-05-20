@@ -21,3 +21,21 @@ What are the labels supposed to be?
         - per direction?
     - team flex yards?
         - per direction?
+
+select distinct gameid and rusher player ids to get all players who had rushing attempts
+iterate over list, getting summary stats for each iteration
+    possibly have generic sql statement which can be fed parameters?
+repeat for passing play types for QBS and receivers
+
+PSEUDOCODE FOR POPULATING FLEX SUMMARY TABLES:
+    dataframe df = select distinct gameid,player id where play type = rush
+    df["key"] = df["gameid"].map(str) + df["rusher_player_id"]
+    df.set_index("key")
+    function(location params):
+        dataframe rushdf = rush_sql(location params)
+        rushdf["key"] = rushdf["gameid"].map(str) + rushdf["rusher_player_id"]
+        rushdf.set_index("key")
+        return rushdf
+    for param in location params:
+        dflocationparam = function(location params)
+        df.join(dflocationparam,how="outer")
