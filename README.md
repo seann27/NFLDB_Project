@@ -1,6 +1,6 @@
 # NFLDB_Project
 
-# The goal of this project is to create a web site which has the following features:
+# The goal of this project is to create a web site that has the following features:
 	- Access to graphs and relevant statistics regarding overall team performance
 	- Access to graphs and relevant statistics regarding overall individual player performance
 	- User account functionality
