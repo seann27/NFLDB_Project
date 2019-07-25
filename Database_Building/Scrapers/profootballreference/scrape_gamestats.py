@@ -10,7 +10,7 @@ import bs4
 from bs4 import BeautifulSoup as soup
 from bs4 import Comment
 from urllib.request import urlopen as uReq
-from references_dict import Team_Dictionary,DataFrameColumns
+from references_dict import Team_Dictionary,DataFrameColumns,WebsiteBugs
 from analyze_play import Play_Analysis
 
 # initialize logger
@@ -18,6 +18,7 @@ timeid = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
 baseurl = 'C:\\Users\\skbla\\NFLDB_logs\\'
 logfile = (baseurl+'scrape_gameinfo_'+timeid+'.log')
 logging.basicConfig(level=logging.DEBUG,filename=logfile,filemode='w',format='%(asctime)s: %(name)s - %(levelname)s - %(message)s')
+logging.debug("Program Started")
 
 # returns page soup object
 def get_soup(link):
@@ -30,6 +31,8 @@ def get_soup(link):
 # utility method for parsing game page tables
 def get_data(page_soup,id,commented=0):
 	data = page_soup.find("div",{"id":id})
+	if not data:
+		return 0,0
 	if commented > 0:
 		comment = data.find(string=lambda text:isinstance(text,Comment))
 		data = soup(comment,"lxml")
@@ -310,29 +313,6 @@ def scrape_snapcounts(home_team,away_team,page_soup):
 	df = convert_to_df('SNAPCOUNTS',metrics)
 	return df,player_team_dict
 
-def scrape_auxiliary_player_dict(page_soup):
-	player_team_dict = {}
-	off_players,off_stats = get_data(page_soup,'all_player_offense',1)
-	def_players,def_stats = get_data(page_soup,'all_player_defense',1)
-	drush_players,drush_stats = get_data(page_soup,'all_rush_directions',1)
-	drec_players,drec_stats = get_data(page_soup,'all_targets_directions',1)
-
-
-def scrape_offensive_stats(section,table,page_soup):
-	metrics = []
-	players,stats = get_data(page_soup,section,1)
-	for player,stat in zip(players,stats):
-		metric_list = [gameid]
-		metric_list.append(player.text)
-		for metric in stat:
-			value = metric.text
-			if not value:
-				value = 0
-			metric_list.append(value)
-		metrics.append(metric_list)
-	df = convert_to_df(table,metrics)
-	return df
-
 # def scrape_offensive_stats(section,table,page_soup):
 # 	metrics = []
 # 	players,stats = get_data(page_soup,section,1)
@@ -351,10 +331,12 @@ def scrape_offensive_stats(section,table,page_soup):
 def scrape_alt_player_dict(page_soup):
 	player_dict = {}
 	def scrape_table(name):
-		players,stats = get_data(page_soup,name)
+		players,stats = get_data(page_soup,name,1)
 		for player,stat in zip(players,stats):
 			player_dict[player.a['href']] = Player(gameid,player.a['href'],Team_Dictionary().football_ref[stat[0].text])
 	scrape_table('all_player_offense')
+	scrape_table('all_targets_directions')
+	scrape_table('all_rush_directions')
 	scrape_table('all_player_defense')
 	scrape_table('all_kicking')
 	scrape_table('all_returns')
@@ -380,26 +362,30 @@ def scrape_defensive_stats(home_name,away_name,player_team_dict,page_soup):
 	# add return touchdowns if any
 	players,stats = get_data(page_soup,'all_returns',1)
 	for player,stat in zip(players,stats):
-		player_team_dict[player.a['href']].rtn_tds += stat[4].text
-		player_team_dict[player.a['href']].rtn_tds += stat[9].text
+		if season in WebsiteBugs().football_ref.keys():
+			if player.a['href'] in WebsiteBugs().football_ref[season].keys():
+				player.a['href'] = WebsiteBugs().football_ref[season][player.a['href']]
+		player_team_dict[player.a['href']].rtn_tds += float(evaluate_metric(stat[4].text,'float'))
+		player_team_dict[player.a['href']].rtn_tds += float(evaluate_metric(stat[9].text,'float'))
 		team_stats[player_team_dict[player.a['href']].team][5] += player_team_dict[player.a['href']].rtn_tds
 
 	# find all instances of where a blocked punt/fg has occurred
 	all_playdetails = get_pbp_data(page_soup)
-	for play in all_playdetails:
-		blocked = re.search('blocked',play.text)
-		testing = re.search('extra point good',play.text)
-		if blocked:
-			player_tags = play.findAll('a')
-			if len(player_tags) > 0:
-				player_tags.pop(0)
-				playerid = player_tags[0]['href']
-				team = player_team_dict[playerid].team
-				if team == home_name:
-					team = away_name
-				else:
-					team == home_name
-				team_stats[team][7] += 1
+	if all_playdetails:
+		for play in all_playdetails:
+			blocked = re.search('blocked',play.text)
+			testing = re.search('extra point good',play.text)
+			if blocked:
+				player_tags = play.findAll('a')
+				if len(player_tags) > 0:
+					player_tags.pop(0)
+					playerid = player_tags[0]['href']
+					team = player_team_dict[playerid].team
+					if team == home_name:
+						team = away_name
+					else:
+						team == home_name
+					team_stats[team][7] += 1
 
 	# calculate how many 2-point plays happened
 	home_team_score = 0
@@ -427,21 +413,23 @@ def run_pipeline(link,season):
 	# try:
 	gameinfo,gameinfo_df = scrape_game_info(page_soup)
 	snapcounts_df,player_team_dict = scrape_snapcounts(gameinfo.home_name,gameinfo.away_name,page_soup)
-	all_pbp_analysis = Play_Analysis(get_pbp_data(page_soup),player_team_dict,season)
 	summary_defense_df,player_team_dict = scrape_defensive_stats(gameinfo.home_name,gameinfo.away_name,player_team_dict,page_soup)
-	all_pbp_analysis = Play_Analysis(get_pbp_data(page_soup),player_team_dict)
+	all_pbp_analysis = Play_Analysis(get_pbp_data(page_soup),player_team_dict,season)
 	all_offense_df = all_pbp_analysis.get_all_offense()
 	detailed_rushing_df = all_pbp_analysis.get_detailed_rushing()
 	detailed_passing_df = all_pbp_analysis.get_detailed_receiving()
 	page_soup.decompose()
 	# except Exception as e:
+	# 	logging.debug(link)
 	# 	logging.error(traceback.format_exc())
 
 if __name__ == "__main__":
-	# seasons = [2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018]
+	seasons = [2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018]
 	weeks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
-	seasons = [2008,2011,2014,2015]
-	# weeks = [6]
+	# seasons = [2008,2011,2014,2015]
+	seasons = [2011]
+	weeks = [17]
+	# weeks = [14,15,16,17]
 	for season in seasons:
 		print("SEASON "+str(season))
 		for week in weeks:
@@ -454,3 +442,4 @@ if __name__ == "__main__":
 				link = "https://www.pro-football-reference.com"+gameid
 				run_pipeline(link,season)
 		gc.collect()
+	logging.debug("Program finished.")

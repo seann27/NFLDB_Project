@@ -199,40 +199,53 @@ class Play:
 		# print(*self.play_components, sep=',')
 		comps = self.play_components
 		player1 = comps[0]
-		if player1 in WebsiteBugs().football_ref[self.season].keys():
-			player1 = WebsiteBugs().football_ref[self.season][player1]
+		if not player1 in self.player_dict:
+			return 0
+		if self.season in WebsiteBugs().football_ref.keys():
+			if player1 in WebsiteBugs().football_ref[self.season].keys():
+				player1 = WebsiteBugs().football_ref[self.season][player1]
 		player1 = self.player_dict[player1]
 		idx = 1
 		if self.fumble_player_idx > 0:
 			recovering_player = comps[self.fumble_player_idx]
-			if player1.team != self.player_dict[recovering_player].team:
-				self.fumble = 1
+			if recovering_player in self.player_dict.keys():
+				if player1.team != self.player_dict[recovering_player].team:
+					self.fumble = 1
 
 		if self.play_type == 'PASS':
-			player2 = comps[4]
-			if player2 in WebsiteBugs().football_ref[self.season].keys():
-				player2 = WebsiteBugs().football_ref[self.season][player2]
-			player2 = self.player_dict[player2]
 			player1.passatt += 1
-			player2.recatt += 1
-			player2.receiving[comps[2]][comps[3]]['att'] += 1
-			if self.interception == 1:
-				player1.int += 1
-			elif self.fumble == 1:
-				player2.fmb += 1
-			else:
-				if comps[1] == 'complete':
-					player1.passcomp += 1
-					player1.passyds += int(comps[5])
-					player2.rec += 1
-					player2.receiving[comps[2]][comps[3]]['catches'] += 1
-					player2.recyds += int(comps[5])
-					player2.receiving[comps[2]][comps[3]]['yds'] += int(comps[5])
-					if len(comps) > 6:
-						if comps[6] == 'TD':
-							player1.passtds += 1
-							player2.rectds += 1
-							player2.receiving[comps[2]][comps[3]]['tds'] += 1
+			p2_uk = 0
+			if len(comps) > 4:
+				player2 = comps[4]
+				if self.season in WebsiteBugs().football_ref.keys():
+					if player2 in WebsiteBugs().football_ref[self.season].keys():
+						player2 = WebsiteBugs().football_ref[self.season][player2]
+				if not player2 in self.player_dict:
+					comps.insert(4,'unknown')
+					p2_uk = 1
+				else:
+					player2 = self.player_dict[player2]
+					player2.recatt += 1
+					player2.receiving[comps[2]][comps[3]]['att'] += 1
+				if self.interception == 1:
+					player1.int += 1
+				elif self.fumble == 1 and p2_uk == 0:
+					player2.fmb += 1
+				else:
+					if comps[1] == 'complete':
+						player1.passcomp += 1
+						player1.passyds += int(comps[5])
+						if p2_uk == 0:
+							player2.rec += 1
+							player2.receiving[comps[2]][comps[3]]['catches'] += 1
+							player2.recyds += int(comps[5])
+							player2.receiving[comps[2]][comps[3]]['yds'] += int(comps[5])
+						if len(comps) > 6:
+							if comps[6] == 'TD':
+								player1.passtds += 1
+								if p2_uk == 0:
+									player2.rectds += 1
+									player2.receiving[comps[2]][comps[3]]['tds'] += 1
 
 		if self.play_type == 'RUSH':
 			comps[1] = comps[1].replace(" ","")

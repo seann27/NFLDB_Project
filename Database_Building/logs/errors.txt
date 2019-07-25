@@ -1,0 +1,1049 @@
+2019-04-30 21:46:57,063: root - DEBUG - Program Started
+2019-04-30 21:55:03,359: root - DEBUG - https://www.pro-football-reference.com/boxscores/200909130sea.htm
+2019-04-30 21:55:03,360: root - ERROR - Traceback (most recent call last):
+  File "scrape_gamestats.py", line 412, in run_pipeline
+    summary_defense_df,player_team_dict = scrape_defensive_stats(gameinfo.home_name,gameinfo.away_name,player_team_dict,page_soup)
+  File "scrape_gamestats.py", line 379, in scrape_defensive_stats
+    team = player_team_dict[playerid].team
+KeyError: '/players/B/ButlQu20.htm'
+
+2019-04-30 22:04:55,929: root - DEBUG - https://www.pro-football-reference.com/boxscores/201010240chi.htm
+2019-04-30 22:04:55,929: root - ERROR - Traceback (most recent call last):
+  File "scrape_gamestats.py", line 413, in run_pipeline
+    all_pbp_analysis = Play_Analysis(get_pbp_data(page_soup),player_team_dict,season)
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 42, in __init__
+    self.analyze_all_plays()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 46, in analyze_all_plays
+    pa = Play(play,self.player_dict,self.season)
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 151, in __init__
+    self.player_dict = self.analyze_play()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 301, in analyze_play
+    self.analyze_components()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 237, in analyze_components
+    player1.passyds += int(comps[5])
+ValueError: invalid literal for int() with base 10: '/players/W/WillCh25.htm'
+
+2019-04-30 22:11:22,053: root - DEBUG - https://www.pro-football-reference.com/boxscores/201110020sdg.htm
+2019-04-30 22:11:22,053: root - ERROR - Traceback (most recent call last):
+  File "scrape_gamestats.py", line 413, in run_pipeline
+    all_pbp_analysis = Play_Analysis(get_pbp_data(page_soup),player_team_dict,season)
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 42, in __init__
+    self.analyze_all_plays()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 46, in analyze_all_plays
+    pa = Play(play,self.player_dict,self.season)
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 151, in __init__
+    self.player_dict = self.analyze_play()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 301, in analyze_play
+    self.analyze_components()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 237, in analyze_components
+    player1.passyds += int(comps[5])
+ValueError: invalid literal for int() with base 10: '/players/G/GateEd00.htm'
+
+2019-04-30 22:13:38,224: root - DEBUG - https://www.pro-football-reference.com/boxscores/201111130car.htm
+2019-04-30 22:13:38,224: root - ERROR - Traceback (most recent call last):
+  File "scrape_gamestats.py", line 410, in run_pipeline
+    gameinfo,gameinfo_df = scrape_game_info(page_soup)
+  File "scrape_gamestats.py", line 248, in scrape_game_info
+    gameinfo = GameInfo(gameid,gameteams[0]['href'],gameteams[1]['href'])
+IndexError: list index out of range
+
+2019-04-30 22:13:47,009: root - DEBUG - https://www.pro-football-reference.com/boxscores/201111170den.htm
+2019-04-30 22:13:47,009: root - ERROR - Traceback (most recent call last):
+  File "scrape_gamestats.py", line 410, in run_pipeline
+    gameinfo,gameinfo_df = scrape_game_info(page_soup)
+  File "scrape_gamestats.py", line 248, in scrape_game_info
+    gameinfo = GameInfo(gameid,gameteams[0]['href'],gameteams[1]['href'])
+IndexError: list index out of range
+
+2019-04-30 22:14:12,200: root - DEBUG - https://www.pro-football-reference.com/boxscores/201111240dal.htm
+2019-04-30 22:14:12,212: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:14:13,370: root - DEBUG - https://www.pro-football-reference.com/boxscores/201111240rav.htm
+2019-04-30 22:14:13,371: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:14:44,295: root - DEBUG - https://www.pro-football-reference.com/boxscores/201112040pit.htm
+2019-04-30 22:14:44,296: root - ERROR - Traceback (most recent call last):
+  File "scrape_gamestats.py", line 412, in run_pipeline
+    summary_defense_df,player_team_dict = scrape_defensive_stats(gameinfo.home_name,gameinfo.away_name,player_team_dict,page_soup)
+  File "scrape_gamestats.py", line 379, in scrape_defensive_stats
+    team = player_team_dict[playerid].team
+KeyError: '/players/N/nugenmik01.htm'
+
+2019-04-30 22:15:09,259: root - DEBUG - https://www.pro-football-reference.com/boxscores/201112110rav.htm
+2019-04-30 22:15:09,260: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 27
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 416, in run_pipeline
+    detailed_passing_df = all_pbp_analysis.get_detailed_receiving()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 136, in get_detailed_receiving
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:15:21,115: root - DEBUG - https://www.pro-football-reference.com/boxscores/201112110den.htm
+2019-04-30 22:15:21,116: root - ERROR - Traceback (most recent call last):
+  File "scrape_gamestats.py", line 412, in run_pipeline
+    summary_defense_df,player_team_dict = scrape_defensive_stats(gameinfo.home_name,gameinfo.away_name,player_team_dict,page_soup)
+  File "scrape_gamestats.py", line 379, in scrape_defensive_stats
+    team = player_team_dict[playerid].team
+KeyError: '/players/P/PratMa20.htm'
+
+2019-04-30 22:15:25,755: root - DEBUG - https://www.pro-football-reference.com/boxscores/201112110gnb.htm
+2019-04-30 22:15:25,756: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 27
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 416, in run_pipeline
+    detailed_passing_df = all_pbp_analysis.get_detailed_receiving()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 136, in get_detailed_receiving
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:15:27,202: root - DEBUG - https://www.pro-football-reference.com/boxscores/201112110dal.htm
+2019-04-30 22:15:27,202: root - ERROR - Traceback (most recent call last):
+  File "scrape_gamestats.py", line 412, in run_pipeline
+    summary_defense_df,player_team_dict = scrape_defensive_stats(gameinfo.home_name,gameinfo.away_name,player_team_dict,page_soup)
+  File "scrape_gamestats.py", line 379, in scrape_defensive_stats
+    team = player_team_dict[playerid].team
+KeyError: '/players/B/BailDa00.htm'
+
+2019-04-30 22:15:30,772: root - DEBUG - https://www.pro-football-reference.com/boxscores/201112150atl.htm
+2019-04-30 22:15:30,772: root - ERROR - Traceback (most recent call last):
+  File "scrape_gamestats.py", line 412, in run_pipeline
+    summary_defense_df,player_team_dict = scrape_defensive_stats(gameinfo.home_name,gameinfo.away_name,player_team_dict,page_soup)
+  File "scrape_gamestats.py", line 379, in scrape_defensive_stats
+    team = player_team_dict[playerid].team
+KeyError: '/players/B/BoshMa00.htm'
+
+2019-04-30 22:15:47,433: root - DEBUG - https://www.pro-football-reference.com/boxscores/201112180rai.htm
+2019-04-30 22:15:47,433: root - ERROR - Traceback (most recent call last):
+  File "scrape_gamestats.py", line 412, in run_pipeline
+    summary_defense_df,player_team_dict = scrape_defensive_stats(gameinfo.home_name,gameinfo.away_name,player_team_dict,page_soup)
+  File "scrape_gamestats.py", line 379, in scrape_defensive_stats
+    team = player_team_dict[playerid].team
+KeyError: '/players/J/janikseb01.htm'
+
+2019-04-30 22:15:59,141: root - DEBUG - https://www.pro-football-reference.com/boxscores/201112240cin.htm
+2019-04-30 22:15:59,142: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:00,356: root - DEBUG - https://www.pro-football-reference.com/boxscores/201112240buf.htm
+2019-04-30 22:16:00,356: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 24
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 415, in run_pipeline
+    detailed_rushing_df = all_pbp_analysis.get_detailed_rushing()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 126, in get_detailed_rushing
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:01,442: root - DEBUG - https://www.pro-football-reference.com/boxscores/201112240pit.htm
+2019-04-30 22:16:01,443: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:02,577: root - DEBUG - https://www.pro-football-reference.com/boxscores/201112240oti.htm
+2019-04-30 22:16:02,578: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:03,696: root - DEBUG - https://www.pro-football-reference.com/boxscores/201112240nwe.htm
+2019-04-30 22:16:03,697: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:04,806: root - DEBUG - https://www.pro-football-reference.com/boxscores/201112240kan.htm
+2019-04-30 22:16:04,807: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:05,937: root - DEBUG - https://www.pro-football-reference.com/boxscores/201112240rav.htm
+2019-04-30 22:16:05,937: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 24
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 415, in run_pipeline
+    detailed_rushing_df = all_pbp_analysis.get_detailed_rushing()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 126, in get_detailed_rushing
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:07,040: root - DEBUG - https://www.pro-football-reference.com/boxscores/201112240nyj.htm
+2019-04-30 22:16:07,041: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:08,166: root - DEBUG - https://www.pro-football-reference.com/boxscores/201112240car.htm
+2019-04-30 22:16:08,166: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:09,278: root - DEBUG - https://www.pro-football-reference.com/boxscores/201112240was.htm
+2019-04-30 22:16:09,278: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:10,384: root - DEBUG - https://www.pro-football-reference.com/boxscores/201112240det.htm
+2019-04-30 22:16:10,384: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:11,517: root - DEBUG - https://www.pro-football-reference.com/boxscores/201112240dal.htm
+2019-04-30 22:16:11,518: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:12,650: root - DEBUG - https://www.pro-football-reference.com/boxscores/201112240sea.htm
+2019-04-30 22:16:12,651: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:13,746: root - DEBUG - https://www.pro-football-reference.com/boxscores/201112250gnb.htm
+2019-04-30 22:16:13,747: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:14,862: root - DEBUG - https://www.pro-football-reference.com/boxscores/201112260nor.htm
+2019-04-30 22:16:14,862: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:16,582: root - DEBUG - https://www.pro-football-reference.com/boxscores/201201010ram.htm
+2019-04-30 22:16:16,583: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:17,705: root - DEBUG - https://www.pro-football-reference.com/boxscores/201201010htx.htm
+2019-04-30 22:16:17,706: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:18,806: root - DEBUG - https://www.pro-football-reference.com/boxscores/201201010gnb.htm
+2019-04-30 22:16:18,807: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:19,938: root - DEBUG - https://www.pro-football-reference.com/boxscores/201201010phi.htm
+2019-04-30 22:16:19,939: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:21,062: root - DEBUG - https://www.pro-football-reference.com/boxscores/201201010nwe.htm
+2019-04-30 22:16:21,062: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:22,201: root - DEBUG - https://www.pro-football-reference.com/boxscores/201201010mia.htm
+2019-04-30 22:16:22,202: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:23,520: root - DEBUG - https://www.pro-football-reference.com/boxscores/201201010nor.htm
+2019-04-30 22:16:23,520: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:24,718: root - DEBUG - https://www.pro-football-reference.com/boxscores/201201010jax.htm
+2019-04-30 22:16:24,719: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:25,924: root - DEBUG - https://www.pro-football-reference.com/boxscores/201201010min.htm
+2019-04-30 22:16:25,924: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:27,180: root - DEBUG - https://www.pro-football-reference.com/boxscores/201201010rai.htm
+2019-04-30 22:16:27,181: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 24
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 415, in run_pipeline
+    detailed_rushing_df = all_pbp_analysis.get_detailed_rushing()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 126, in get_detailed_rushing
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:28,422: root - DEBUG - https://www.pro-football-reference.com/boxscores/201201010crd.htm
+2019-04-30 22:16:28,422: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:29,692: root - DEBUG - https://www.pro-football-reference.com/boxscores/201201010den.htm
+2019-04-30 22:16:29,693: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:30,934: root - DEBUG - https://www.pro-football-reference.com/boxscores/201201010cle.htm
+2019-04-30 22:16:30,934: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:32,201: root - DEBUG - https://www.pro-football-reference.com/boxscores/201201010cin.htm
+2019-04-30 22:16:32,201: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:33,476: root - DEBUG - https://www.pro-football-reference.com/boxscores/201201010atl.htm
+2019-04-30 22:16:33,476: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:16:34,738: root - DEBUG - https://www.pro-football-reference.com/boxscores/201201010nyg.htm
+2019-04-30 22:16:34,738: root - ERROR - Traceback (most recent call last):
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 1, placement implies 19
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "scrape_gamestats.py", line 414, in run_pipeline
+    all_offense_df = all_pbp_analysis.get_all_offense()
+  File "C:\Users\skbla\NFLDB_Project\Database_Building\Scrapers\profootballreference\analyze_play.py", line 116, in get_all_offense
+    df = pd.DataFrame(metric_list,columns=columns)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\frame.py", line 424, in __init__
+    copy=copy)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "C:\Users\skbla\Envs\py1\lib\site-packages\pandas\core\internals\managers.py", line 1689, in construction_error
+    raise ValueError("Empty data passed with indices specified.")
+ValueError: Empty data passed with indices specified.
+
+2019-04-30 22:34:00,486: root - DEBUG - https://www.pro-football-reference.com/boxscores/201410260nor.htm
+2019-04-30 22:34:00,487: root - ERROR - Traceback (most recent call last):
+  File "scrape_gamestats.py", line 412, in run_pipeline
+    summary_defense_df,player_team_dict = scrape_defensive_stats(gameinfo.home_name,gameinfo.away_name,player_team_dict,page_soup)
+  File "scrape_gamestats.py", line 364, in scrape_defensive_stats
+    for player,stat in zip(players,stats):
+TypeError: zip argument #1 must support iteration
