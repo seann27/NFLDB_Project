@@ -1,6 +1,6 @@
 class Team_Dictionary:
 	def __init__(self):
-		self.kaggle_abbrev = {
+		self.kaggle_games_abbrev = {
 			'Pittsburgh Steelers':'PIT',
 			'Arizona Cardinals':'ARI',
 			'Atlanta Falcons':'ATL',
@@ -36,6 +36,42 @@ class Team_Dictionary:
 			'Los Angeles Rams':'LAR',
 			'Los Angeles Chargers':'LAC',
 			'Houston Oilers':'HOU'
+		}
+		self.kaggle_plays_abbrev = {
+			'Pittsburgh Steelers': 'PIT',
+			'Arizona Cardinals': 'ARI',
+			'Atlanta Falcons': 'ATL',
+			'Baltimore Ravens': 'BAL',
+			'Carolina Panthers': 'CAR',
+			'Cincinnati Bengals': 'CIN',
+			'Cleveland Browns': 'CLE',
+			'Green Bay Packers': 'GB',
+			'Houston Texans': 'HOU',
+			'Indianapolis Colts': 'IND',
+			'New Orleans Saints': 'NO',
+			'New York Giants': 'NYG',
+			'Seattle Seahawks': 'SEA',
+			'Tampa Bay Buccaneers': 'TB',
+			'New England Patriots': 'NE',
+			'Oakland Raiders': 'OAK',
+			'Buffalo Bills': 'BUF',
+			'Chicago Bears': 'CHI',
+			'Dallas Cowboys': 'DAL',
+			'Denver Broncos': 'DEN',
+			'Detroit Lions': 'DET',
+			'Jacksonville Jaguars': 'JAX',
+			'Kansas City Chiefs': 'KC',
+			'New York Jets': 'NYJ',
+			'Philadelphia Eagles': 'PHI',
+			'San Diego Chargers': 'SD',
+			'San Francisco 49ers': 'SF',
+			'Tennessee Titans': 'TEN',
+			'Washington Redskins': 'WAS',
+			'Miami Dolphins': 'MIA',
+			'Minnesota Vikings': 'MIN',
+			'St. Louis Rams': 'STL',
+			'Los Angeles Rams': 'LA',
+			'Los Angeles Chargers': 'LAC'
 		}
 		self.fantasy_pros = {
 			'KC':'Kansas City Chiefs',

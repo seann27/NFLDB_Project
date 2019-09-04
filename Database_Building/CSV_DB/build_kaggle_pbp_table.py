@@ -1,8 +1,6 @@
 import pandas as pd
 from sqlalchemy import create_engine
-engine = create_engine('mysql://root:@localhost:3306/nfl_db')
-# Link to large CSV DB file --> https://www.kaggle.com/maxhorowitz/nflplaybyplay2009to2016
-# Link to column data --> https://github.com/maksimhorowitz/nflscrapR/blob/master/R/scrape_play_by_play.R
+engine = create_engine('mysql+pymysql://root:@localhost:3306/kaggle')
 
 dbint = 'int64'
 dbstring = 'str'
