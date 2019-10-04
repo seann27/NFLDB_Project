@@ -1,0 +1,35 @@
+Calculate performance metrics:
+
+term1 - average skillpoints per game
+term2 - average skillpoints allowed by opponent per game
+term3 - actual skillpoints in the game
+
+offensive performance = (term1 * term3) / (term2 * term3)
+defensive performance = 1/offensive performance
+ 
+term5 - avg def performance
+term6 - avg ranking of offense the opp has faced
+term7 - avg off ranking
+term8 - avg opp def ranking
+
+experimental_term8 - projected offensive performance using terms 1,2,5,6,7
+
+apply these terms to each category (run, short pass, deep pass) 
+
+feature set includes these terms for favorite, underdog, spread, over/under
+
+skillpoints table per team by week would be helpful
+  -> for recieving metrics, separate skillpoints out by rb,te,wr
+  -> for rushing, split by qb/rb
+  
+skillpoints table:
+
+once player info is in database:
+team, opponent, qb_rush_sp, rb_rush_sp, rb_srec_sp, te_srec_sp, wr_srec_sp, rb_drec_sp, te_drec_sp, wr_drec_sp
+
+but for now focus on team stats:
+team, team_rank, opponent, opp_def_rank, rush_sp, short_pass_sp, deep_pass_sp,
+
+will build metrics table to store terms 1-7
+  -> start with overall metrics
+  -> can add positional metrics, home vs away metrics
