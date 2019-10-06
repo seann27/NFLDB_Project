@@ -1,0 +1,8 @@
+Ideas to put all relevant scrapers into package:
+1) create parent class that initializes url and converts to web page
+2) have a profootball reference scraper class that inherits class from step 1
+   - have generic methods, use this as parents class
+   - create classes for each type of web page (game, week, team, player)
+   - return dataframes
+3) have a fantasypros scraper
+  - create classes to download rankings, projections
