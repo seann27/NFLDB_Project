@@ -265,8 +265,8 @@ dtypes = {
 }
 
 cols = [
-	'season', # Season
-	'week', # week (1-17)
+	# 'season', # Season
+	# 'week', # week (1-17)
 	'play_id', # Numeric play id that when used with game_id and drive provides
 	'game_id', # Ten digit identifier for NFL game.
 	'home_team', # String abbreviation for the home team.
@@ -393,50 +393,54 @@ cols = [
 	'defensive_extra_point_conv' # Binary indicator whether or not the defense successfully scored on an extra point attempt.
 ]
 
-def keys_to_text():
-	file = open(r"D:\NFLDB\column_list.txt","w+")
-	for key in dtypes:
-		file.write("\'"+key+"\',\n")
+'''
+These methods build the season csv files from one large csv file containing all plays from 2009-2018
+'''
+# def keys_to_text():
+# 	file = open(r"D:\NFLDB\column_list.txt","w+")
+# 	for key in dtypes:
+# 		file.write("\'"+key+"\',\n")
+#
+# def get_season_file(season):
+# 	season_csv = (r"D:\NFLDB\season_stats"+str(season)+".csv")
+# 	write_file = open(season_csv, "w+")
+# 	return write_file
+#
+# def split_db_into_seasons():
+# 	with open(r"D:\NFLDB\nfldb.csv","r",encoding='utf-8-sig') as file:
+# 		counter = 0
+# 		headers = 0
+# 		cur_season = 2009
+# 		cur_week = 0
+# 		gamedate = 0
+# 		write_file = get_season_file(cur_season)
+# 		db_lines = []
+# 		for line in file:
+# 			# get headers
+# 			if counter == 0:
+# 				headers = ("season,"+"week,"+line)
+# 				write_file.write(headers)
+# 				counter = 1
+# 			else:
+# 				# get season
+# 				cols = line.split(',')
+# 				date_vals = cols[9].split('-')
+# 				year = date_vals[0]
+# 				month = date_vals[1]
+# 				if int(year) != cur_season and int(month) > 2:
+# 					cur_season += 1
+# 					write_file.close()
+# 					write_file = get_season_file(cur_season)
+# 					write_file.write(headers)
+# 					cur_week = 0
+# 				# get week
+# 				gameid = cols[1]
+# 				if int(gameid) >= (gamedate+700):
+# 					cur_week += 1
+# 					gamedate = int(gameid)
+# 				line = (str(cur_season)+","+str(cur_week)+","+line)
+# 				write_file.write(line)
 
-def get_season_file(season):
-	season_csv = (r"D:\NFLDB\season_stats"+str(season)+".csv")
-	write_file = open(season_csv, "w+")
-	return write_file
-
-def split_db_into_seasons():
-	with open(r"D:\NFLDB\nfldb.csv","r",encoding='utf-8-sig') as file:
-		counter = 0
-		headers = 0
-		cur_season = 2009
-		cur_week = 0
-		gamedate = 0
-		write_file = get_season_file(cur_season)
-		db_lines = []
-		for line in file:
-			# get headers
-			if counter == 0:
-				headers = ("season,"+"week,"+line)
-				write_file.write(headers)
-				counter = 1
-			else:
-				# get season
-				cols = line.split(',')
-				date_vals = cols[9].split('-')
-				year = date_vals[0]
-				month = date_vals[1]
-				if int(year) != cur_season and int(month) > 2:
-					cur_season += 1
-					write_file.close()
-					write_file = get_season_file(cur_season)
-					write_file.write(headers)
-					cur_week = 0
-				# get week
-				gameid = cols[1]
-				if int(gameid) > (gamedate+600):
-					cur_week += 1
-					gamedate = int(gameid)
-				line = (str(cur_season)+","+str(cur_week)+","+line)
-				write_file.write(line)
 
 def create_indexes(index,size):
 	ids = []
@@ -446,26 +450,19 @@ def create_indexes(index,size):
 
 
 if __name__ == "__main__":
-	# keys_to_text()
-	# split_db_into_seasons()
-	# mylist = []
-	# for chunk in pd.read_csv(r"D:\NFLDB\season_stats2009.csv", dtype=dtypes, chunksize=20000):
-	#     mylist.append(chunk)
-	# big_data = pd.concat(mylist, axis= 0)
-	# del mylist
 	seasons = [2009,2010,2011,2012,2013,2014,2015,2016,2017,2018]
-	# seasons = [2014,2015,2016,2017,2018]
 	cur_id = 1
 	for idx,season in enumerate(seasons,0):
 		file = r"D:\NFLDB\season_stats"+str(season)+".csv"
 		print(file)
 		df = pd.read_csv(file,dtype=dtypes, usecols=cols)
-		df = df[(df['play_type'].notnull()) & (df['play_type'] != 'no_play')]
+		print("Dropping duplicates . . .")
+		df.drop_duplicates(subset=['play_id','game_id','desc'], keep='first', inplace=True)
+		# df = df[(df['play_type'].notnull()) & (df['play_type'] != 'no_play')]
 		dfSize = df['play_id'].count()
 		df.insert(0, 'pid', create_indexes(cur_id,dfSize))
 		df.set_index('pid')
 		cur_id += dfSize
-
 		action = 'replace'
 		if idx > 0:
 			action = 'append'
