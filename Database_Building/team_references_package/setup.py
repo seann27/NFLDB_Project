@@ -1,7 +1,7 @@
 from setuptools import setup
 
-setup(name='scrapers',
+setup(name='NFL_RefMaps',
       version='0.1',
-      description='Web scrapers for getting NFL stats',
-      packages=['scrapers'],
+      description='Dictionaries that map data columns, team names/abbreviations',
+      packages=['NFL_RefMaps'],
       zip_safe=False)
