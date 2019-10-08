@@ -4,8 +4,8 @@ from NFL_RefMaps import TableColumns
 class PFR(Scraper):
 
 	def __init__(self,season,week):
-		self.season
-		self.week
+		self.season = season
+		self.week = week
 		link = "https://www.pro-football-reference.com/years/"+self.season+"/week_"+self.week+".htm"
 		Scraper.__init__(self,link)
 		self.page_soup = self.get_soup()
