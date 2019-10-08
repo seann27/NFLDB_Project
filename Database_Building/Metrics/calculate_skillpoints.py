@@ -1,5 +1,6 @@
 # import here
 import pandas as pd
+import numpy as np
 
 # put this list into NFL_RefMaps package
 skillpoint_cols = [
@@ -15,12 +16,35 @@ class SkillPoints():
 
 	def __init__(self):
 		self.skillpoints = pd.DataFrame(columns=skillpoint_cols)
-		# self.df['rush_skillpoints_home'] = self.df.apply (lambda row: calculate_home_rushFP(row), axis=1)
-		# self.df['rush_skillpoints_away'] = self.df.apply (lambda row: calculate_away_rushFP(row), axis=1)
-		# self.df['pass_skillpoints_home'] = self.df.apply (lambda row: calculate_home_passFP(row), axis=1)
-		# self.df['pass_skillpoints_away'] = self.df.apply (lambda row: calculate_away_passFP(row), axis=1)
 
-    def calculate_rushFP(row,side):
+	def build_skillpoints_dataframe(self,game_summary):
+		skillpoints_by_team = []
+		for game in game_summary.iterrows():
+			skillpoints_by_team.append(get_team_skillpoints(game,'home'))
+			skillpoints_by_team.append(get_team_skillpoints(game,'away'))
+
+		skillpoints_df = np.vstack(skillpoints_by_team)
+		self.skillpoints = pd.DataFrame(data=skillpoints_df,columns=skillpoint_cols)
+		return self.skillpoints
+
+	def get_team_skillpoints(row,side):
+		team_stats = np.array([game['game_id']])
+		side_team = side+"_team"
+		side_opp = 'away_team'
+		if side == 'away':
+			side_opp = 'home_team'
+		team = game[side_team]
+		team_stats = np.append(team_stats,team)
+		opponent = game[side_opp]
+		team_stats = np.append(team_stats,opponent)
+		rushing_skillpoints = calculate_rush_FP(game,side)
+		team_stats = np.append(team_stats,rushing_skillpoints)
+		passing_skillpoints,short_v_deep_pass_pct = calculate_passFP(game,side)
+		team_stats = np.append(team_stats,passing_skillpoints)
+		team_stats = np.append(team_stats,short_v_deep_pass_pct)
+		return team_stats
+
+	def calculate_rushFP(row,side):
         met_yds = side+"_rush_yds"
         met_att = side+"_rush_att"
         met_tds = side+"_rush_tds"

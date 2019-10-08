@@ -206,3 +206,8 @@ print("Away stats generated.")
 
 all_offense = home_offense.merge(away_offense,on='game_id')
 game_summary = gameinfo.merge(all_offense,on='game_id')
+game_summary.to_sql('nfl_game_summary', con=main_engine, if_exists='replace',index='game_id')
+
+sp = SkillPoints()
+skillpoints_df = sp.build_skillpoints_dataframe(game_summary)
+skillpoints_df.to_sql('nfl_skillpoints', con=main_engine, if_exists='replace')
