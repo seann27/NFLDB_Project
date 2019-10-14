@@ -12,8 +12,8 @@ class Scraper:
 	    uClient = uReq(self.link)
 	    page_html = uClient.read()
 	    uClient.close()
-	    page_soup = soup(page_html, "lxml")
-	    return page_soup
+	    self.page_soup = soup(page_html, "lxml")
+	    return self.page_soup
 
 	def get_link(self):
 		return self.link
