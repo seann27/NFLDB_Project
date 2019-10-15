@@ -1,50 +1,26 @@
-# seanblack_udacity_distributions_example
+# Web scraping package for sports stats
 
 Summary
 
 # Files
 PFRScraper.py - Class that scrapes tables from pro-football-reference.com
-Generaldistribution.py - Parent class that calculates distrubtion of a dataset
+    - PFR_Gamelinks, PFR_Gamepage
+GeneralScraper.py - Parent class that connects, scrapes, and returns soup object
 
-# Gaussian init arguments
-1) mean
-2) stdev
+# PFR_Gamelinks object arguments
+1) season
+2) week
 
-# Binomal init arguments
-1) probability (float value from 0 to 1)
-2) data size or n (integer)
+# PFR_Gamepage object arguments
+1) link
+
+# Usage
+    >>> gamelinks = PFR_Gamelinks(2019,6)
+    >>> game1 = gamelinks[0]
+    
+    >>> game1_pfrs = PFR_Gamepage(game1)
+    >>> game1_gameinfo = game1_pfrs.get_gameinfo
 
 # installation
 
-pip install --upgrade seanblack_udacity_distributions_example
-
-# Gaussian usage
-
-- initialize object with initial params
-
-	>>> from distributions import Gaussian
-	>>> gaussian = Gaussian(50,4)
-
-- read in a dataset
-
-	>>> gaussian.read_data_file('file.txt')
-
-- display new mean/stdev for Gaussian object
-
-	>>> print(gaussian)
-
-# Binomial usage
-
-- initialize object with initial params
-
-	>>> from distributions import Binomial
-	>>> binomial = Binomial(0.5,100)
-
-- read in a dataset
-
-	>>> binomial.read_data_file('file.txt')
-
-- calculate and display new binomial stats
-
-	>>> binomial.replace_stats_with_data()
-    >>> print(binomial)
+pip install --upgrade scrapers

@@ -6,6 +6,7 @@ class Scraper:
 
 	def __init__(self,link):
 		self.link = link
+		self.page_soup = self.get_soup()
 
 	# get soup object from link
 	def get_soup(self):
@@ -20,3 +21,4 @@ class Scraper:
 
 	def set_link(self,link):
 		self.link = link
+		self.page_soup = self.get_soup()

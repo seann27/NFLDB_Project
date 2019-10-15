@@ -1,15 +1,30 @@
 from .GeneralScraper import Scraper
 from NFL_RefMaps import TableColumns
 
-class PFR(Scraper):
+class PFR_Gamelinks(Scraper):
 
 	def __init__(self,season,week):
 		self.season = season
 		self.week = week
 		link = "https://www.pro-football-reference.com/years/"+self.season+"/week_"+self.week+".htm"
 		Scraper.__init__(self,link)
-		self.page_soup = self.get_soup()
-		self.gamelinks = self.get_game_links()
+
+	def get_game_links(self):
+		games = []
+		game_links = self.page_soup.findAll("td",{"class":"gamelink"})
+		for game in game_links:
+			gameid = (str(game.a['href']))
+	        date = gameid[11:20]
+	        link = "https://www.pro-football-reference.com"+gameid
+			games.append(link)
+		self.gamelinks = games
+		return self.gamelinks
+
+
+class PFR_Gamepage(Scraper):
+
+	def __init__(self,link):
+		Scraper.__init__(self,link)
 
 	# utility method for parsing game page tables
 	def get_data(self,id,commented=0):
@@ -111,15 +126,6 @@ class PFR(Scraper):
 	    # return metrics in numpy array
 	    stats = np.array([gameid,date,team_home,points_home,team_away,points_away,home_fav,vegasline,overunder,ats_result,ou_result])
 	    return stats
-
-	def get_game_links(self):
-		games = []
-		game_links = self.page_soup.findAll("td",{"class":"gamelink"})
-		for game in game_links:
-			gameid = (str(game.a['href']))
-	        date = gameid[11:20]
-	        link = "https://www.pro-football-reference.com"+gameid
-		return games
 
 	def get_gameid(self,link):
 		if len(link) < 38:
