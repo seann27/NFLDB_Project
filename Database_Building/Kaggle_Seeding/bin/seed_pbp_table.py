@@ -278,6 +278,7 @@ cols = [
 	'drive', # Numeric drive number in the game.
 	'sp', # Binary indicator for whether or not a score occurred on the play.
 	'qtr', # Quarter of the game (5 is overtime).
+	'time_half', # Time remaining in the half
 	'down', # The down for the given play.
 	'goal_to_go', # Binary indicator for whether or not the posteam is in a goal down situation.
 	'ydstogo', # Numeric yards in distance from either the first down marker or the endzone in goal down situations.
@@ -289,6 +290,8 @@ cols = [
 	'no_huddle', # Binary indicator for whether or not the play was in no_huddle formation.
 	'qb_dropback', # Binary indicator for whether or not the QB dropped back on the play (pass attempt, sack, or scrambled).
 	'qb_scramble', # Binary indicator for whether or not the QB scrambled.
+	'qb_kneel', # Binary indicator for whether or not the QB kneeled.
+	'qb_spike', # Binary indicator for whether or not the QB spiked the ball.
 	'pass_length', # String indicator for pass length: short or deep.
 	'pass_location', # String indicator for pass location: left, middle, or right.
 	'air_yards', # Numeric value for distance in yards perpendicular to the line of scrimmage at where the targeted receiver either caught or didn't catch the ball.
