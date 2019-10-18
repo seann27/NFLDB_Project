@@ -1,15 +1,16 @@
 # import here
 import pandas as pd
 from sqlalchemy import create_engine
-from references_dict import Team_Dictionary
-from calculate_skillpoints import SkillPoints
+from NFL_RefMaps import TeamDictionary
+from NFL_Metrics import SkillPoints
+from scrapers import PFR_Gamelinks,PFR_Gamepage
 
 # connect to database
 print("Seeding gameinfo table . . .")
 kaggle_engine = create_engine('mysql+pymysql://root:@localhost:3306/kaggle')
 kaggle_conn = kaggle_engine.connect()
 nfldb_engine = create_engine('mysql+pymysql://root:@localhost:3306/main_stats')
-nfldb_conn = nfldb_engine.connect()
+main_engine = nfldb_engine.connect()
 file = ("D:\\NFLDB\\game_info.csv")
 
 # trim csv file to relevant stats for weeks 1-16, 2009-2018
@@ -34,7 +35,7 @@ gameinfo.drop(['weather_detail'],axis=1,inplace=True)
 
 def get_home_favorite(row):
 	home_team = row['team_home']
-	home_abbrev = Team_Dictionary().kaggle_games_abbrev[home_team]
+	home_abbrev = TeamDictionary().nfl_api[home_team]
 	if home_abbrev == row['team_favorite_id']:
 		return 1
 	else:
@@ -72,7 +73,7 @@ def get_index(row):
     date = row['schedule_date']
     comps = date.split('/')
     date = comps[2]+'-'+comps[0]+'-'+comps[1]
-    return date+Team_Dictionary().kaggle_games_abbrev[row['team_home']]
+    return date+TeamDictionary().nfl_api[row['team_home']]
 
 # # generate metrics for dataset, set index
 print("Generating odds metrics for gameinfo table . . .")
@@ -83,9 +84,7 @@ gameinfo['idx'] = gameinfo.apply(lambda row: get_index(row),axis=1)
 gameinfo.set_index('idx',inplace=True)
 
 def get_pbpindex(row):
-    team_dict = dict([[v,k] for k,v in Team_Dictionary().kaggle_plays_abbrev.items()])
-    team_name = team_dict[row['home_team']]
-    team_name = Team_Dictionary().kaggle_games_abbrev[team_name]
+    team_name = row['home_team']
     comps = row['game_date'].split('/')
     date = comps[2]+'-'+str(comps[0]).zfill(2)+'-'+str(comps[1]).zfill(2)
     idx = date+team_name
@@ -109,20 +108,20 @@ home_rush_sql = "select game_id, posteam as home_abbrev, sum(yards_gained) as ho
   and play_type = 'run' \
 group by game_id"
 
-home_short_pass_sql = "select game_id,sum(yards_gained) as home_shortpass_yds \
+home_short_pass_sql = "select game_id,sum(yards_gained) as home_shortpass_yds, \
    sum(pass_attempt) as home_shortpass_att, \
    sum(complete_pass) as home_shortpass_completions, \
-   sum(pass_touchdown) as home_shortpass_tds, \
+   sum(pass_touchdown) as home_shortpass_tds \
   from nfl_pbp \
   where play_type='pass' \
   and pass_length = 'short' \
   and posteam=home_team \
   group by game_id,posteam"
 
-home_deep_pass_sql = "select game_id,sum(yards_gained) as home_deeppass_yds \
+home_deep_pass_sql = "select game_id,sum(yards_gained) as home_deeppass_yds, \
    sum(pass_attempt) as home_deeppass_att, \
    sum(complete_pass) as home_deeppass_completions, \
-   sum(pass_touchdown) as home_deeppass_tds, \
+   sum(pass_touchdown) as home_deeppass_tds \
   from nfl_pbp \
   where play_type='pass' \
   and pass_length = 'deep' \
@@ -162,20 +161,20 @@ away_rush_sql = "select game_id, \
   and play_type = 'run' \
 group by game_id"
 
-away_short_pass_sql = "select game_id,sum(yards_gained) as away_shortpass_yds \
+away_short_pass_sql = "select game_id,sum(yards_gained) as away_shortpass_yds, \
    sum(pass_attempt) as away_shortpass_att, \
    sum(complete_pass) as away_shortpass_completions, \
-   sum(pass_touchdown) as away_shortpass_tds, \
+   sum(pass_touchdown) as away_shortpass_tds \
   from nfl_pbp \
   where play_type='pass' \
   and pass_length = 'short' \
   and posteam = away_team \
   group by game_id,posteam"
 
-away_deep_pass_sql = "select game_id,sum(yards_gained) as away_deeppass_yds \
+away_deep_pass_sql = "select game_id,sum(yards_gained) as away_deeppass_yds, \
    sum(pass_attempt) as away_deeppass_att, \
    sum(complete_pass) as away_deeppass_completions, \
-   sum(pass_touchdown) as away_deeppass_tds, \
+   sum(pass_touchdown) as away_deeppass_tds \
   from nfl_pbp \
   where play_type='pass' \
   and pass_length = 'deep' \

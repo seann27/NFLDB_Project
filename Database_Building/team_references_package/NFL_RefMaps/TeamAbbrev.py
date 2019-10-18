@@ -1,41 +1,40 @@
 class TeamDictionary:
 	def __init__(self):
-		self.kaggle_abbrev = {
+		self.nfl_api = {
 			'Pittsburgh Steelers':'PIT',
-			'Arizona Cardinals':'ARI',
-			'Atlanta Falcons':'ATL',
-			'Baltimore Ravens':'BAL',
-			'Carolina Panthers':'CAR',
-			'Cincinnati Bengals':'CIN',
 			'Cleveland Browns':'CLE',
-			'Green Bay Packers':'GB',
+			'New Orleans Saints':'NO',
+			'Tampa Bay Buccaneers':'TB',
 			'Houston Texans':'HOU',
 			'Indianapolis Colts':'IND',
-			'New Orleans Saints':'NO',
-			'New York Giants':'NYG',
+			'Cincinnati Bengals':'CIN',
+			'Carolina Panthers':'CAR',
+			'Baltimore Ravens':'BAL',
+			'Atlanta Falcons':'ATL',
+			'Arizona Cardinals':'ARI',
 			'Seattle Seahawks':'SEA',
-			'Tampa Bay Buccaneers':'TB',
+			'New York Giants':'NYG',
+			'Green Bay Packers':'GB',
 			'New England Patriots':'NE',
 			'Oakland Raiders':'OAK',
+			'Detroit Lions':'DET',
+			'Washington Redskins':'WAS',
+			'Tennessee Titans':'TEN',
+			'Philadelphia Eagles':'PHI',
+			'New York Jets':'NYJ',
+			'Kansas City Chiefs':'KC',
+			'Jacksonville Jaguars':'JAX',
+			'San Francisco 49ers':'SF',
 			'Buffalo Bills':'BUF',
+			'San Diego Chargers':'SD',
+			'Denver Broncos':'DEN',
 			'Chicago Bears':'CHI',
 			'Dallas Cowboys':'DAL',
-			'Denver Broncos':'DEN',
-			'Detroit Lions':'DET',
-			'Jacksonville Jaguars':'JAX',
-			'Kansas City Chiefs':'KC',
-			'New York Jets':'NYJ',
-			'Philadelphia Eagles':'PHI',
-			'San Diego Chargers':'LAC',
-			'San Francisco 49ers':'SF',
-			'Tennessee Titans':'TEN',
-			'Washington Redskins':'WAS',
 			'Miami Dolphins':'MIA',
 			'Minnesota Vikings':'MIN',
-			'St. Louis Rams':'LAR',
-			'Los Angeles Rams':'LAR',
+			'St. Louis Rams':'STL',
+			'Los Angeles Rams':'LA',
 			'Los Angeles Chargers':'LAC',
-			'Houston Oilers':'HOU'
 		}
 		self.fantasy_pros = {
 			'KC':'Kansas City Chiefs',
@@ -211,5 +210,5 @@ class TeamDictionary:
 			'SDG':'San Diego Chargers'
 		}
 
-	def get_reverse_dict(dictionary):
+	def get_reverse_dict(self,dictionary):
 		return dict([[v,k] for k,v in dictionary.items()])

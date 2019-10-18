@@ -2,6 +2,8 @@ class TableColumns:
 	def __init__(self):
 		self.football_ref = {
 		    'all_player_offense':[
+				'gameid',
+				'playerid',
 				'player',
 				'team',
 				'pass_cmp',
@@ -26,6 +28,8 @@ class TableColumns:
 				'fl'
 		    ],
 		    'all_targets_directions':[
+				'gameid',
+				'playerid',
 			    'player',
 				'team',
 				'sl_tgt',
@@ -54,6 +58,8 @@ class TableColumns:
 				'dmr_tds'
 		    ],
 		    'all_rush_directions':[
+				'gameid',
+				'playerid',
 			    'player',
 				'team',
 				'le_att',
@@ -79,6 +85,8 @@ class TableColumns:
 				'rg_td',
 		    ],
 		    'all_player_defense':[
+				'gameid',
+				'playerid',
 		        'player',
 				'team',
 				'int',
@@ -98,6 +106,8 @@ class TableColumns:
 				'ff'
 		    ],
 		    'all_returns':[
+				'gameid',
+				'playerid',
 				'player',
 				'team',
 				'kor',
@@ -112,6 +122,8 @@ class TableColumns:
 				'pr_lng'
 		    ],
 		    'all_home_snap_counts':[
+				'gameid',
+				'playerid',
 				'player',
 				'pos',
 				'off_snaps',
@@ -122,6 +134,8 @@ class TableColumns:
 				'st_pct'
 		    ],
 		    'all_vis_snap_counts':[
+				'gameid',
+				'playerid',
 				'player',
 				'pos',
 				'off_snaps',

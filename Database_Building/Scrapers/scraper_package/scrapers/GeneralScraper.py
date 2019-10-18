@@ -10,11 +10,11 @@ class Scraper:
 
 	# get soup object from link
 	def get_soup(self):
-	    uClient = uReq(self.link)
-	    page_html = uClient.read()
-	    uClient.close()
-	    self.page_soup = soup(page_html, "lxml")
-	    return self.page_soup
+		uClient = uReq(self.link)
+		page_html = uClient.read()
+		uClient.close()
+		self.page_soup = soup(page_html, "lxml")
+		return self.page_soup
 
 	def get_link(self):
 		return self.link

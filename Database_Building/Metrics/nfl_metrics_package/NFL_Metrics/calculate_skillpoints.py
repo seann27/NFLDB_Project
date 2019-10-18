@@ -45,16 +45,16 @@ class SkillPoints():
 		return team_stats
 
 	def calculate_rushFP(row,side):
-        met_yds = side+"_rush_yds"
-        met_att = side+"_rush_att"
-        met_tds = side+"_rush_tds"
-        yards = row[met_yds]
-        ypa = yards/row[met_att]
-        tds = row[met_tds]
-        points = (yards/10)+(tds*6)+ypa
-        return points
+		met_yds = side+"_rush_yds"
+		met_att = side+"_rush_att"
+		met_tds = side+"_rush_tds"
+		yards = row[met_yds]
+		ypa = yards/row[met_att]
+		tds = row[met_tds]
+		points = (yards/10)+(tds*6)+ypa
+		return points
 
-    def calculate_passFP(row,side):
+	def calculate_passFP(row,side):
 		# short pass cols
 		met_sp_yds = side+"_shortpass_yds"
 		met_sp_att = side+"_shortpass_att"
@@ -62,10 +62,10 @@ class SkillPoints():
 		met_sp_tds = side+"_shortpass_tds"
 
 		# short pass fp
-        sp_yards = row[met_sp_yds]
-        sp_tds = row[met_sp_tds]
-        sp_completion_pct = row[met_sp_comp]/row[met_sp_att]
-        sp_points = (sp_yards/10)+(sp_tds*6)+(row[met_sp_comp]*sp_completion_pct)
+		sp_yards = row[met_sp_yds]
+		sp_tds = row[met_sp_tds]
+		sp_completion_pct = row[met_sp_comp]/row[met_sp_att]
+		sp_points = (sp_yards/10)+(sp_tds*6)+(row[met_sp_comp]*sp_completion_pct)
 
 		# deep pass cols
 		met_dp_yds = side+"_deeppass_yds"
@@ -74,10 +74,10 @@ class SkillPoints():
 		met_dp_tds = side+"_deeppass_tds"
 
 		# deep pass fp
-        dp_yards = row[met_dp_yds]
-        dp_tds = row[met_dp_tds]
-        dp_completion_pct = row[met_dp_comp]/row[met_dp_att]
-        dp_points = (dp_yards/10)+(dp_tds*6)+(row[met_dp_comp]*dp_completion_pct)
+		dp_yards = row[met_dp_yds]
+		dp_tds = row[met_dp_tds]
+		dp_completion_pct = row[met_dp_comp]/row[met_dp_att]
+		dp_points = (dp_yards/10)+(dp_tds*6)+(row[met_dp_comp]*dp_completion_pct)
 
 		# calculate percentage short vs deep
 		short_deep_pct = sp_points/dp_points
