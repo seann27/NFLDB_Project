@@ -325,6 +325,8 @@ cols = [
 	'rush_attempt', # Binary indicator for if the play was a run.
 	'pass_attempt', # Binary indicator for if the play was a pass attempt (includes sacks).
 	'sack', # Binary indicator for if the play ended in a sack.
+	'sack_player_id',
+	'sack_player_name',
 	'touchdown', # Binary indicator for if the play resulted in a TD.
 	'pass_touchdown', # Binary indicator for if the play resulted in a passing TD.
 	'rush_touchdown', # Binary indicator for if the play resulted in a rushing TD.
@@ -339,7 +341,7 @@ cols = [
 	'passer_player_id', # Unique identifier for the player that attempted the pass.
 	'passer_player_name', # String name for the player that attempted the pass.
 	'receiver_player_id', # Unique identifier for the receiver that was targeted on the pass.
-	'receiver_player_name', # String name for the player that received the lateral on a reception.
+	'receiver_player_name', # String name for the player that received the reception.
 	'rusher_player_id', # Unique identifier for the player that attempted the run.
 	'rusher_player_name', # String name for the player that attempted the run.
 	'interception_player_id', # Unique identifier for the player that intercepted the pass.
