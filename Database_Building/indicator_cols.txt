@@ -1,0 +1,263 @@
+#     mpd['play_type'] = []
+#     mpd['qb_dropback'] = []
+#     mpd['pass_length'] = []
+#     mpd['pass_location'] = []
+#     mpd['air_yards'] = []
+#     mpd['yards_after_catch'] = []
+#     mpd['run_location'] = []
+#     mpd['run_gap'] = []
+#     mpd['field_goal_result'] = []
+#     mpd['kick_distance'] = []
+#     mpd['extra_point_result'] = []
+#     mpd['two_point_conv_result'] = []
+#     mpd['td_team'] = []
+#     mpd['total_home_score'] = []
+#     mpd['total_away_score'] = []
+#     mpd['posteam_score'] = []
+#     mpd['defteam_score'] = []
+#     mpd['score_differential'] = []
+#     mpd['posteam_score_post'] = []
+#     mpd['defteam_score_post'] = []
+#     mpd['score_differential_post'] = []
+
+# 'interception'
+# 'fumble_forced'
+# 'fumble_not_forced'
+# 'fumble_out_of_bounds'
+# 'safety'
+# 'tackled_for_loss'
+# 'fumble_lost'
+# 'qb_hit'
+# 'interception_player_id'
+# 'interception_player_name'
+# 'punt_returner_player_id'
+# 'punt_returner_player_name'
+# 'kickoff_returner_player_name'
+# 'kickoff_returner_player_id'
+# 'punter_player_id'
+# 'punter_player_name'
+# 'kicker_player_name'
+# 'kicker_player_id'
+# 'blocked_player_id'
+# 'blocked_player_name'
+# 'tackle_for_loss_1_player_id'
+# 'tackle_for_loss_1_player_name'
+# 'tackle_for_loss_2_player_id'
+# 'tackle_for_loss_2_player_name'
+# 'qb_hit_1_player_id'
+# 'qb_hit_1_player_name'
+# 'qb_hit_2_player_id'
+# 'qb_hit_2_player_name'
+# 'forced_fumble_player_1_team'
+# 'forced_fumble_player_1_player_id'
+# 'forced_fumble_player_1_player_name'
+# 'forced_fumble_player_2_team'
+# 'forced_fumble_player_2_player_id'
+# 'forced_fumble_player_2_player_name'
+# 'pass_defense_1_player_id'
+# 'pass_defense_1_player_name'
+# 'pass_defense_2_player_id'
+# 'pass_defense_2_player_name'
+# 'fumbled_1_team'
+# 'fumbled_1_player_id'
+# 'fumbled_1_player_name'
+# 'fumbled_2_player_id'
+# 'fumbled_2_player_name'
+# 'fumbled_2_team'
+# 'fumble_recovery_1_team'
+# 'fumble_recovery_1_yards'
+# 'fumble_recovery_1_player_id'
+# 'fumble_recovery_1_player_name'
+# 'fumble_recovery_2_team'
+# 'fumble_recovery_2_yards'
+# 'fumble_recovery_2_player_id'
+# 'fumble_recovery_2_player_name'
+# 'return_team'
+# 'return_yards'
+# 'replay_or_challenge'
+# 'replay_or_challenge_result'
+# 'defensive_two_point_attempt'
+# 'defensive_two_point_conv'
+# 'defensive_extra_point_attempt'
+# 'defensive_extra_point_conv'
+
+# initialize indicators function
+def initialize_indicators(mpd,players):
+    indicators = [
+        "punt_blocked",
+        "first_down_rush",
+        "first_down_pass",
+        "first_down_penalty",
+        "third_down_converted",
+        "third_down_failed",
+        "fourth_down_converted",
+        "fourth_down_failed",
+        "interception",
+        "punt_inside_twenty",
+        "punt_in_endzone",
+        "punt_out_of_bounds",
+        "punt_downed",
+        "punt_fair_catch",
+        "kickoff_inside_twenty",
+        "kickoff_in_endzone",
+        "kickoff_out_of_bounds",
+        "kickoff_fair_catch",
+        "fumble_forced",
+        "fumble_not_forced",
+        "fumble_out_of_bounds",
+        "timeout",
+        "field_goal_yards_missed",
+        "field_goal_yards_made",
+        "field_goal_yards_blocked",
+        "extra_point_good",
+        "extra_point_failed",
+        "extra_point_blocked",
+        "two_point_rush_good",
+        "two_point_rush_failed",
+        "two_point_pass_good",
+        "two_point_pass_failed",
+        "solo_tackle",
+        "safety_tackle", "penalty_yards",
+        "tackled_for_loss",
+        "extra_point_safety",
+        "two_point_rush_safety",
+        "two_point_pass_safety",
+        "kickoff_downed",
+        "two_point_pass_reception_good",
+        "two_point_pass_reception_failed",
+        "fumble_lost",
+        "own_kickoff_recovery",
+        "own_kickoff_recovery_td",
+        "qb_hit",
+        "extra_point_aborted",
+        "two_point_return",
+        "defensive_two_point_attempt",
+        "defensive_two_point_conv",
+        "defensive_extra_point_attempt",
+        "defensive_extra_point_conv"
+    ]
+        punt_blocked = 0
+        first_down_rush = 0
+        first_down_pass = 0
+        first_down_penalty = 0
+        third_down_converted = 0
+        third_down_failed = 0
+        fourth_down_converted = 0
+        fourth_down_failed = 0
+        interception = 0
+        punt_inside_twenty = 0
+        punt_in_endzone = 0
+        punt_out_of_bounds = 0
+        punt_downed = 0
+        punt_fair_catch = 0
+        kickoff_inside_twenty = 0
+        kickoff_in_endzone = 0
+        kickoff_out_of_bounds = 0
+        kickoff_fair_catch = 0
+        fumble_forced = 0
+        fumble_not_forced = 0
+        fumble_out_of_bounds = 0
+        timeout = 0
+        field_goal_yards_missed = 0
+        field_goal_yards_made = 0
+        field_goal_yards_blocked = 0
+        extra_point_good = 0
+        extra_point_failed = 0
+        extra_point_blocked = 0
+        two_point_rush_good = 0
+        two_point_rush_failed = 0
+        two_point_pass_good = 0
+        two_point_pass_failed = 0
+        solo_tackle = 0
+        safety_tackle = 0
+        penalty_yards = 0
+        tackled_for_loss = 0
+        extra_point_safety = 0
+        two_point_rush_safety = 0
+        two_point_pass_safety = 0
+        kickoff_downed = 0
+        two_point_pass_reception_good = 0
+        two_point_pass_reception_failed = 0
+        fumble_lost = 0
+        own_kickoff_recovery = 0
+        own_kickoff_recovery_td = 0
+        qb_hit = 0
+        extra_point_aborted = 0
+        two_point_return = 0
+        defensive_two_point_attempt = 0
+        defensive_two_point_conv = 0
+        defensive_extra_point_attempt = 0
+        defensive_extra_point_conv = 0
+
+            mpd['punt_blocked'] = []
+    mpd['first_down_rush'] = []
+    mpd['first_down_pass'] = []
+    mpd['first_down_penalty'] = []
+    mpd['third_down_converted'] = []
+    mpd['third_down_failed'] = []
+    mpd['fourth_down_converted'] = []
+    mpd['fourth_down_failed'] = []
+    mpd['interception'] = []
+    mpd['punt_inside_twenty'] = []
+    mpd['punt_in_endzone'] = []
+    mpd['punt_out_of_bounds'] = []
+    mpd['punt_downed'] = []
+    mpd['punt_fair_catch'] = []
+    mpd['kickoff_inside_twenty'] = []
+    mpd['kickoff_in_endzone"'] = []
+    mpd['kickoff_out_of_bounds'] = []
+    mpd['kickoff_fair_catch'] = []
+    mpd['fumble_forced'] = []
+    mpd['fumble_not_forced"'] = []
+    mpd['fumble_out_of_bounds'] = []
+    mpd['timeout'] = []
+    mpd['field_goal_yards_missed'] = []
+    mpd['field_goal_yards_made'] = []
+    mpd['field_goal_yards_blocked'] = []
+    mpd['extra_point_good'] = []
+    mpd['extra_point_failed'] = []
+    mpd['extra_point_blocked'] = []
+    mpd['two_point_rush_good'] = []
+    mpd['two_point_rush_failed'] = []
+    mpd['two_point_pass_good'] = []
+    mpd['two_point_pass_failed'] = []
+    mpd['solo_tackle'] = []
+    mpd['safety_tackle'] = []
+    mpd['penalty_yards'] = []
+    mpd['tackled_for_loss'] = []
+    mpd['extra_point_safety'] = []
+    mpd['two_point_rush_safety'] = []
+    mpd['two_point_pass_safety'] = []
+    mpd['kickoff_downed'] = []
+    mpd['two_point_pass_reception_good'] = []
+    mpd['two_point_pass_reception_failed'] = []
+    mpd['fumble_lost'] = []
+    mpd['own_kickoff_recovery'] = []
+    mpd['own_kickoff_recovery_td'] = []
+    mpd['qb_hit'] = []
+    mpd['extra_point_aborted'] = []
+    mpd['two_point_return'] = []
+    mpd['defensive_two_point_attempt'] = []
+    mpd['defensive_two_point_conv'] = []
+    mpd['defensive_extra_point_attempt'] = []
+    mpd['defensive_extra_point_conv'] = []
+
+        metrics = []
+        for player in players:
+            for seq in players[player]:
+                statId = seq['statId']
+                metrics.append(stat_id_map[statId])
+        for feat in indicators:
+            if feat in metrics:
+                mpd[feat].append(1)
+            else:
+                mpd[feat].append(0)
+        return mpd
+
+{'pass_att': 1,
+ 'complete_pass': 1,
+ 'incomplete_pass': 0,
+ 'passer_pid': '00-0026158',
+ 'passer_name': 'J.Flacco',
+ 'receiver_pid': '00-0034109',
+ 'receiver_name': 'P.Lindsay'}
