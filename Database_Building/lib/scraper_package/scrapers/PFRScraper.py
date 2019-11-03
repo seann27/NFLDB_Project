@@ -98,12 +98,15 @@ class PFR_Gamepage(Scraper):
 		gameinfo = soup(comment,"lxml")
 		gameinfo = [tr.findAll("td") for tr in gameinfo.findAll("tr",{"class":None})]
 		vegasline = gameinfo[-2][0].text.strip()
-		vegasline = re.split("\s-",vegasline)
-		# print(vegasline)
-		home_fav = 1
-		if vegasline[0] == team_away:
-			home_fav = 0
-		vegasline = float(vegasline[1])
+		if(vegasline == 'Pick'):
+			home_fav = 1
+		else:
+			vegasline = re.split("\s-",vegasline)
+			# print(vegasline)
+			home_fav = 1
+			if vegasline[0] == team_away:
+				home_fav = -1
+			vegasline = float(vegasline[1])
 		overunder = float(gameinfo[-1][0].text.split(" ")[0].strip())
 		# print('home_fav = ',home_fav,', ats = ',vegasline,', ou = ',overunder)
 
@@ -116,10 +119,15 @@ class PFR_Gamepage(Scraper):
 
 		# calculate vegas results
 		ats_result = 0
-		if((home_score_diff > vegasline and home_fav == 1) or (home_score_diff < (vegasline*-1) and home_fav == 0)):
+		if vegasline == 'Pick' and home_score_diff >= 0:
 			ats_result = 1
-		elif((home_score_diff < vegasline and home_fav == 1) or (home_score_diff > (vegasline*-1) and home_fav == 0)):
+		elif vegasline == 'Pick' and home_score_diff < 0:
 			ats_result = -1
+		else:
+			if((home_score_diff > vegasline and home_fav == 1) or (home_score_diff < (vegasline*-1) and home_fav == 0)):
+				ats_result = 1
+			elif((home_score_diff < vegasline and home_fav == 1) or (home_score_diff > (vegasline*-1) and home_fav == 0)):
+				ats_result = -1
 
 		ou_result = 0
 		if(points_home+points_away > overunder):
