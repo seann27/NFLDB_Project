@@ -265,8 +265,6 @@ dtypes = {
 }
 
 cols = [
-	# 'season', # Season
-	# 'week', # week (1-17)
 	'play_id', # Numeric play id that when used with game_id and drive provides
 	'game_id', # Ten digit identifier for NFL game.
 	'home_team', # String abbreviation for the home team.
