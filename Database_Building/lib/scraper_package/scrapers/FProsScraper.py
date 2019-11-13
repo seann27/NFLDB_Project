@@ -4,7 +4,7 @@ import re
 from scrapers.GeneralScraper import Scraper
 from NFL_RefMaps import TableColumns,TeamDictionary
 
-class LoadProjections():
+class LoadProjections:
 
 	def __init__(self,week):
 
@@ -54,6 +54,7 @@ class LoadProjections():
 
 		return projections
 
-class LoadRankings():
+class LoadRankings:
 
-	
+	def __init__(self):
+		print('ello govna')
