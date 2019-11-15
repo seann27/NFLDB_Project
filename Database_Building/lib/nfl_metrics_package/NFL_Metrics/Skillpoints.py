@@ -1,7 +1,7 @@
 # import here
 import pandas as pd
 import numpy as np
-from generate_performance_metrics import TeamPerformance
+from Performance import TeamPerformance
 
 # put this list into NFL_RefMaps package
 skillpoint_cols = [

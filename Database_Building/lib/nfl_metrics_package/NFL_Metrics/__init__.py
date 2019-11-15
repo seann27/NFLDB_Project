@@ -1,1 +1,1 @@
-from .calculate_skillpoints import SkillPoints
+from .Skillpoints import SkillPoints
