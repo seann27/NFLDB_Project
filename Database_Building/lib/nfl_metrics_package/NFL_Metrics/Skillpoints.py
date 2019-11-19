@@ -28,12 +28,15 @@ def get_team_skillpoints(game,side):
 	team_stats.append(opponent)
 	rushing_skillpoints = calculate_rushFP(game,side)
 	team_stats.append(rushing_skillpoints)
-	passing_skillpoints,short_pct,deep_pct = calculate_passFP(game,side)
-	team_stats.append(passing_skillpoints)
-	team_stats.append(short_pct)
-	team_stats.append(deep_pct)
+	sp_skillpoints,dp_skillpoints = calculate_passFP(game,side)
+	team_stats.append([sp_skillpoints,dp_skillpoints])
 	performance = TeamPerformance(game['season'],game['week'])
-	rush,sp,dp = performance.get_team_performance(team,opponent)
+	total_sp = {
+		'rushing_skillpoints':rushing_skillpoints,
+		'short_pass_skillpoints':sp_skillpoints,
+		'deep_pass_skillpoints':dp_skillpoints
+	}
+	rush,sp,dp = performance.get_team_performance(team,opponent,total_sp)
 	team_stats.append(rush)
 	team_stats.append(sp)
 	team_stats.append(dp)
@@ -79,7 +82,9 @@ def calculate_passFP(game,side):
 
 	# calculate total pass fp
 	met_sack = side+"_sacked"
-	return (sp_points+dp_points-game[met_sack])
+	sp_points -= (game[met_sack]/2)
+	dp_points -= (game[met_sack]/2)
+	return sp_points,dp_points
 
 
 class SkillPoints():
@@ -94,5 +99,6 @@ class SkillPoints():
 			skillpoints_by_team.append(get_team_skillpoints(game,'away'))
 
 		skillpoints_df = np.vstack(skillpoints_by_team)
+		skillpoints_df['idx'] = skillpoints_df['gameid']+skillpoints_df['team']
 		self.skillpoints = pd.DataFrame(data=skillpoints_df,columns=skillpoint_cols)
 		return self.skillpoints

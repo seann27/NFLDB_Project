@@ -5,18 +5,16 @@ from sqlalchemy import create_engine
 
 class TeamPerformance:
 
-	def __init__(self,season,week):
+	def __init__(self,season,week,skillpoint_dict):
 		self.season = season
 		self.week = week
+		self.skillpoint_dict = skillpoint_dict
 
 		# connect to database
 		nfldb_engine = create_engine('mysql+pymysql://root:@localhost:3306/main_stats')
 		self.main_engine = nfldb_engine.connect()
 
 	def get_performance_mets(self,metric,team,opp):
-		sp_sql = "select "+metric+" from nfl_skillpoints "
-		sp_sql += " where team = :team and season = :season and week = :week"
-
 		base_sql = "select avg("+metric+") as avg_"+metric+" from nfl_skillpoints "
 		base_suffix += " and season = :season and week < :week"
 		team_avg_sql = base_sql + "where team = :team " + base_suffix
@@ -29,7 +27,7 @@ class TeamPerformance:
 			'week' : self.week
 		}
 
-		skillpoints = self.main_engine.execute(sp_sql,params=params).fetchone()
+		skillpoints = self.skillpoint_dict[metric]
 		team_avg = self.main_engine.execute(team_avg_sql,params=params).fetchone()
 		opp_avg = self.main_engine.execute(opp_avg_sql,params=params).fetchone()
 		performance = (skillpoints**2)/(team_avg*opp_avg)

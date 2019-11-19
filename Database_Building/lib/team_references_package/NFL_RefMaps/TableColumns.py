@@ -243,6 +243,7 @@ class TableColumns:
 		}
 		self.nflapi = {
 			'pbp_cols':[
+				'idx', # unique identifier -> game_id+drive+play_id
 				'play_id', # Numeric play id that when used with game_id and drive provides
 				'game_id', # Ten digit identifier for NFL game.
 				'home_team', # String abbreviation for the home team.

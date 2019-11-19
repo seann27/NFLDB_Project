@@ -1306,6 +1306,7 @@ class NFLAPI_Processor:
 
 				idx += 1
 		self.mpd = pd.DataFrame.from_dict(self.mpd)
+		self.mpd['idx'] = self.mpd.game_id.map(str)+self.mpd.drive.map(str)+self.mpd.play_id.map(str)
 		self.mpd = self.mpd[TableColumns().nflapi['pbp_cols']]
 		self.mpd
 		return self.mpd

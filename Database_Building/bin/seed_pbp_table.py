@@ -503,8 +503,9 @@ if __name__ == "__main__":
 		# df.insert(0, 'pid', create_indexes(cur_id,dfSize))
 		# df.set_index('pid')
 		# cur_id += dfSize
+		df['idx'] = df.game_id.map(str)+df.drive.map(str)+df.play_id.map(str)
 		action = 'replace'
 		if idx > 0:
 			action = 'append'
 		df = df[TableColumns().nflapi['pbp_cols']]
-		df.to_sql('nfl_pbp', con=engine, if_exists=action,index=False)
+		df.to_sql('nfl_pbp', con=engine, if_exists=action,index='idx')
