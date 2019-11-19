@@ -1,10 +1,11 @@
+import re
 from scrapers.GeneralScraper import Scraper
 
 class ApiGameLinks:
 
 	def __init__(self,season,week):
 		self.baseurl = 'http://www.nfl.com/schedules/'+str(season)+'/reg'+str(week)
-		self.basesoup = Scraper(base_url).get_soup()
+		self.basesoup = Scraper(self.baseurl).get_soup()
 
 	def get_gamelinks(self):
 		self.gamelinks = []

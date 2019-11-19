@@ -3,15 +3,15 @@ import pandas as pd
 import numpy as np
 from sqlalchemy import create_engine
 
-# connect to database
-nfldb_engine = create_engine('mysql+pymysql://root:@localhost:3306/main_stats')
-main_engine = nfldb_engine.connect()
-
 class TeamPerformance:
 
 	def __init__(self,season,week):
 		self.season = season
 		self.week = week
+
+		# connect to database
+		nfldb_engine = create_engine('mysql+pymysql://root:@localhost:3306/main_stats')
+		self.main_engine = nfldb_engine.connect()
 
 	def get_performance_mets(self,metric,team,opp):
 		sp_sql = "select "+metric+" from nfl_skillpoints "
@@ -23,15 +23,15 @@ class TeamPerformance:
 		opp_avg_sql = base_sql + "where opponent = :opp " + base_suffix
 
 		params = {
-			'team' = team,
-			'opp' = opp,
-			'season' = self.season,
-			'week' = self.week
+			'team' : team,
+			'opp' : opp,
+			'season' : self.season,
+			'week' : self.week
 		}
 
-		skillpoints = main_engine.execute(sp_sql,params=params).fetchone()
-		team_avg = main_engine.execute(team_avg_sql,params=params).fetchone()
-		opp_avg = main_engine.execute(opp_avg_sql,params=params).fetchone()
+		skillpoints = self.main_engine.execute(sp_sql,params=params).fetchone()
+		team_avg = self.main_engine.execute(team_avg_sql,params=params).fetchone()
+		opp_avg = self.main_engine.execute(opp_avg_sql,params=params).fetchone()
 		performance = (skillpoints**2)/(team_avg*opp_avg)
 		return performance
 

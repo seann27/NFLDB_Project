@@ -1,6 +1,7 @@
 import pandas as pd
 from sqlalchemy import create_engine
-engine = create_engine('mysql+pymysql://root:@localhost:3306/kaggle')
+from NFL_RefMaps import TableColumns
+engine = create_engine('mysql+pymysql://root:@localhost:3306/main_stats')
 
 dbint = 'int64'
 dbstring = 'str'
@@ -276,8 +277,8 @@ cols = [
 	'drive', # Numeric drive number in the game.
 	'sp', # Binary indicator for whether or not a score occurred on the play.
 	'qtr', # Quarter of the game (5 is overtime).
-	'time_half', # Time remaining in the half
 	'down', # The down for the given play.
+	'time',
 	'goal_to_go', # Binary indicator for whether or not the posteam is in a goal down situation.
 	'ydstogo', # Numeric yards in distance from either the first down marker or the endzone in goal down situations.
 	'ydsnet', # Numeric value for total yards gained on the given drive.
@@ -323,8 +324,6 @@ cols = [
 	'rush_attempt', # Binary indicator for if the play was a run.
 	'pass_attempt', # Binary indicator for if the play was a pass attempt (includes sacks).
 	'sack', # Binary indicator for if the play ended in a sack.
-	'sack_player_id',
-	'sack_player_name',
 	'touchdown', # Binary indicator for if the play resulted in a TD.
 	'pass_touchdown', # Binary indicator for if the play resulted in a passing TD.
 	'rush_touchdown', # Binary indicator for if the play resulted in a rushing TD.
@@ -451,6 +450,41 @@ def create_indexes(index,size):
 		ids.append(i+index)
 	return ids
 
+# returns quarter_end indicator, time left in half
+def get_time_status(qtr,time):
+	ts = {}
+	time = str(time)
+	if len(time) > 0:
+		time = time.split(':')
+		qtr = (int(qtr)%2)*15
+		ts['qtr_end'] = 0
+		ts['time_left'] = 0
+		if(len(time)<2):
+			ts['qtr_end'] = 1
+			ts['time_left'] = 0
+		else:
+			seconds_remaining = float(int(time[1])/60)
+			minutes_remaining = int(time[0])+qtr
+			ts['time_left'] = minutes_remaining+seconds_remaining
+		return ts
+	else:
+		ts['time_left'] = 0
+		return ts
+
+def get_timeleft(row):
+	ts = get_time_status(row['qtr'],row['time'])
+	return ts['time_left']
+
+def get_sack_info(row,type='id'):
+	sack_player_id = 'N/A'
+	sack_player_name = 'N/A'
+	if row['sack'] != '0':
+		sack_player_id = row['tackle_for_loss_1_player_id']
+		sack_player_name = row['tackle_for_loss_1_player_name']
+	if type == 'id':
+		return sack_player_id
+	else:
+		return sack_player_name
 
 if __name__ == "__main__":
 	seasons = [2009,2010,2011,2012,2013,2014,2015,2016,2017,2018]
@@ -462,11 +496,15 @@ if __name__ == "__main__":
 		print("Dropping duplicates . . .")
 		df.drop_duplicates(subset=['play_id','game_id','desc'], keep='first', inplace=True)
 		# df = df[(df['play_type'].notnull()) & (df['play_type'] != 'no_play')]
-		dfSize = df['play_id'].count()
-		df.insert(0, 'pid', create_indexes(cur_id,dfSize))
-		df.set_index('pid')
-		cur_id += dfSize
+		df['time_half'] = df.apply(lambda row: get_timeleft(row),axis=1)
+		df['sack_player_id'] = df.apply(lambda row: get_sack_info(row),axis=1)
+		df['sack_player_name'] = df.apply(lambda row: get_sack_info(row,'name'),axis=1)
+		# dfSize = df['play_id'].count()
+		# df.insert(0, 'pid', create_indexes(cur_id,dfSize))
+		# df.set_index('pid')
+		# cur_id += dfSize
 		action = 'replace'
 		if idx > 0:
 			action = 'append'
+		df = df[TableColumns().nflapi['pbp_cols']]
 		df.to_sql('nfl_pbp', con=engine, if_exists=action,index=False)
