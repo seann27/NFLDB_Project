@@ -25,20 +25,6 @@ main_engine = nfldb_engine.connect()
 #        'away_interceptions'],
 #       dtype='object')
 
-gameinfo_cols = [
-    'gameid',
-    'date',
-    'team_home',
-    'points_home',
-    'team_away',
-    'points_away',
-    'home_fav',
-    'vegasline',
-    'overunder',
-    'ats_result',
-    'ou_result'
-]
-
 def get_pbpindex(row):
 	team_name = row['home_team']
 	comps = row['game_date'].split('/')
@@ -103,9 +89,50 @@ class GameSummary:
         gamelinks = PFR_Gamelinks.get_game_links(self.season,self.week)
 
         # build gameinfo base dataframe
+        metrics = [[
+            'game_id',
+            'schedule_date',
+            #'schedule_season',
+            #'schedule_week',
+            'team_home',
+            'score_home',
+            'team_away',
+            'score_away',
+            #'team_favorite_id',
+            'home_favorite',
+            'spread_favorite',
+            'over_under_line',
+            'spread_result',
+            'OU_result',
+            #'pfr_gamelinks',
+            #'season',
+            #'week',
+        ]]
+
         for link in gamelinks:
             game = PFR_Gamepage(link)
-            gameinfo = game.get_gameinfo()
+            metrics.append(game.get_gameinfo())
+            # returns:
+                # gameid,
+                # date,
+                # team_home,
+                # points_home,
+                # team_away,
+                # points_away,
+                # home_fav,
+                # vegasline,
+                # overunder,
+                # ats_result,
+                # ou_result
+        df = np.vstack(metrics)
+        gameinfo = pd.DataFrame(data=df[1:,1:],index=df[1:,0],columns=df[0,1:])
+        
+        def get_teamfav_id(row):
+            if row['home_favorite']:
+                return row['team_home']
+            else:
+                return row['team_away']
+        gameinfo['team_favorite_id'] = gameinfo.apply(lambda row: get_teamfav_id(row),axis=1)
 
         # extract gameids from API play by play table
         print("Getting gameids from nfl_api . . .")
