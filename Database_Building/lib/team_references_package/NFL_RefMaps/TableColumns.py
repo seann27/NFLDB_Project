@@ -228,10 +228,12 @@ class TableColumns:
 				'fantasy_points'
 			],
 			'rankings':[
+				'rank',
 				'pid',
 				'name',
 				'team',
 				'opp',
+				'week',
 				'home_away',
 				'best',
 				'worst',

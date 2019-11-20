@@ -9,6 +9,22 @@ from scrapers import PFR_Gamelinks,PFR_Gamepage
 nfldb_engine = create_engine('mysql+pymysql://root:@localhost:3306/main_stats')
 main_engine = nfldb_engine.connect()
 
+# Index(['game_id', 'schedule_date', 'schedule_season', 'schedule_week',
+#        'team_home', 'score_home', 'score_away', 'team_away',
+#        'team_favorite_id', 'spread_favorite', 'over_under_line',
+#        'home_favorite', 'spread_result', 'OU_result', 'pfr_gamelinks',
+#        'season', 'week', 'home_abbrev', 'home_rush_yds', 'home_rush_att',
+#        'home_rush_tds', 'home_shortpass_yds', 'home_shortpass_att',
+#        'home_shortpass_completions', 'home_shortpass_tds', 'home_deeppass_yds',
+#        'home_deeppass_att', 'home_deeppass_completions', 'home_deeppass_tds',
+#        'home_sacked', 'home_interceptions', 'away_abbrev', 'away_rush_yds',
+#        'away_rush_att', 'away_rush_tds', 'away_shortpass_yds',
+#        'away_shortpass_att', 'away_shortpass_completions',
+#        'away_shortpass_tds', 'away_deeppass_yds', 'away_deeppass_att',
+#        'away_deeppass_completions', 'away_deeppass_tds', 'away_sacked',
+#        'away_interceptions'],
+#       dtype='object')
+
 gameinfo_cols = [
     'gameid',
     'date',

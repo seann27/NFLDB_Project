@@ -9,18 +9,21 @@ cols = ['nflapi_id','pfr_id','first_name','last_name','position','team']
 
 sql = """
 select pid,name,team from (
-    select distinct(passerid) as pid, passer_name as name, posteam as team from nfl_pbp
-    union
-    select distinct(rusherid) as pid, rusher_name as name, posteam as team from nfl_pbp
-    union
-    select distinct(receiverid) as pid, receiver_name, posteam as team as name from nfl_pbp
-    union
-    select distinct(kickerid) as pid, kicker_name, posteam as team as name from nfl_pbp
-    union
-    select distinct(tacklerid) as pid, tackler_name as name, case when home_team = posteam then away_team else home_team end as team from nfl_pbp
-    union
-    select distinct(pass_defenderid) as pid, pass_defender_name, case when home_team = posteam then away_team else home_team end as team as name from nfl_pbp
-)
+select distinct(passer_player_id) as pid, passer_player_name as name, posteam as team from nfl_pbp
+union
+select distinct(rusher_player_id) as pid, rusher_player_name as name, posteam as team from nfl_pbp
+union
+select distinct(receiver_player_id) as pid, receiver_player_name as name, posteam as team from nfl_pbp
+union
+select distinct(kicker_player_id) as pid, kicker_player_name as name, posteam as team from nfl_pbp
+union
+select distinct(tackle_for_loss_1_player_id) as pid, tackle_for_loss_1_player_name as name, case when home_team = posteam then away_team else home_team end as team from nfl_pbp
+union
+select distinct(pass_defense_1_player_id) as pid, pass_defense_1_player_name as name, case when home_team = posteam then away_team else home_team end as team from nfl_pbp
+) as player_query
+where pid is not null
+and name is not null
+and team is not null
 """
 
 df = pd.read_sql(sql,con=main_engine)

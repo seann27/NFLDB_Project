@@ -56,7 +56,7 @@ class LoadProjections:
 
 class LoadRankings:
 
-	def __init__(self):
+	def __init__(self,week):
 
 		self.week = week
 		self.rankings = self.get_all_rankings()
@@ -74,22 +74,18 @@ class LoadRankings:
 		metrics = [TableColumns().fantasy_pros['rankings']]
 		players = data.findAll("tr",{"class":re.compile(r'mpb-player-')})
 		for player in players:
-			stats = player.findAll("td")
-			name = stats[0].a.text
-			team = 'n/a'
-			if pos == 'dst':
-				team = TeamDictionary().nfl_api[name]
-			else:
-				err = stats[0].text.strip().split()
-				if len(err) == 0:
-					print("Error detected in ",link," ... skipping row")
-					break
-				team = stats[0].text.strip().split()[-1]
-			a = stats[0].findAll("a")
-			pid = a[1].get('class')[1]
-			mets = np.array([pid,name,team,self.week])
-			for stat in stats[1:]:
-				mets = np.append(mets,stat.text)
+			rank = stats[0].text
+			pid = stats[1].input.get('data-id')
+			name = stats[1].input.get('data-name')
+			team = stats[1].input.get('data-team')
+			opp = stats[3].text.split('.')
+			opp = opp[1].strip()
+			home = 1
+			if opp[0].strip() == 'at':
+			    home = 0
+			mets = np.array([rank,pid,name,team,opp,self.week,home])
+			for stat in stats[4:]:
+    			mets.append(stat.text)
 			metrics.append(mets)
 		df = np.vstack(metrics)
 		return pd.DataFrame(data=df[1:,1:],index=df[1:,0],columns=df[0,1:])
