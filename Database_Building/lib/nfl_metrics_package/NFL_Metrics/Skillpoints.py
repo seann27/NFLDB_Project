@@ -1,7 +1,7 @@
 # import here
 import pandas as pd
 import numpy as np
-from .Performance import TeamPerformance
+# from .Performance import TeamPerformance
 
 # put this list into NFL_RefMaps package
 skillpoint_cols = [
@@ -11,9 +11,9 @@ skillpoint_cols = [
 	'rushing_skillpoints',
 	'short_pass_skillpoints',
 	'deep_pass_skillpoints',
-	'rush_performance',
-	'short_pass_performance',
-	'deep_pass_performance'
+	# 'rush_performance',
+	# 'short_pass_performance',
+	# 'deep_pass_performance'
 ]
 
 def get_team_skillpoints(game,side):
@@ -30,17 +30,17 @@ def get_team_skillpoints(game,side):
 	team_stats.append(rushing_skillpoints)
 	sp_skillpoints,dp_skillpoints = calculate_passFP(game,side)
 	team_stats.append([sp_skillpoints,dp_skillpoints])
-	performance = TeamPerformance(game['season'],game['week'])
 	total_sp = {
 		'rushing_skillpoints':rushing_skillpoints,
 		'short_pass_skillpoints':sp_skillpoints,
 		'deep_pass_skillpoints':dp_skillpoints
 	}
-	rush,sp,dp = performance.get_team_performance(team,opponent,total_sp)
-	team_stats.append(rush)
-	team_stats.append(sp)
-	team_stats.append(dp)
-	team_stats = np.asarray(team_stats)
+	# performance = TeamPerformance(game['season'],game['week'],total_sp)
+	# rush,sp,dp = performance.get_team_performance(team,opponent)
+	# team_stats.append(rush)
+	# team_stats.append(sp)
+	# team_stats.append(dp)
+	# team_stats = np.asarray(team_stats)
 	return team_stats
 
 def calculate_rushFP(game,side):
@@ -100,5 +100,6 @@ class SkillPoints():
 
 		skillpoints_df = np.vstack(skillpoints_by_team)
 		skillpoints_df['idx'] = skillpoints_df['gameid']+skillpoints_df['team']
+		skillpoints_df = skillpoints_df.set_index('idx')
 		self.skillpoints = pd.DataFrame(data=skillpoints_df,columns=skillpoint_cols)
 		return self.skillpoints

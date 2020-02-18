@@ -96,18 +96,26 @@ class PFR_Gamepage(Scraper):
 		gameinfo = self.page_soup.find("div",{"id":"all_game_info"})
 		comment = gameinfo.find(string=lambda text:isinstance(text,Comment))
 		gameinfo = soup(comment,"lxml")
+		row_headers = [tr.findAll("th") for tr in gameinfo.findAll("tr",{"class":None})]
 		gameinfo = [tr.findAll("td") for tr in gameinfo.findAll("tr",{"class":None})]
-		vegasline = gameinfo[-2][0].text.strip()
+		vl_idx = -2
+		ou_idx = -1
+		for i,header in enumerate(row_headers):
+			head = header[0].text.strip()
+			if head == 'Vegas Line':
+				vl_idx = i
+			if head == 'Over/Under':
+				ou_idx = i
+		vegasline = gameinfo[vl_idx][0].text.strip()
 		if(vegasline == 'Pick'):
 			home_fav = 1
 		else:
 			vegasline = re.split("\s-",vegasline)
-			# print(vegasline)
 			home_fav = 1
 			if vegasline[0] == team_away:
 				home_fav = -1
 			vegasline = float(vegasline[1])
-		overunder = float(gameinfo[-1][0].text.split(" ")[0].strip())
+		overunder = float(gameinfo[ou_idx][0].text.split(" ")[0].strip())
 		# print('home_fav = ',home_fav,', ats = ',vegasline,', ou = ',overunder)
 
 		# get score

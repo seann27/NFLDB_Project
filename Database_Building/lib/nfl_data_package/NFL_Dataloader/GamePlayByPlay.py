@@ -492,7 +492,7 @@ def get_special_teams(mpd,idx,players):
 					st['two_point_conv_result'] = 'return'
 			if stat in fg_att_cols:
 				st['fg_att'] = 1
-				st['kick_distance'] = mpd['yardline_100'][idx]+18
+				st['kick_distance'] = int(mpd['yardline_100'][idx])+18
 				if stat == 'field_goal_made':
 					st['field_goal_result'] = 'made'
 					st['sp_team'] = seq['clubcode']
@@ -1308,5 +1308,5 @@ class NFLAPI_Processor:
 		self.mpd = pd.DataFrame.from_dict(self.mpd)
 		self.mpd['idx'] = self.mpd.game_id.map(str)+self.mpd.drive.map(str)+self.mpd.play_id.map(str)
 		self.mpd = self.mpd[TableColumns().nflapi['pbp_cols']]
-		self.mpd
+		self.mpd = self.mpd.set_index('idx')
 		return self.mpd

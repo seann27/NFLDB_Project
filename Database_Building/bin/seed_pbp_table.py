@@ -1,7 +1,9 @@
 import pandas as pd
 from sqlalchemy import create_engine
+from sqlalchemy.types import VARCHAR
 from NFL_RefMaps import TableColumns
-engine = create_engine('mysql+pymysql://root:@localhost:3306/main_stats')
+engine = create_engine('mysql+pymysql://root:@localhost:3306/nfl_db')
+conn = engine.connect()
 
 dbint = 'int64'
 dbstring = 'str'
@@ -444,11 +446,16 @@ These methods build the season csv files from one large csv file containing all 
 # 				write_file.write(line)
 
 
-def create_indexes(index,size):
-	ids = []
-	for i in range(size):
-		ids.append(i+index)
-	return ids
+# def create_indexes(index,size):
+# 	ids = []
+# 	for i in range(size):
+# 		ids.append(i+index)
+# 	return ids
+
+def create_indexes(row):
+	idx = str(row['game_id'])+str(row['drive'])+str(row['play_id'])
+	print(idx)
+	return idx
 
 # returns quarter_end indicator, time left in half
 def get_time_status(qtr,time):
@@ -486,6 +493,11 @@ def get_sack_info(row,type='id'):
 	else:
 		return sack_player_name
 
+def update_table(table,temp_table):
+	sql = "REPLACE INTO "+table
+	sql += " (select * from "+temp_table+")"
+	conn.execute(sql)
+
 if __name__ == "__main__":
 	seasons = [2009,2010,2011,2012,2013,2014,2015,2016,2017,2018]
 	cur_id = 1
@@ -503,9 +515,12 @@ if __name__ == "__main__":
 		# df.insert(0, 'pid', create_indexes(cur_id,dfSize))
 		# df.set_index('pid')
 		# cur_id += dfSize
-		df['idx'] = df.game_id.map(str)+df.drive.map(str)+df.play_id.map(str)
-		action = 'replace'
+		df['idx'] = df.apply(lambda row: create_indexes(row),axis=1)
+		# action = 'replace'
+		table = 'nfl_pbp'
 		if idx > 0:
-			action = 'append'
+			table = 'nfl_pbp_tmp'
 		df = df[TableColumns().nflapi['pbp_cols']]
-		df.to_sql('nfl_pbp', con=engine, if_exists=action,index='idx')
+		df = df.set_index('idx')
+		df.to_sql(table, con=conn, if_exists='replace',dtype={'idx': VARCHAR(df.index.get_level_values('idx').str.len().max())})
+		update_table('nfl_pbp',table)

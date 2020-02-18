@@ -1,0 +1,7 @@
+conda install numpy
+conda install pandas
+conda install scikit-learn
+conda install beautifulsoup4
+conda install sqlalchemy
+conda install pymysql
+pip install lxml

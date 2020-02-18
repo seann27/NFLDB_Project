@@ -9,10 +9,8 @@ from scrapers import PFR_Gamelinks,PFR_Gamepage
 
 # connect to database
 print("Setting up database connections . . .")
-kaggle_engine = create_engine('mysql+pymysql://root:@localhost:3306/kaggle')
-kaggle_conn = kaggle_engine.connect()
-nfldb_engine = create_engine('mysql+pymysql://root:@localhost:3306/main_stats')
-main_engine = nfldb_engine.connect()
+nfldb_engine = create_engine('mysql+pymysql://root:@localhost:3306/nfl_db')
+nfldb_conn = nfldb_engine.connect()
 file = ("D:\\NFLDB\\game_info.csv")
 
 # trim csv file to relevant stats for weeks 1-16, 2009-2018
@@ -21,15 +19,15 @@ gameinfo = pd.read_csv(file)
 
 print("Dropping unused columns . . .")
 # drop playoff weeks
-indexNames = gameinfo[ gameinfo['schedule_playoff'] == True ].index
-gameinfo.drop(indexNames,inplace=True)
+# indexNames = gameinfo[ gameinfo['schedule_playoff'] == True ].index
+# gameinfo.drop(indexNames,inplace=True)
 
 # drop stats older than 2009
 indexNames = gameinfo[ gameinfo['schedule_season'] < 2009 ].index
 gameinfo.drop(indexNames,inplace=True)
 
 # drop unused columns
-gameinfo.drop(['schedule_playoff'],axis=1,inplace=True)
+# gameinfo.drop(['schedule_playoff'],axis=1,inplace=True)
 gameinfo.drop(['stadium'],axis=1,inplace=True)
 gameinfo.drop(['stadium_neutral'],axis=1,inplace=True)
 gameinfo.drop(['weather_temperature'],axis=1,inplace=True)
@@ -100,7 +98,7 @@ def map_pfrlinks():
 	cols = ['idx','pfr_link']
 	df = pd.DataFrame(columns=cols)
 	seasons = np.arange(2009,2019).tolist()
-	weeks = np.arange(1,18).tolist()
+	weeks = np.arange(1,22).tolist()
 	data = {'idx':[],'gamelinks':[],'season':[],'week':[]}
 
 	cache = os.path.exists('pfrlinks.txt')
@@ -153,7 +151,7 @@ print("Getting gameids from nfl_api . . .")
 sql = "select distinct(pbp.game_id) as game_id, pbp.home_team as home_team, pbp.game_date as game_date \
 	   from nfl_pbp pbp \
 	   order by pbp.game_id"
-gameinfo_gameids = pd.read_sql_query(sql, kaggle_conn, index_col=None)
+gameinfo_gameids = pd.read_sql_query(sql, nfldb_conn, index_col=None)
 gameinfo_gameids['idx'] = gameinfo_gameids.apply(lambda row: get_pbpindex(row),axis=1)
 
 gameinfo_gameids.set_index('idx',inplace=True)
@@ -194,7 +192,7 @@ home_deep_pass_sql = "select game_id,sum(yards_gained) as home_deeppass_yds, \
   group by game_id,posteam"
 
 home_sacked_sql = "select game_id, \
-	sum(sack) as home_sacked, \
+	sum(sack) as home_sacked \
 	from nfl_pbp \
 	where play_type = 'pass' \
 	and posteam = home_team \
@@ -217,24 +215,26 @@ home_deep_pass_int_sql = "select game_id, \
 	group by game_id"
 
 print("Getting home stats . . .")
-home_rush_mets = pd.read_sql_query(home_rush_sql, kaggle_conn, index_col=None)
+home_rush_mets = pd.read_sql_query(home_rush_sql, nfldb_conn, index_col=None)
 home_rush_mets.set_index('game_id',inplace=True)
-home_short_pass_mets = pd.read_sql_query(home_short_pass_sql, kaggle_conn, index_col=None)
+home_short_pass_mets = pd.read_sql_query(home_short_pass_sql, nfldb_conn, index_col=None)
 home_short_pass_mets.set_index('game_id',inplace=True)
-home_deep_pass_mets = pd.read_sql_query(home_deep_pass_sql, kaggle_conn, index_col=None)
+home_deep_pass_mets = pd.read_sql_query(home_deep_pass_sql, nfldb_conn, index_col=None)
 home_deep_pass_mets.set_index('game_id',inplace=True)
-# home_pass_defense_mets = pd.read_sql_query(home_pass_defense_total_sql, kaggle_conn, index_col=None)
+# home_pass_defense_mets = pd.read_sql_query(home_pass_defense_total_sql, nfldb_conn, index_col=None)
 # home_pass_defense_mets.set_index('game_id',inplace=True)
-home_sacked_mets = pd.read_sql_query(home_sacked_sql, kaggle_conn, index_col=None)
+home_sacked_mets = pd.read_sql_query(home_sacked_sql, nfldb_conn, index_col=None)
 home_sacked_mets.set_index('game_id',inplace=True)
-home_short_pass_int_mets = pd.read_sql_query(home_short_pass_int_sql, kaggle_conn, index_col=None)
+home_short_pass_int_mets = pd.read_sql_query(home_short_pass_int_sql, nfldb_conn, index_col=None)
 home_short_pass_int_mets.set_index('game_id',inplace=True)
-home_deep_pass_int_mets = pd.read_sql_query(home_deep_pass_int_sql, kaggle_conn, index_col=None)
+home_deep_pass_int_mets = pd.read_sql_query(home_deep_pass_int_sql, nfldb_conn, index_col=None)
 home_deep_pass_int_mets.set_index('game_id',inplace=True)
 
 home_offense = home_rush_mets.merge(home_short_pass_mets,on='game_id')
 home_offense = home_offense.merge(home_deep_pass_mets,on='game_id')
-home_offense = home_offense.merge(home_pass_defense_mets,on='game_id')
+home_offense = home_offense.merge(home_sacked_mets,on='game_id')
+home_offense = home_offense.merge(home_short_pass_int_mets,on='game_id')
+home_offense = home_offense.merge(home_deep_pass_int_mets,on='game_id')
 print("Home stats generated.")
 
 print("Getting away stats . . .")
@@ -270,7 +270,7 @@ away_deep_pass_sql = "select game_id,sum(yards_gained) as away_deeppass_yds, \
   group by game_id,posteam"
 
 away_sacked_sql = "select game_id, \
-   sum(sack) as away_sacked, \
+   sum(sack) as away_sacked \
   from nfl_pbp \
   where play_type = 'pass' \
   and posteam = away_team \
@@ -292,32 +292,34 @@ away_deep_pass_int_sql = "select game_id, \
  	and posteam = away_team \
  	group by game_id"
 
-away_rush_mets = pd.read_sql_query(away_rush_sql, kaggle_conn, index_col=None)
+away_rush_mets = pd.read_sql_query(away_rush_sql, nfldb_conn, index_col=None)
 away_rush_mets.set_index('game_id',inplace=True)
-away_short_pass_mets = pd.read_sql_query(away_short_pass_sql, kaggle_conn, index_col=None)
+away_short_pass_mets = pd.read_sql_query(away_short_pass_sql, nfldb_conn, index_col=None)
 away_short_pass_mets.set_index('game_id',inplace=True)
-away_deep_pass_mets = pd.read_sql_query(away_deep_pass_sql, kaggle_conn, index_col=None)
+away_deep_pass_mets = pd.read_sql_query(away_deep_pass_sql, nfldb_conn, index_col=None)
 away_deep_pass_mets.set_index('game_id',inplace=True)
-# away_pass_defense_mets = pd.read_sql_query(away_pass_defense_total_sql, kaggle_conn, index_col=None)
+# away_pass_defense_mets = pd.read_sql_query(away_pass_defense_total_sql, nfldb_conn, index_col=None)
 # away_pass_defense_mets.set_index('game_id',inplace=True)
-away_sacked_mets = pd.read_sql_query(away_sacked_sql, kaggle_conn, index_col=None)
+away_sacked_mets = pd.read_sql_query(away_sacked_sql, nfldb_conn, index_col=None)
 away_sacked_mets.set_index('game_id',inplace=True)
-away_short_pass_int_mets = pd.read_sql_query(away_short_pass_int_sql, kaggle_conn, index_col=None)
+away_short_pass_int_mets = pd.read_sql_query(away_short_pass_int_sql, nfldb_conn, index_col=None)
 away_short_pass_int_mets.set_index('game_id',inplace=True)
-away_deep_pass_int_mets = pd.read_sql_query(away_deep_pass_int_sql, kaggle_conn, index_col=None)
+away_deep_pass_int_mets = pd.read_sql_query(away_deep_pass_int_sql, nfldb_conn, index_col=None)
 away_deep_pass_int_mets.set_index('game_id',inplace=True)
 
 away_offense = away_rush_mets.merge(away_short_pass_mets,on='game_id')
 away_offense = away_offense.merge(away_deep_pass_mets,on='game_id')
-away_offense = away_offense.merge(away_pass_defense_mets,on='game_id')
+away_offense = away_offense.merge(away_sacked_mets,on='game_id')
+away_offense = away_offense.merge(away_short_pass_int_mets,on='game_id')
+away_offense = away_offense.merge(away_deep_pass_int_mets,on='game_id')
 print("Away stats generated.")
 
 all_offense = home_offense.merge(away_offense,on='game_id')
 game_summary = gameinfo.merge(all_offense,on='game_id')
-game_summary.to_sql('nfl_game_summary', con=main_engine, if_exists='replace',index='game_id')
+game_summary.to_sql('nfl_game_summary', con=nfldb_conn, if_exists='replace',index='game_id')
 
-print("Processing skillpoints per game . . .")
-game_summary_formatted = game_summary.copy().reset_index()
-sp = SkillPoints()
-skillpoints_df = sp.build_skillpoints_dataframe(game_summary_formatted)
-skillpoints_df.to_sql('nfl_skillpoints', con=main_engine, if_exists='replace')
+# print("Processing skillpoints per game . . .")
+# game_summary_formatted = game_summary.copy().reset_index()
+# sp = SkillPoints()
+# skillpoints_df = sp.build_skillpoints_dataframe(game_summary_formatted)
+# skillpoints_df.to_sql('nfl_skillpoints', con=nfldb_conn, if_exists='replace')
